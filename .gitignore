@@ -15,3 +15,15 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+vendor/
+public/Minible_v2.0.0
+.env
+.vagrant
+Vagrantfile
+
+#-------------------------
+# Temporary Files
+#-------------------------
+writable/*
+app/Config/App.php
+app/Config/Database.php
