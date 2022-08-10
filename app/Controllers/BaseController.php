@@ -10,18 +10,23 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Models\SettingModel;
 use App\Models\UserModel;
-//use App\Models\UserProfileModel;
+use App\Models\UserProfileModel;
+use App\Models\UserOfficesModel;
+use App\Models\UserDocsModel;
 use App\Models\UsersLogModel;
+use App\Models\UsersAuthSmsModel;
 use App\Models\TemplatesModel;
 use App\Models\ComuniModel;
 use App\Models\NazioniModel;
 use App\Models\ProvinceModel;
-use App\Models\AgentiModel;
-use App\Models\ClientiModel;
-use App\Models\FornitoreModel;
-use App\Models\IndFornitoreModel;
-use App\Models\LocalitaModel;
-use App\Models\RelIndFornitoreModel;
+
+use App\Models\OrdreCityModel;
+use App\Models\OrdreProfessionelModel;
+use App\Models\PatologieModel;
+use App\Models\PrestationsModel;
+use App\Models\SpecificationsModel;
+use App\Models\StructureSanitaireModel;
+use App\Models\ClinicTeamModel;
 
 use DeviceDetector\DeviceDetector;
 use DeviceDetector\Parser\Device\AbstractDeviceParser;
@@ -67,21 +72,20 @@ abstract class BaseController extends Controller
 		$this->ComuniModel =  new ComuniModel();
 		$this->NazioniModel =  new NazioniModel();
 		$this->ProvinceModel =  new ProvinceModel();
+		$this->UsersAuthSmsModel=new UsersAuthSmsModel();
 		$this->UsersLogModel=new UsersLogModel();
 		$this->UserModel =  new UserModel();
-	//	$this->UserProfileModel =  new UserProfileModel();
+		$this->UserProfileModel =  new UserProfileModel();
+		$this->UserOfficesModel =  new UserOfficesModel();
+		$this->UserDocsModel =  new UserDocsModel();
 		$this->TemplatesModel =  new TemplatesModel();
-		$this->AgentiModel=new AgentiModel();
-			$this->ClientiModel=new ClientiModel();
-			$this->FornitoreModel=new FornitoreModel();
-				$this->IndFornitoreModel=new IndFornitoreModel();
-				$this->LocalitaModel=new LocalitaModel();
-					$this->RelIndFornitoreModel=new RelIndFornitoreModel();
-					$this->DS_TP_CLIENTE=array("Residenziale", "Partita IVA", "Condominio");
-						$this->DS_TP_CONTRATTO=array("Fornitura gas", "Fornitura energia elettrica", "Fornitura gas Business");
-        // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
+		$this->OrdreCityModel=new OrdreCityModel();
+		$this->OrdreProfessionelModel=new OrdreProfessionelModel();
+		$this->PatologieModel=new PatologieModel();
+		$this->PrestationsModel=new PrestationsModel();
+		$this->SpecificationsModel=new SpecificationsModel();
+		$this->StructureSanitaireModel=new StructureSanitaireModel();
+		$this->ClinicTeamModel=new ClinicTeamModel();
     }
 	public function common_data(){
 		$common_data=array();
@@ -100,8 +104,7 @@ abstract class BaseController extends Controller
 		if($user_data['role']=='A') $common_data['prefix_route']='admin/';
 		else $common_data['prefix_route']='myAccount/';
 		
-		$common_data['DS_TP_CLIENTE']=$this->DS_TP_CLIENTE;
-		$common_data['DS_TP_CONTRATTO']=$this->DS_TP_CONTRATTO;
+		
 		return $common_data;
 	}
 	
