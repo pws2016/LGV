@@ -218,7 +218,11 @@ $lang['menu_profile']="Profilo";
 $lang['menu_setting']="Impostazioni";
 $lang['menu_setting_info']="Informazioni";
 $lang['menu_overview']="Dashboard";
-
+$lang['title_menu_cms']="CMS";
+$lang['title_menu_staff']="Staff Medico";
+$lang['menu_speciality']="Specializzazioni";
+$lang['menu_patology']="Patologie";
+$lang['menu_prestations']="Tipologie di prestazione";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
