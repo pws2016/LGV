@@ -26,4 +26,8 @@ Vagrantfile
 #-------------------------
 writable/*
 app/Config/App.php
+<<<<<<< Updated upstream
 app/Config/Database.php
+=======
+app/Config/Database.php
+>>>>>>> Stashed changes
