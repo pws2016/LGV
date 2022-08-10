@@ -21,38 +21,20 @@ $lang['btn_download']="Scarica";
 $lang['action_download_copy']="Download";
 $lang['btn_next']="Continua";
 $lang['btn_prev']="Indietro";
-$lang['btn_create_plan']="COMPILA ORA";
 $lang['btn_manage']="CONTINUA";
 $lang['btn_add_row']="Aggiungi voce";
 $lang['btn_help']="[Esempio]";
 $lang['btn_generate']="Creare";
 $lang['btn_apply']="Applicare";
-$lang['btn_bp']="Aggiungi un Business Plan";
-$lang['btn_preleva_bp']="Preleva dati da BasicPlan";
-$lang['btn_download_certificazione_zip']="Scarica certificazioni (Zip)";
-$lang['btn_save_and_investement']="Salva e inserisci investimenti";
+
 $lang['btn_pay']="Paga";
 $lang['btn_finish']="Paga";
 $lang['loading']="Caricamento in corso";
 $lang['current_step']="passo attuale";
 $lang['pagination']="impaginazione";
-$lang['btn_buy']="ACQUISTA";
-$lang['btn_login_guest']="Accedi come ospite";
-$lang['btn_investement']="Aggiungi investimento";
+
 $lang['btn_send']="Invia";
-$lang['btn_dropbox']="crea Dropbox ";
-$lang['btn_copy']="Copia informazione di";
-$lang['btn_open_dropbox']="Aprire la cartella della Dropbox";
-$lang['btn_create_folder']="Crea cartella";
-$lang['btn_delete_files']="Elimina Files";
-$lang['btn_back']="Indietro";
-$lang['btn_accept_offer']="Accettare l'offerta";
-$lang['btn_decline_offer']="Rifiutare l'offerta";
-$lang['btn_get_code']="Ottenere il codice";
-$lang['btn_sign']="Salva";
-$lang['btn_has_code']="ho il codice";
-$lang['btn_request_update_offer']="richiedere modifica";
-$lang['btn_add_address']="Nuovo indirizzo";
+
 ########## Fields ################
 $lang['field_mete_title']="Sito titolo";
 $lang['field_website']="webSito";
@@ -126,37 +108,17 @@ $lang['soci_residenza_indirizzo']="residenza indirizzo";
 $lang['field_stato_civile']="Stato civile";
 $lang['field_professione']="Professione";
 
-$lang['capitale_sotto']="Capitale sottoscritto";
-$lang['capitale_versato']="Capitale versato";
-$lang['sovrapprezzo']="Sovrapprezzo";
-
-$lang['nb_amministrazione']="Quanti Amministratori";
-$lang['carica_data']="Carica data";
-$lang['fino_data']="Fino data";
-$lang['vendita_quote']="vendita quote";
-$lang['diritto_prelazione']="diritto prelazione";
-$lang['escl_diritto_prelazione']="escl_diritto_prelazione";
-$lang['tag_along']="tag_along";
-$lang['drag_along']="drag_along";
-$lang['clausola_gradi']="clausola_gradi";
-$lang['escl_socio']="escl_socio";
-$lang['check_9430']="9.4.3.0 i campi obbligatori";
-$lang['check_9450']="9.4.5.0 i campi obbligatori";
 
 $lang['field_current_step']="Step Complettati";
 $lang['field_updated_date']="Data Modifica";
 $lang['field_customer']="Clienti";
-$lang['guest']="ospite";
-$lang['action_download_costitutivo']="Atto Costitutivo";
-$lang['field_plan']="Business Plan";
-$lang['field_type_simple']="BasicPlan";
-$lang['field_type_full']="Business Plan Completo";
-$lang['field_type_pro']="Business Plan Professionel";
+
+
 $lang['field_price']="Prezzo";
 $lang['field_description']="Descrizione";
 $lang['field_sorting']="Ordinamento";
-$lang['field_per_plan']="il piano";
-$lang['field_terms']="Accetta <a href='https://www.iubenda.com/privacy-policy/63306874' target='_blank'>Privacy</a> e <a href='https://creazioneimpresa.net/termini-e-condizioni/' target='_blank'>Termini e Condizioni</a>";
+
+
 $lang['field_newsletter']="Iscriviti alla newsletter";
 $lang['field_pec']="Indirizzo PEC";
 $lang['field_sdi']="SDI";
@@ -201,16 +163,14 @@ $lang['field_subtotal']="Imponibile";
 $lang['field_nb_requests_done']="#Acquista";
 $lang['field_billing']="Cliente";
 $lang['field_billed_to']="Addebitato a";
-$lang['field_project']="Servize";
+
 $lang['field_payment_method']="Metodo pagamento";
 $lang['field_rea']="numero REA";
 $lang['field_birthplace']="Nato a";
 $lang['field_birthdate']="Data di nascita";
 $lang['field_product_title']="Prodotto/Servizio";
 $lang['field_subtitle']="Sottotilolo";
-$lang['field_nb_bp']="# piano";
-$lang['field_nb_cert']="# certificazione";
-$lang['field_discount_pro']="BP Pro";
+
 
 $lang['field_cc_name']="Nome Cognome";
 $lang['field_cc_num']="Numero di carta";
@@ -235,35 +195,7 @@ $lang['field_status_canceled']="Non pagato";
 $lang['field_code_name']="Codice o nome o cognome";
 $lang['action_update']="Modifica";
 $lang['action_delete']="Elimina";
-$lang['field_type_DS']="DS Tipo Cliente";
-$lang['DS_TP_CALEND_FATT']="DS_TP_CALEND_FATT";
-$lang['CD_ENTITA_FATT']="CD_ENTITA_FATT";
-$lang['field_DS_AMMINISTRATORE']="DS_AMMINISTRATORE";
-$lang['field_agent']="Agente";
-$lang['field_DS_TP_CONTRATTO']="DS_TP_CONTRATTO";
-$lang['field_D_INIZIO_CONTRATTO']="D_INIZIO_CONTRATTO";
-$lang['field_D_FINE_CONTRATTO']="D_FINE_CONTRATTO";
-$lang['field_CD_REMI']="CD REMI";
-$lang['field_DS_PRODOTTO']="DS PRODOTTO";
 
-$lang['field_DS_TP_IVA']="DS_TP_IVA";
-$lang['field_TIPO_ACCISA']="TIPO_ACCISA";
-$lang['field_IMPOSTA_ERARIALE']="IMPOSTA_ERARIALE";
-$lang['field_CD_PUNTO']="CD_PUNTO";
-$lang['field_CD_TP_PUNTO']="CD_TP_PUNTO";
-$lang['field_POD']="POD";
-$lang['field_PDR']="PDR";
-$lang['field_DS_TP_UTENZA']="DS_TP_UTENZA";
-$lang['field_DISTRIBUTORE']="DISTRIBUTORE";
-$lang['field_D_INIZ_FORN']="D_INIZ_FORN";
-$lang['field_D_FINE_FORN']="D_FINE_FORN";
-$lang['field_N_CONS_CONTR_AA']="N_CONS_CONTR_AA";
-$lang['field_DS_CLASSE_MIS']="DS_CLASSE_MIS";
-$lang['field_MATR_CONTATORE']="MATR_CONTATORE";
-$lang['field_N_COEFF_C']="N_COEFF_C";
-$lang['field_POTENZA_DISPONIBILE']="POTENZA_DISPONIBILE";
-$lang['field_POTENZA_IMPEGNATA']="POTENZA_IMPEGNATA";
-$lang['field_DS_TP_TENSIONE']="DS_TP_TENSIONE";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
@@ -271,15 +203,7 @@ $lang['menu_login']="Login";
 $lang['menu_logout']="Logout";
 $lang['menu_forgot_password']="Hai dimenticato la tua password";
 $lang['menu_creation']="Creazione";
-$lang['menu_steps']="Dati";
-$lang['menu_creation_package']="Pacchetti";
-$lang['menu_step_company_profile']="Dati Società";
-$lang['menu_step_business_model']="Business Model";
-$lang['menu_step_exit_strategy']="Exit Strategy";
-$lang['menu_step_conto_econemico']="Conto Economico";
-$lang['menu_step_investitor']="Dati investitore e investimento";
-$lang['menu_creation_step5']="Startup innovativa";
-$lang['menu_creation_step_confirmation']="Download";
+
 $lang['menu_myaccount']="Mio Account";
 $lang['menu_myaccount_dashboard']="Dashboard";
 $lang['menu_myaccount_profile']="Profilo";
@@ -288,30 +212,13 @@ $lang['menu_dashboard']="Prodotti";
 $lang['menu_customers']="Clienti";
 $lang['menu_customer_edit']="Modifica cliente";
 $lang['menu_customer_add']="Nuovo cliente";
-$lang['menu_requests']="BasicPlan";
-$lang['menu_requests_bp_full']="Certificazione";
-$lang['menu_requests_edit']="Modifica Business Plan";
-$lang['menu_contacts']="Contatti";
+
 $lang['menu_package']="Pacchetti";
 $lang['menu_profile']="Profilo";
 $lang['menu_setting']="Impostazioni";
 $lang['menu_setting_info']="Informazioni";
 $lang['menu_overview']="Dashboard";
-$lang['menu_coupon']="Coupon";
-$lang['menu_requests_resume']="Fattura";
-$lang['menu_invoices']="I tuoi acquisti";
-$lang['menu_return_admin']="torna all'amministratore";
-$lang['menu_requests_bp_business']="BM Business";
-$lang['menu_services']="Servizi";
-$lang['menu_offers']="Offers";
-$lang['menu_calls']="Calls";
-$lang['menu_calls_new_offer']="Crea offerta";
-$lang['menu_calls_anteprima_offer']="Anteprima offerta";
-$lang['menu_subservices']="Sub-Servizi";
-$lang['menu_calls_contract_offer']="Conferimento di incarico";
-$lang['menu_payments']="Pagamenti";
-$lang['menu_agents']="Agenti";
-$lang['menu_fornitore']="Fornitori";
+
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -343,10 +250,7 @@ $lang['title_page_add_customer']="Nuovo Cliente";
 $lang['title_page_edit_customer']="Modifica Cliente";
 $lang['title_page_customers']="Clienti";
 $lang['modal_delete_customer']="Elimina clienti";
-$lang['title_page_requests']="Lista BasicPlan";
-$lang['title_page_requests_piano']="Scegli il tuo piano";
-$lang['modal_delete_request']="Elimina Business Plan";
-$lang['title_page_requests_edit']="Modifica Business Plan";
+
 $lang['title_page_contacts']="Contatti";
 $lang['help_recuperate']="Inserisci il tuo indirizzo e-mail di seguito per ricevere un link per reimpostare la password";
 $lang['title_page_reset']="Resetta la password";
@@ -363,53 +267,20 @@ $lang['title_page_dashboard']="I Nostri Servizi";
 $lang['title_page_overview']="Dashboard";
 $lang['title_section_invoice_data']="Dati di fatturazione";
 $lang['title_section_contact_data']="Dati Contatto";
-$lang['title_page_create_requests']="Crea il tuo BasicPlan";
-$lang['title_page_create_requests_certification']="Crea Certificazione";
+
 $lang['title_section_company_profile']="Dati società";
 $lang['title_section_social_network']="Social Network";
-$lang['title_section_soci']="Soci";
-$lang['title_section_activity']="L'attività";
-$lang['title_section_model']="Il Modello di business";
-$lang['title_section_mercato']="Il mercato";
-$lang['title_modal_edit_conc']="Modifica Concorrente";
-$lang['title_modal_delete_conc']="Elimina Concorrente";
-$lang['title_section_products']="Prodotti/servizi";
 
-$lang['title_modal_edit_prod']="Modifica Prodotto/servizio";
-$lang['title_modal_delete_prod']="Elimina Prodotto/servizio";
-$lang['title_section_investment_plan']="Piano investimenti";
 
-$lang['title_section_conto']="Conto Economico";
-$lang['help_button_recalcul']="re fare calcul";
 
-$lang['title_page_coupon']="Lista coupon";
-$lang['modal_title_add_coupon']="Aggiungi coupon";
-$lang['modal_title_edit_coupon']="Modifica coupon";
-$lang['modal_title_delete_coupon']="Elimina coupon";
-$lang['section_title_confirm_bp']="il tuo Basicplan è pronto";
-$lang['help_text_btn_anteprima']="Clicca su ANTEPRIMA";
-$lang['section_title_checkout']="Il tuo carrello";
-$lang['section_title_payment_method']="Selezione metodo di pagamento";
-$lang['title_section_order_summury']="Dettagli";
+
 $lang['modal_client_profile']="Cliente Profilo";
 $lang['modal_title_loginas']="Accedi come";
 $lang['title_page_customer_edit']="Modifica Cliente";
 $lang['title_page_customer_add']="Nuovo Cliente";
 
 $lang['title_section_result']="Dati";
-$lang['modal_delete_agent']="Elimina Agente";
-$lang['modal_update_agent']="Modifica Agente";
-$lang['modal_new_agent']="Nuovo agente";
-$lang['title_page_agents']="Agenti";
-$lang['modal_delete_fornitore']="Elimina Fornitore";
-$lang['modal_update_fornitore']="Modifica Fornitore";
-$lang['title_page_fornitores']="Fornitori";
-$lang['modal_new_fornitore']="Nuovo Fornitore";
-$lang['title_section_customer_info']="Dati Cliente";
-$lang['title_section_customer_fattura']="Fatturazione";
-$lang['title_section_customer_other']="Altro dati";
-$lang['title_section_customer_fornitura']="Fornitura";
-$lang['modal_new_address']="Nuovo indirizzo";
+
 ################### statistics ###############"
 
 ############### errors ####################
@@ -444,26 +315,22 @@ $lang['error_not_exist_account']="email / password sono sbagliati!";
 
 $lang['error_activation_account']="Errore! Indirizzo email non presente nel nostro database.";
 $lang['error_reset_password']="impossibile resettare la password!";
-$lang['error_add_section_svp']="puoi aggiungere solo 3 righe!";
-$lang['error_compila_dich']="La forza lavoro impiegata deve essere maggiore dei membri del team";
-$lang['error_member_team_numbers']="hai raggiunto il limite del team di membri";
+
 
 $lang['warning_not_active_account']="il tuo account non è attivo!";
-$lang['error_soci_total_percent']="il valore percentuale totale deve essere 100!";
-$lang['error_not_conc']="è necessario almeno un concorrente diretto e un concorrente indiretto!";
-$lang['error_not_prod']="è necessario almeno un prodotto/servizio!";
-$lang['error_not_have_exit_strategy']="devi scegliere almeno un'opzione di 'Exit Strategy'!";
+
+
 $lang["error_coupon"]="coupon non valido!";
 $lang["error_coupon_code"]="Il campo Codice deve contenere un valore univoco.";
 $lang['error_invoice_already_exist']="la fattura è già esistente";
-$lang['error_swot']="I campi SWOT sono obbligatori!";
+
 $lang['error_pec_sdi']="Per la fattura è obbligatorio la PEC o SDI";
 $lang['error_min_date']="La data deve essere maggiore o uguale a %s";
 $lang['error_max_date']="La data deve essere minore o uguale a %s";
 $lang['error_generate_cf']="Impossibile generare il CF";
-$lang['error_italian_country']="Inserisci il codice attribuito dall'agenzia delle entrate";
+
 $lang['error_format_date']="il formato della data non è corretto!";
-$lang['error_100']="il valore percentuale totale deve essere 100% !";
+
 $lang['error_create_dropbox_folder']="non è possibile creare la cartella della dropbox";
 $lang['error_uplaod_file_to_dropbox']="il file <b>{X}</b> non è stato caricato nella dropbox";
 $lang['error_files_to_download']="non hai selezionato i file da scaricare!";
@@ -479,8 +346,7 @@ $lang['error_token_expired']="il token è scaduto!";
 $lang['error_token_used']="il token è già utilizzato!";
 $lang['error_sms']="sms non invio!";
 $lang['error_expiration_code']="il codice sms non è valido o è scaduto!";
-$lang['error_cost_salary_year']="hanno un anno di fine inferiore a quello di inizio!";
-$lang['error_cost_salary_month']="avere il mese di fine inferiore al mese di inizio!";
+
 #################success ################################
 $lang['success_new_register']="la registrazione è avvenuta con successo, controlla la tua casella di posta per confermare il tuo account";
 $lang['success_reviews_sended']="Grazie per avere testato il nostro tool e per il feedback. Se vuoi metterti in contatto con noi scrivici a info@creazioneimpresa.it";

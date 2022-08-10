@@ -50,10 +50,11 @@ $routes->get('/loginas_back/(:any)', 'UserPanel::loginas_back/$1');
 
  $routes->add('/ajax/(:any)', 'Ajax::index/$1');
 
-$routes->add('/admin/dashboard', 'AdminPanel::index');
-$routes->add('/admin/profile', 'AdminPanel::profile');
-
-$routes->add('/admin/agents/update_agent', 'Agents::update_agent');
+$routes->group("admin", ["filter" => "auth:A"], function ($routes) {
+$routes->add('dashboard', 'AdminPanel::index');
+$routes->add('profile', 'AdminPanel::profile');
+});
+/*$routes->add('/admin/agents/update_agent', 'Agents::update_agent');
 $routes->add('/admin/agents', 'Agents::index');
 
 $routes->add('/admin/fornitore/update_fornitor', 'Fornitore::update_fornitor');
@@ -63,6 +64,9 @@ $routes->add('/admin/customers/add', 'Customers::add_customers');
 $routes->add('/admin/customers/edit/(:num)', 'Customers::update_customers/$1');
 $routes->add('/admin/customers/profile', 'Customers::profile');
 $routes->add('/admin/customers', 'Customers::index');
+*/
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

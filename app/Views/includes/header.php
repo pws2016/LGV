@@ -4,19 +4,19 @@
 			<div class="navbar-brand-box">
 				<a href="index.html" class="logo logo-dark">
 					<span class="logo-sm">
-						<img src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/creazioneimpresa_logo-bianco.png" alt="" height="22">
+						<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="22">
 					</span>
 					<span class="logo-lg">
-						<img src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/creazioneimpresa_logo-bianco.png" alt="" height="20">
+						<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="20">
 					</span>
 				</a>
 
 				<a href="index.html" class="logo logo-light">
 					<span class="logo-sm">
-						<img src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/creazioneimpresa_logo-bianco.png" alt="" height="22">
+						<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="22">
 					</span>
 					<span class="logo-lg">
-						<img src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/creazioneimpresa_logo-bianco.png" alt="" height="20">
+						<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="20">
 					</span>
 				</a>
 			</div>
@@ -69,9 +69,7 @@
 				</button>
 				<div class="dropdown-menu dropdown-menu-end">
 					<!-- item-->
-					<?php if($user_data['role']!='guest'){?>
-					<a class="dropdown-item" href="<?php echo base_url($prefix_route.'profile');//$profile_url?>"><i class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span class="align-middle"><?php echo lang('app.menu_profile')?></span></a>
-					<?php } if($user_data['role']=='A'){?>
+					<?php  if($user_data['role']=='A'){?>
 					<a class="dropdown-item d-block" href="<?php echo base_url($prefix_route.'settings')?>"><i class="uil uil-cog font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle"><?php echo lang('app.menu_setting')?></span></a>
 					<?php } ?>
 					<?php if($user_loginas!==null && $user_loginas['role']=='A'){?>
@@ -93,19 +91,19 @@
 	<div class="navbar-brand-box">
 		<a href="<?php echo base_url($prefix_route.'dashboard')?>" class="logo logo-dark">
 			<span class="logo-sm">
-				<img src="https://app.creazioneimpresa.it/Minible_v2.0.0/Admin/dist/assets/images/logo-black-150x150-mail.png" alt="" height="22">
+				<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="22">
 			</span>
 			<span class="logo-lg">
-				<img src="https://creazioneimpresa.net/wp-content/uploads/2020/05/creazioneimpresa_logo-bianco.svg" alt="" height="20">
+				<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="20">
 			</span>
 		</a>
 
 		<a href="<?php echo base_url($prefix_route.'dashboard')?>" class="logo logo-light">
 			<span class="logo-sm">
-				<img src="https://app.creazioneimpresa.it/Minible_v2.0.0/Admin/dist/assets/images/logo-black-150x150-mail.png" alt="" height="22">
+				<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="22">
 			</span>
 			<span class="logo-lg">
-				<img src="https://creazioneimpresa.net/wp-content/uploads/2020/05/creazioneimpresa_logo-bianco.svg" alt="" height="20">
+				<img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="20">
 			</span>
 		</a>
 	</div>
@@ -122,7 +120,10 @@
 						<i class="uil-home-alt"></i><span>Dashboard</span>
 					</a>
 				</li>
+				<hr>
+			
 				<?php if($user_data['role']=='A'){?>
+					<li class="menu-title"><?php echo lang('app.title_menu_cms')?></li>
 				<li>
 					<a href="<?php echo base_url($prefix_route.'customers')?>">
 						<i class="uil-users-alt me-2"></i><span>Lista clienti</span>
@@ -138,6 +139,8 @@
 						<i class="uil-users-alt me-2"></i><span>Lista Fornitori</span>
 					</a>
 				</li>
+				<hr/>
+					<li class="menu-title"><?php echo lang('app.title_menu_staff')?></li>
 				<?php } ?>
 			
 				
@@ -149,12 +152,11 @@
 					
 				<hr>
 				<li class="menu-title">Profilo</li>
-				<?php if($user_data['role']!='guest'){?>
+				
 				<li>
 					<a href="<?php echo base_url($prefix_route.'profile');//$profile_url?>"><i class="uil uil-user-circle"></i> <span class="align-middle">Mio profilo</span></a>
 				</li>
-				<?php }?>
-				
+			
 				<hr>
 				<li>
 					<a href="<?php echo base_url('logout')?>">

@@ -63,7 +63,7 @@ class Authentification extends BaseController
 							->where('password', md5($password))
 							->findAll();
 				
-							
+					//	var_dump($users); exit;	
 				 $url=uri_string();
 					if(empty($users)){
 						$error=lang('app.error_not_exist_account');

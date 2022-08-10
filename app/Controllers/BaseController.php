@@ -98,12 +98,14 @@ abstract class BaseController extends Controller
 		$common_data['settings']=$settings;
 		$user_loginas=$this->session->get('user_loginas');	
 		if(!empty($user_loginas)) $common_data['user_loginas']=$user_loginas;
-		if($user_data['role']=='A') $common_data['profile_url']=base_url('admin/profile');
-		else $common_data['profile_url']=base_url('myAccount/profile');
 		
-		if($user_data['role']=='A') $common_data['prefix_route']='admin/';
-		else $common_data['prefix_route']='myAccount/';
 		
+		switch($user_data['role']){
+			case 'A': $common_data['prefix_route']='admin/';break;
+			case 'C':
+			case 'M': $common_data['prefix_route']='MyAccount/';break;
+			default:$common_data['prefix_route']='';
+		}			
 		
 		return $common_data;
 	}

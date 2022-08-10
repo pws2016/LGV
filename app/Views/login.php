@@ -27,8 +27,8 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <a href="<?php echo base_url()?>/login" class="mb-5 d-block auth-logo">
-                                <img src="https://app.creazioneimpresa.it/Minible_v2.0.0/Admin/dist/assets/images/logo-black-150x150-mail.png" alt="" height="200" class="logo logo-dark">
-                                <img src="https://app.creazioneimpresa.it/Minible_v2.0.0/Admin/dist/assets/images/logo-black-150x150-mail.png" alt="" height="200" class="logo logo-light">
+                                <img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="200" class="logo logo-dark">
+                                <img src="<?php echo base_url('logo_completo.svg')?>" alt="" height="200" class="logo logo-light">
                             </a>
                         </div>
                     </div>
