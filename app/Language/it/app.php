@@ -195,7 +195,9 @@ $lang['field_status_canceled']="Non pagato";
 $lang['field_code_name']="Codice o nome o cognome";
 $lang['action_update']="Modifica";
 $lang['action_delete']="Elimina";
-
+$lang['field_patologie']="Patologie";
+$lang['field_speciality']="Specializzazioni";
+$lang['field_default']="Predefinitto";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
@@ -218,7 +220,14 @@ $lang['menu_profile']="Profilo";
 $lang['menu_setting']="Impostazioni";
 $lang['menu_setting_info']="Informazioni";
 $lang['menu_overview']="Dashboard";
-
+$lang['title_menu_cms']="CMS";
+$lang['title_menu_staff']="Staff Medico";
+$lang['menu_speciality']="Specializzazioni";
+$lang['menu_patology']="Patologie";
+$lang['menu_prestations']="Tipologie di prestazione";
+$lang['menu_ordre_prof']="Ordine Professionale";
+$lang['menu_ordre_city']="Ordine della città";
+$lang['menu_structure_sanitaire']="Struttura sanitarie";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -278,9 +287,37 @@ $lang['modal_client_profile']="Cliente Profilo";
 $lang['modal_title_loginas']="Accedi come";
 $lang['title_page_customer_edit']="Modifica Cliente";
 $lang['title_page_customer_add']="Nuovo Cliente";
-
 $lang['title_section_result']="Dati";
 
+$lang['title_page_speciality']="Specializzazioni";
+$lang['modal_new_speciality']="Aggiungi Specializzazione";
+$lang['modal_update_speciality']="Modifica Specializzazione";
+$lang['modal_delete_speciality']="Elimina Specializzazione";
+
+$lang['title_page_patologie']="Patologie";
+$lang['modal_new_patologie']="Aggiungi Patologie";
+$lang['modal_update_patologie']="Modifica Patologie";
+$lang['modal_delete_patologie']="Elimina Patologie";
+
+$lang['title_page_prestations']="Tipologie di prestazione";
+$lang['modal_new_prestations']="Aggiungi Tipologie di prestazione";
+$lang['modal_update_prestations']="Modifica Tipologie di prestazione";
+$lang['modal_delete_prestations']="Elimina Tipologie di prestazione";
+
+$lang['title_page_ordre_prof']="Ordini Professionale";
+$lang['modal_new_ordre_prof']="Aggiungi Ordini Professionale";
+$lang['modal_update_ordre_prof']="Modifica Ordini Professionale";
+$lang['modal_delete_ordre_prof']="Elimina Ordini Professionale";
+
+$lang['title_page_ordre_city']="Ordini della città";
+$lang['modal_new_ordre_city']="Aggiungi Ordini della città";
+$lang['modal_update_ordre_city']="Modifica Ordini della città";
+$lang['modal_delete_ordre_city']="Elimina Ordini della città";
+
+$lang['title_page_structure_sanitaire']="Struttura";
+$lang['modal_new_structure_sanitaire']="Aggiungi Struttura";
+$lang['modal_update_structure_sanitaire']="Modifica Struttura";
+$lang['modal_delete_structure_sanitaire']="Elimina Struttura";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -394,7 +431,10 @@ $lang['help_mobile_with_country_code']="scrivi il tuo numero di cellulare con pr
 $lang['scc_sign_contract']="viene firmato il contratto";
 $lang['help_text_buy_by_expiration']="Il tuo account scade in data {date}<br/> Clicca su “Paga” creare il tuo {tipo}";
 
-$lang['alert_msg_delete_agent']="sei sicuro di eliminare questo agente?";
-$lang['alert_msg_delete_fornitore']="sei sicuro di eliminare questo fornitore?";
+$lang['alert_msg_delete_speciality']="sei sicuro di eliminare questo Specializzazione?";
+$lang['alert_msg_delete_patologie']="sei sicuro di eliminare questo patologie?";
+$lang['alert_msg_delete_prestations']="sei sicuro di eliminare questo tipologia di prestazione?";
+$lang['alert_msg_delete_ordre']="sei sicuro di eliminare questo ordine?";
+$lang['alert_msg_delete_structure']="sei sicuro di eliminare questo struttura?";
 return $lang;
 ?>

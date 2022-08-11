@@ -29,11 +29,12 @@ class AdminPanel extends BaseController
 		
 		if(!is_null($this->request->getVar('submit'))){
 			$signup_email=$this->request->getVar('signup_email');
+			$mobile=$this->request->getVar('mobile');
 			$signup_password=$this->request->getVar('signup_password');
 			$signup_password_confirmation=$this->request->getVar('signup_password_confirmation');
 			$val = $this->validate([
 			'signup_email' => ['label' => 'Email', 'rules' => 'trim|required|valid_email|is_unique[users.email,id,'.$common_data['user_data']['id'].']'],			
-		
+			'mobile'=>['label' => lang('app.field_mobile'), 'rules' => 'trim|required']
 		]);
 		if($signup_password!=""){
 			$val = $this->validate([
@@ -50,6 +51,7 @@ class AdminPanel extends BaseController
 			}
 			else{
 					$dt['email']=$signup_email;
+					$dt['mobile']=$mobile;
 					if($signup_password!="")$dt['password']=md5($signup_password);
 					$this->UserModel->edit($common_data['user_data']['id'],$dt);
 					$data['success']=lang('app.success_update');

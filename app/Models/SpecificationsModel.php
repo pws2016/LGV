@@ -7,11 +7,12 @@ class SpecificationsModel extends Model
 	
     protected $table = 'specifications';
 	protected $primaryKey = 'id';
-    protected $allowedFields = ['title','enable','description'];
+    protected $allowedFields = ['title','enable','description','slug'];
 	protected $returnType = 'array';
 	protected $useSoftDeletes = true;
 	protected $useTimestamps = true;
 	//protected $dateFormat='datetime';
     protected $createdField  = 'created_at';
 	protected $deletedField  = 'deleted_at';
+	protected $updatedField  = 'updated_at';
 }

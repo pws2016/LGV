@@ -51,8 +51,20 @@ $routes->get('/loginas_back/(:any)', 'UserPanel::loginas_back/$1');
  $routes->add('/ajax/(:any)', 'Ajax::index/$1');
 
 $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
-$routes->add('dashboard', 'AdminPanel::index');
-$routes->add('profile', 'AdminPanel::profile');
+	$routes->add('dashboard', 'AdminPanel::index');
+	$routes->add('profile', 'AdminPanel::profile');
+	$routes->add('speciality/update', 'Speciality::update');
+	$routes->add('speciality', 'Speciality::index');
+	$routes->add('patologie/update', 'Patologie::update');
+	$routes->add('patologie', 'Patologie::index');
+	$routes->add('prestations/update', 'Prestations::update');
+	$routes->add('prestations', 'Prestations::index');
+	$routes->add('ordreProf/update', 'OrdreProfessionel::update');
+	$routes->add('ordreProf', 'OrdreProfessionel::index');
+	$routes->add('ordreCity/update', 'OrdreCity::update');
+	$routes->add('ordreCity', 'OrdreCity::index');
+	$routes->add('structureSanitaire/update', 'StructureSanitaire::update');
+	$routes->add('structureSanitaire', 'StructureSanitaire::index');
 });
 /*$routes->add('/admin/agents/update_agent', 'Agents::update_agent');
 $routes->add('/admin/agents', 'Agents::index');

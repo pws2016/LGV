@@ -85,6 +85,23 @@
 																	echo form_input($input);?>
                                                             </div>
                                                         </div>
+														 <div class="row mb-4">
+                                                            <label for="horizontal-email-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_mobile')?> <code>*</code></label>
+                                                            <div class="col-sm-9">
+                                                               <?php $input = [
+																			'type'  => 'text',
+																			'name'  => 'mobile',
+																			'id'    => 'mobile',
+																			'class' => 'form-control',
+																			'value'=>$inf_user['mobile'],
+																			'required'=>true,
+																			
+																			
+																	];
+
+																	echo form_input($input);?>
+                                                            </div>
+                                                        </div>
                                                         <div class="row mb-4">
                                                             <label for="horizontal-password-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_password')?></label>
                                                             <div class="col-sm-9">

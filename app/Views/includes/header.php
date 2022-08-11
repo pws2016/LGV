@@ -125,18 +125,33 @@
 				<?php if($user_data['role']=='A'){?>
 					<li class="menu-title"><?php echo lang('app.title_menu_cms')?></li>
 				<li>
-					<a href="<?php echo base_url($prefix_route.'customers')?>">
-						<i class="uil-users-alt me-2"></i><span>Lista clienti</span>
+					<a href="<?php echo base_url($prefix_route.'speciality')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_speciality')?></span>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url($prefix_route.'agents')?>">
-						<i class="uil-users-alt me-2"></i><span>Lista Agenti</span>
+					<a href="<?php echo base_url($prefix_route.'patologie')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patology')?></span>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url($prefix_route.'fornitore')?>">
-						<i class="uil-users-alt me-2"></i><span>Lista Fornitori</span>
+					<a href="<?php echo base_url($prefix_route.'prestations')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_prestations')?></span>
+					</a>
+				</li>
+					<li>
+					<a href="<?php echo base_url($prefix_route.'ordreProf')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_prof')?></span>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url($prefix_route.'ordreCity')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_city')?></span>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url($prefix_route.'structureSanitaire')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_structure_sanitaire')?></span>
 					</a>
 				</li>
 				<hr/>
