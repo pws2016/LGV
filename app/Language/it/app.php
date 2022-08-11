@@ -227,6 +227,7 @@ $lang['menu_patology']="Patologie";
 $lang['menu_prestations']="Tipologie di prestazione";
 $lang['menu_ordre_prof']="Ordine Professionale";
 $lang['menu_ordre_city']="Ordine della città";
+$lang['menu_structure_sanitaire']="Struttura sanitarie";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -312,6 +313,11 @@ $lang['title_page_ordre_city']="Ordini della città";
 $lang['modal_new_ordre_city']="Aggiungi Ordini della città";
 $lang['modal_update_ordre_city']="Modifica Ordini della città";
 $lang['modal_delete_ordre_city']="Elimina Ordini della città";
+
+$lang['title_page_structure_sanitaire']="Struttura";
+$lang['modal_new_structure_sanitaire']="Aggiungi Struttura";
+$lang['modal_update_structure_sanitaire']="Modifica Struttura";
+$lang['modal_delete_structure_sanitaire']="Elimina Struttura";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -429,5 +435,6 @@ $lang['alert_msg_delete_speciality']="sei sicuro di eliminare questo Specializza
 $lang['alert_msg_delete_patologie']="sei sicuro di eliminare questo patologie?";
 $lang['alert_msg_delete_prestations']="sei sicuro di eliminare questo tipologia di prestazione?";
 $lang['alert_msg_delete_ordre']="sei sicuro di eliminare questo ordine?";
+$lang['alert_msg_delete_structure']="sei sicuro di eliminare questo struttura?";
 return $lang;
 ?>
