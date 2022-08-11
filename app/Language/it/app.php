@@ -195,7 +195,7 @@ $lang['field_status_canceled']="Non pagato";
 $lang['field_code_name']="Codice o nome o cognome";
 $lang['action_update']="Modifica";
 $lang['action_delete']="Elimina";
-
+$lang['field_patologie']="Patologie";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
@@ -282,9 +282,12 @@ $lang['modal_client_profile']="Cliente Profilo";
 $lang['modal_title_loginas']="Accedi come";
 $lang['title_page_customer_edit']="Modifica Cliente";
 $lang['title_page_customer_add']="Nuovo Cliente";
-
 $lang['title_section_result']="Dati";
 
+$lang['title_page_speciality']="Specializzazioni";
+$lang['modal_new_speciality']="Aggiungi Specializzazione";
+$lang['modal_update_speciality']="Modifica Specializzazione";
+$lang['modal_delete_speciality']="Elimina Specializzazione";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -398,7 +401,7 @@ $lang['help_mobile_with_country_code']="scrivi il tuo numero di cellulare con pr
 $lang['scc_sign_contract']="viene firmato il contratto";
 $lang['help_text_buy_by_expiration']="Il tuo account scade in data {date}<br/> Clicca su “Paga” creare il tuo {tipo}";
 
-$lang['alert_msg_delete_agent']="sei sicuro di eliminare questo agente?";
+$lang['alert_msg_delete_speciality']="sei sicuro di eliminare questo Specializzazione?";
 $lang['alert_msg_delete_fornitore']="sei sicuro di eliminare questo fornitore?";
 return $lang;
 ?>

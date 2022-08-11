@@ -51,8 +51,10 @@ $routes->get('/loginas_back/(:any)', 'UserPanel::loginas_back/$1');
  $routes->add('/ajax/(:any)', 'Ajax::index/$1');
 
 $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
-$routes->add('dashboard', 'AdminPanel::index');
-$routes->add('profile', 'AdminPanel::profile');
+	$routes->add('dashboard', 'AdminPanel::index');
+	$routes->add('profile', 'AdminPanel::profile');
+	$routes->add('speciality/update', 'Speciality::update');
+	$routes->add('speciality', 'Speciality::index');
 });
 /*$routes->add('/admin/agents/update_agent', 'Agents::update_agent');
 $routes->add('/admin/agents', 'Agents::index');
