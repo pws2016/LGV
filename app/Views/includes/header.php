@@ -130,7 +130,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url($prefix_route.'patology')?>">
+					<a href="<?php echo base_url($prefix_route.'patologie')?>">
 						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patology')?></span>
 					</a>
 				</li>

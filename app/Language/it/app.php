@@ -196,6 +196,8 @@ $lang['field_code_name']="Codice o nome o cognome";
 $lang['action_update']="Modifica";
 $lang['action_delete']="Elimina";
 $lang['field_patologie']="Patologie";
+$lang['field_speciality']="Specializzazioni";
+$lang['field_default']="Predefinitto";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
@@ -288,6 +290,11 @@ $lang['title_page_speciality']="Specializzazioni";
 $lang['modal_new_speciality']="Aggiungi Specializzazione";
 $lang['modal_update_speciality']="Modifica Specializzazione";
 $lang['modal_delete_speciality']="Elimina Specializzazione";
+
+$lang['title_page_patologie']="Patologie";
+$lang['modal_new_patologie']="Aggiungi Patologie";
+$lang['modal_update_patologie']="Modifica Patologie";
+$lang['modal_delete_patologie']="Elimina Patologie";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -402,6 +409,6 @@ $lang['scc_sign_contract']="viene firmato il contratto";
 $lang['help_text_buy_by_expiration']="Il tuo account scade in data {date}<br/> Clicca su “Paga” creare il tuo {tipo}";
 
 $lang['alert_msg_delete_speciality']="sei sicuro di eliminare questo Specializzazione?";
-$lang['alert_msg_delete_fornitore']="sei sicuro di eliminare questo fornitore?";
+$lang['alert_msg_delete_patologie']="sei sicuro di eliminare questo patologie?";
 return $lang;
 ?>

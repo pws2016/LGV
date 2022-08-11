@@ -2,12 +2,13 @@
 <html lang="it">
     <head>
         <meta charset="utf-8" />
-        <title><?php echo lang('app.title_page_speciality')?> | <?php echo $settings['meta_title']?></title>
+        <title><?php echo lang('app.title_page_patologie')?> | <?php echo $settings['meta_title']?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="" name="description" />
         <meta content="Creazioneimpresa" name="author" />
 		<?php echo csrf_meta()?>
         <link rel="shortcut icon" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/favicon.ico">
+		 <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -25,13 +26,13 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="mb-0"><?php echo lang('app.title_page_speciality')?></h4>
+                                    <h4 class="mb-0"><?php echo lang('app.title_page_patologie')?></h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
                                            
 											
-											  <li class="breadcrumb-item active"><?php echo lang('app.menu_speciality')?></li>
+											  <li class="breadcrumb-item active"><?php echo lang('app.menu_patology')?></li>
                                         </ol>
                                     </div>
 
@@ -49,18 +50,24 @@
                                         <p class="card-text">
 									
 										<?php $attributes = ['class' => 'row row-cols-lg-auto gx-3 gy-2 align-items-center', 'method' => 'post','id'=>'search_form'];
-echo form_open(base_url('admin/speciality'), $attributes);?>
+echo form_open(base_url('admin/patologie'), $attributes);?>
 										<div class="col-12">
                                                   <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_title')?></label>
                                                   <input type="text" name="search_text" value="<?php echo $search_text ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_title')?>">
                                             </div>
 											<div class="col-12">
                                                   <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_patologie')?></label>
-                                                  <input type="text" name="search_patologie" value="<?php echo $search_patologie ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_patologie')?>">
+                                                  <select name="search_patologie" class="form-control select2" id="specificSizeInputName" data-placeholder="<?php echo  lang('app.field_speciality')?>" >
+												  <option value=""></option>
+												  <?php if(!empty($list_speciality)){
+										foreach($list_speciality as $k=>$v){?>
+											<option value="<?php echo $v['id']?>" <?php if($v['id']==($search_patologie ?? '')) echo 'selected' ?>><?php echo $v['title']?></option>
+									<?php }}?>
+												  </select>
                                             </div>
 										<div class="col-12">
                                                <button type="submit" name="search" class="btn btn-secondary"><?php echo  lang('app.btn_search')?></button>
-											    <button type="button" name="clear" class="btn btn-danger" onclick="reset_form()"><?php echo  lang('app.btn_reset')?></button>
+											   <button type="button" name="clear" class="btn btn-danger" onclick="reset_form()"><?php echo  lang('app.btn_reset')?></button>
                                            </div>
 									
 									
@@ -103,9 +110,10 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
                                             	<tr>
 													<th data-sorting="disabled"></th>
 													<th><?php echo lang('app.field_title')?></th>
-													<th><?php echo lang('app.field_description')?></th>
-													<th><?php echo lang('app.field_patologie')?></th>
+													
+													<th><?php echo lang('app.field_speciality')?></th>
 													<th><?php echo lang('app.field_enable')?></th>
+													<th><?php echo lang('app.field_default')?></th>
                                             	</tr>
                                             </thead>
                                             <tbody>
@@ -129,10 +137,16 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
 													
 													<td><?php echo $one_customer['title']?></td>
 													
-													<td><?php echo $one_customer['description']?></td>
-													<td><?php echo $one_customer['patologie']?></td>
+													
+													<td><?php echo $one_customer['specification']?></td>
 													<td><?php if($one_customer['enable']==0){?>
 														<div class="badge bg-pill bg-soft-danger font-size-12"><?php echo lang('app.no')?></div>
+													<?php }else{?>
+															<div class="badge bg-pill bg-soft-success font-size-12"><?php echo lang('app.yes')?></div>
+													<?php } ?>
+													</td>
+													<td><?php if($one_customer['is_default']==0){?>
+														<div class="badge bg-pill bg-soft-warning font-size-12"><?php echo lang('app.no')?></div>
 													<?php }else{?>
 															<div class="badge bg-pill bg-soft-success font-size-12"><?php echo lang('app.yes')?></div>
 													<?php } ?>
@@ -152,14 +166,14 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
                 </div>
 
 <?php $attributes = ['class' => 'custom-validation', 'method' => 'post'];
-echo form_open(base_url('admin/speciality'), $attributes);?>
+echo form_open(base_url('admin/patologie'), $attributes);?>
 <input type="hidden" name="action" value="add">
 				<div class="modal fade" id="add-modal-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-scrollable modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
 						
-						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_new_speciality')?></h5>
+						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_new_patologie')?></h5>
 						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					
@@ -185,26 +199,26 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
 							</div>
 						</div>
 						<div class="row mb-4">
-							<label for="horizontal-email-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_description')?> </label>
+							<label for="horizontal-email-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_speciality')?> <code>*</code></label>
 							<div class="col-sm-9">
-								<?php $input = [
-	
-	'name'  => 'description',
-	'id'    => 'description',
-	'class' => 'form-control',
-
-
-];
-
-								echo form_textarea($input);?>
+								<select class="select2 form-control select2-multiple" name="ids_specification[]" required multiple="multiple" data-placeholder="<?php echo lang('app.field_select')?> ..." style="width:100%">
+									<?php if(!empty($list_speciality)){
+										foreach($list_speciality as $k=>$v){?>
+											<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
+									<?php }}?>
+								</select>
 							</div>
 						</div>
 						<div class="row mb-4">
 							<div class="form-group">
                                                             
-								<div class="form-check">
+								<div class="form-check form-check-inline">
 									<input type="checkbox" class="form-check-input" id="formrow-customCheck" name="enable" checked>
 									<label class="form-check-label" for="formrow-customCheck"><?php echo lang('app.field_enable')?></label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input type="checkbox" class="form-check-input" id="formrow-customCheck" name="is_default" checked>
+									<label class="form-check-label" for="formrow-customCheck"><?php echo lang('app.field_default')?></label>
 								</div>
 							</div>
 						</div>
@@ -221,14 +235,14 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
 				
 
 	<?php $attributes = ['class' => 'custom-validation', 'method' => 'post'];
-echo form_open(base_url('admin/speciality'), $attributes);?>
+echo form_open(base_url('admin/patologie'), $attributes);?>
 <input type="hidden" name="action" value="edit">
 				<div class="modal fade" id="edit-modal-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-scrollable modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
 						
-						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_update_speciality')?></h5>
+						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_update_patologie')?></h5>
 						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					
@@ -248,7 +262,7 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
 </form>				
 			   
        <?php $attributes = ['class' => 'form-input-flat', 'id' => 'myform','method'=>'post'];
-		echo form_open( base_url($prefix_route.'speciality'), $attributes);?>
+		echo form_open( base_url($prefix_route.'patologie'), $attributes);?>
 		<input type="hidden" name="action" value="delete">
 		<input type="hidden" name="user_to_delete" id="user_to_delete">
 		<div class="modal fade" id="delete-modal-dialog"  tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -256,14 +270,14 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
 				<div class="modal-content">
 					<div class="modal-header">
 						
-						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_delete_speciality')?></h5>
+						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_delete_patologie')?></h5>
 						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                                         </button>
 					</div>
 					
 		
 					<div class="modal-body" id="">
-						<?php  echo lang('app.alert_msg_delete_speciality')?>
+						<?php  echo lang('app.alert_msg_delete_patologie')?>
 					</div>
 					<div class="modal-footer">
 						 <button type="button" class="btn btn-light" data-bs-dismiss="modal"><?php echo lang('app.btn_close')?></button>
@@ -308,7 +322,7 @@ echo form_open(base_url('admin/speciality'), $attributes);?>
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/node-waves/waves.min.js"></script>
        <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-
+ <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/select2/js/select2.min.js"></script>
 			 <!-- Required datatable js -->
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -327,6 +341,10 @@ $("#datatable").DataTable({
 			searching: false
 			
 			});
+$(".select2").select2({
+	placeholder: "<?php echo lang('app.field_select')?>",
+	allowClear: true
+});
 </script>
  <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/parsleyjs/parsley.min.js"></script>
 
@@ -347,7 +365,7 @@ $("#datatable").DataTable({
         var csrfHash = $("meta[name="+csrfName+"]").attr('content'); // CSRF hash
 	 
 			$.ajax({  
-				url:"<?php echo base_url()?>/admin/speciality/update",				
+				url:"<?php echo base_url()?>/admin/patologie/update",				
 				type: 'post',
 				data:{id:id,"<?php echo csrf_token()?>":csrfHash},
 				success:function(data){
@@ -355,6 +373,10 @@ $("#datatable").DataTable({
 					$("meta[name="+csrfName+"]").attr('content',obj.csrf);	
 					$("input[name=<?php echo csrf_token()?>]").val(obj.csrf);									
 					$("#profile_data").html(obj.html);
+					$(".select2").select2({
+						placeholder: "<?php echo lang('app.field_select')?>",
+						allowClear: true
+					});
 				}  
 			});
 
@@ -364,6 +386,7 @@ $("#datatable").DataTable({
 		function del_user(id){
 			$("#user_to_delete").val(id);
 		}
+		
 		function reset_form(){
 			$(':input','#search_form')
   .not(':button, :submit, :reset, :hidden')

@@ -55,6 +55,8 @@ $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
 	$routes->add('profile', 'AdminPanel::profile');
 	$routes->add('speciality/update', 'Speciality::update');
 	$routes->add('speciality', 'Speciality::index');
+	$routes->add('patologie/update', 'Patologie::update');
+	$routes->add('patologie', 'Patologie::index');
 });
 /*$routes->add('/admin/agents/update_agent', 'Agents::update_agent');
 $routes->add('/admin/agents', 'Agents::index');
