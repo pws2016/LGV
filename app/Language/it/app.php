@@ -295,6 +295,11 @@ $lang['title_page_patologie']="Patologie";
 $lang['modal_new_patologie']="Aggiungi Patologie";
 $lang['modal_update_patologie']="Modifica Patologie";
 $lang['modal_delete_patologie']="Elimina Patologie";
+
+$lang['title_page_prestations']="Tipologie di prestazione";
+$lang['modal_new_prestations']="Aggiungi Tipologie di prestazione";
+$lang['modal_update_prestations']="Modifica Tipologie di prestazione";
+$lang['modal_delete_prestations']="Elimina Tipologie di prestazione";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -410,5 +415,6 @@ $lang['help_text_buy_by_expiration']="Il tuo account scade in data {date}<br/> C
 
 $lang['alert_msg_delete_speciality']="sei sicuro di eliminare questo Specializzazione?";
 $lang['alert_msg_delete_patologie']="sei sicuro di eliminare questo patologie?";
+$lang['alert_msg_delete_prestations']="sei sicuro di eliminare questo tipologia di prestazione?";
 return $lang;
 ?>

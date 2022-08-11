@@ -1,7 +1,7 @@
 <?php namespace App\Controllers;
 
 
-class Patologie extends BaseController
+class Prestations extends BaseController
 {
 	
 	public function index()
@@ -24,7 +24,7 @@ class Patologie extends BaseController
 					'enable'=>$enable,
 					'is_default'=>$is_default);
 					
-						$x=$this->PatologieModel->insert($tab);
+						$x=$this->PrestationsModel->insert($tab);
 						
 						$data['success']=lang('app.success_add');
 					}
@@ -38,7 +38,7 @@ class Patologie extends BaseController
 					$tab=array('title'=>$this->request->getVar('title'),
 					'ids_specification'=>implode(",",$this->request->getVar('ids_specification') ?? array()),
 					'enable'=>$enable,'is_default'=>$is_default);
-						$this->PatologieModel->update($this->request->getVar('id'),$tab);
+						$this->PrestationsModel->update($this->request->getVar('id'),$tab);
 						$data['success']=lang('app.success_update');
 					}
 					else $data['error']=lang('app.error_required');
@@ -46,27 +46,27 @@ class Patologie extends BaseController
 				case 'delete':
 					$user_to_delete=$this->request->getVar('user_to_delete');
 					if($user_to_delete!=""){
-						$this->PatologieModel->where('id',$user_to_delete)->delete();
+						$this->PrestationsModel->where('id',$user_to_delete)->delete();
 						$data['success']=lang('app.success_delete');
 					}
 				break;
 			}
 		}
-		$ll=$this->PatologieModel;
+		$ll=$this->PrestationsModel;
 		if($this->request->getVar('search')!==null){
 			$st=$this->request->getVar('search_text');
 			if($st!=""){
 				$data['search_text']=$st;
-				$ll=$this->PatologieModel->like('title',$st);
+				$ll=$this->PrestationsModel->like('title',$st);
 			}
 			echo $st=$this->request->getVar('search_patologie');
 			if($st!=""){
 				$data['search_patologie']=$st;
-				$ll=$this->PatologieModel->where("FIND_IN_SET('".$st."',ids_specification) >0");
+				$ll=$this->PrestationsModel->where("FIND_IN_SET('".$st."',ids_specification) >0");
 				
 			}
 		}
-		$ll=$this->PatologieModel->find();
+		$ll=$this->PrestationsModel->find();
 		foreach($ll as $k=>$v){
 			$tt=explode(",",$v['ids_specification']);
 			$str="";
@@ -82,12 +82,12 @@ class Patologie extends BaseController
 		}
 		$data['list']=$res;
 		$data['list_speciality']=$this->SpecificationsModel->orderBy('title','ASC')->find();
-		return view('admin/patologie',$data);
+		return view('admin/prestations',$data);
 	}
 	
 	public function update(){
 		$id=$this->request->getVar('id');
-		$inf=$this->PatologieModel->find($id);
+		$inf=$this->PrestationsModel->find($id);
 			$list_speciality=$this->SpecificationsModel->orderBy('title','ASC')->find();
 		ob_start();?>
 		<input type="hidden" name="id" value="<?php echo $inf['id']?>">
