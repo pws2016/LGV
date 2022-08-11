@@ -18,7 +18,7 @@ class Patologie extends BaseController
 					if($this->request->getVar('title')!=""){
 						if(null !== $this->request->getVar('enable')) $enable=1; else $enable=0;
 						if(null !== $this->request->getVar('is_default')) $is_default=1; else $is_default=0;
-						var_dump($this->request->getVar('ids_specification'));
+						
 					$tab=array('title'=>$this->request->getVar('title'),
 					'ids_specification'=>implode(",",$this->request->getVar('ids_specification') ?? array()),
 					'enable'=>$enable,
@@ -59,7 +59,7 @@ class Patologie extends BaseController
 				$data['search_text']=$st;
 				$ll=$this->PatologieModel->like('title',$st);
 			}
-			echo $st=$this->request->getVar('search_patologie');
+			 $st=$this->request->getVar('search_patologie');
 			if($st!=""){
 				$data['search_patologie']=$st;
 				$ll=$this->PatologieModel->where("FIND_IN_SET('".$st."',ids_specification) >0");

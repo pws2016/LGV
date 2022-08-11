@@ -225,6 +225,8 @@ $lang['title_menu_staff']="Staff Medico";
 $lang['menu_speciality']="Specializzazioni";
 $lang['menu_patology']="Patologie";
 $lang['menu_prestations']="Tipologie di prestazione";
+$lang['menu_ordre_prof']="Ordine Professionale";
+$lang['menu_ordre_city']="Ordine della città";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -300,6 +302,16 @@ $lang['title_page_prestations']="Tipologie di prestazione";
 $lang['modal_new_prestations']="Aggiungi Tipologie di prestazione";
 $lang['modal_update_prestations']="Modifica Tipologie di prestazione";
 $lang['modal_delete_prestations']="Elimina Tipologie di prestazione";
+
+$lang['title_page_ordre_prof']="Ordini Professionale";
+$lang['modal_new_ordre_prof']="Aggiungi Ordini Professionale";
+$lang['modal_update_ordre_prof']="Modifica Ordini Professionale";
+$lang['modal_delete_ordre_prof']="Elimina Ordini Professionale";
+
+$lang['title_page_ordre_city']="Ordini della città";
+$lang['modal_new_ordre_city']="Aggiungi Ordini della città";
+$lang['modal_update_ordre_city']="Modifica Ordini della città";
+$lang['modal_delete_ordre_city']="Elimina Ordini della città";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -416,5 +428,6 @@ $lang['help_text_buy_by_expiration']="Il tuo account scade in data {date}<br/> C
 $lang['alert_msg_delete_speciality']="sei sicuro di eliminare questo Specializzazione?";
 $lang['alert_msg_delete_patologie']="sei sicuro di eliminare questo patologie?";
 $lang['alert_msg_delete_prestations']="sei sicuro di eliminare questo tipologia di prestazione?";
+$lang['alert_msg_delete_ordre']="sei sicuro di eliminare questo ordine?";
 return $lang;
 ?>

@@ -59,6 +59,10 @@ $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
 	$routes->add('patologie', 'Patologie::index');
 	$routes->add('prestations/update', 'Prestations::update');
 	$routes->add('prestations', 'Prestations::index');
+	$routes->add('ordreProf/update', 'OrdreProfessionel::update');
+	$routes->add('ordreProf', 'OrdreProfessionel::index');
+	$routes->add('ordreCity/update', 'OrdreCity::update');
+	$routes->add('ordreCity', 'OrdreCity::index');
 });
 /*$routes->add('/admin/agents/update_agent', 'Agents::update_agent');
 $routes->add('/admin/agents', 'Agents::index');
