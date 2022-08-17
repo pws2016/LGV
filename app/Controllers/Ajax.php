@@ -25,8 +25,8 @@ class Ajax extends BaseController
 				}
 				$input = [
 						
-						'name'  => 'PROV_CLIENTE',
-						'id'    => 'PROV_CLIENTE',
+						'name'  => 'residenza_provincia',
+						'id'    => 'residenza_provincia',
 						
 						
 						'class' => 'form-control '
@@ -47,8 +47,8 @@ class Ajax extends BaseController
 				}
 				$input = [
 						
-						'name'  => 'PROV_FATTURA',
-						'id'    => 'PROV_FATTURA',
+						'name'  => 'fattura_provincia',
+						'id'    => 'fattura_provincia',
 						
 						
 						'class' => 'form-control '
@@ -69,8 +69,8 @@ class Ajax extends BaseController
 				}
 				$input = [
 						
-						'name'  => 'PROV_FORNITURA',
-						'id'    => 'PROV_FORNITURA',
+						'name'  => 'fattura_provincia',
+						'id'    => 'fattura_provincia',
 						
 						
 						'class' => 'form-control '
@@ -90,13 +90,14 @@ class Ajax extends BaseController
 		$id_prov=$this->request->getVar('id_provincia');
 		$t=$this->request->getVar('t');
 		$list_comune=$this->ComuniModel->where('PROV',$id_prov)->orderBy('COMUNE','ASC')->find();
+		
 		switch($t){
 			case 'sede_comune':?>
 		 <label for="verticalnav-email-input">Comune </label>
 				<?php $input = [
 
-							'name'  => 'LOCALITA_CLIENTE',
-							'id'    => 'LOCALITA_CLIENTE',
+							'name'  => 'residenza_comune',
+							'id'    => 'residenza_comune',
 							
 							'class' => 'form-control'
 					];
@@ -115,8 +116,8 @@ class Ajax extends BaseController
 		 <label for="verticalnav-email-input">Comune </label>
 				<?php $input = [
 
-							'name'  => 'LOCALITA_FATTURA',
-							'id'    => 'LOCALITA_FATTURA',
+							'name'  => 'fattura_comune',
+							'id'    => 'fattura_comune',
 							
 							'class' => 'form-control'
 					];
@@ -169,20 +170,16 @@ class Ajax extends BaseController
 		
 		foreach($array_address as $k=>$v){
 			$str_forn="";
-			if(!empty($v['ID_FORN'])){
-				foreach($v['ID_FORN'] as $kk=>$vv){
-					$x=$this->FornitoreModel->find($vv);
-					$str_forn.=$x['NOME_FORN'].",";
-				}
-				
-			}?>
+			?>
 		<tr id="tr_address_<?php echo $k?>">
 			<td><?php echo $v['IND_FORNITURA']?></td>
 			<td><?php echo $v['LOCALITA_FORNITURA'].' '.$v['PROV_FORNITURA'].' '.$v['CAP_FORNITURA']?></td>
-			<td><?php echo $str_forn?></td>
+			<td><?php echo $v['PHONE_FORNITURA'].'<br/>'.$v['EMAIL_FORNITURA']?></td>
 			<td><a href="#" onclick="delete_adr('<?php echo $k?>')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 		</tr>
-		<?php }
+		<?php }?>
+		<tr style="display:none"><td colspan="3"><input type="text" name="hidden_adr" id="hidden_adr" value="<?php echo count($array_address ?? array())?>" required data-parsley-type="integer" data-parsley-min="1"></td></tr>
+	<?php
 	}
 	public function del_address(){
 		$i=$this->request->getVar('i');
@@ -207,7 +204,90 @@ class Ajax extends BaseController
 			<td><?php echo $str_forn?></td>
 			<td><a href="#" onclick="delete_adr('<?php echo $k?>')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 		</tr>
-		<?php } }
+		<?php } }?>
+		<tr style="display:none"><td colspan="3"><input type="text" name="hidden_adr" id="hidden_adr" value="<?php echo count($array_address ?? array())?>" required data-parsley-type="integer" data-parsley-min="1"></td></tr>
+	<?php
+	}
+	
+	public function get_map_position(){
+			$inf_city=$this->ComuniModel->where('PROV',$this->request->getVar('LOCALITA_FORNITURA'))->first();
+			$inf_provincia=$this->ProvinceModel->where('PROV',$this->request->getVar('PROV_FORNITURA'))->first();
+			 $indirizzo = $this->request->getVar('IND_FORNITURA') . ', ' . $inf_city['COMUNE'] . ', ' . $inf_provincia['PROVINCIA'] . ', Italia';
+			
+			 $geocode = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='. urlencode($indirizzo).'&key='.MAP_KEY);
+			$output = json_decode($geocode);
+
+			$latitudine =  $output->results[0]->geometry->location->lat;
+			$longitudine = $output->results[0]->geometry->location->lng;
+			
+			if($latitudine=="" && $longitudine=="") $res=array("error"=>true,"validation"=>lang('app.error_map'));
+			else{
+				$res=array("error"=>false,"lat"=>$latitudine,"lon"=>$longitudine);
+			}
+			echo json_encode($res,true);
+	}
+	
+	public function upload_user_doc(){
+		$data=$this->common_data();
+		$validation = \Config\Services::validation();
+if($this->session->get('user_docs')!==null){
+	$user_docs=$this->session->get('user_docs');
+}
+else $user_docs=array();
+      $input = $validation->setRules([
+         'file' => 'uploaded[file]|max_size[file,2048]|ext_in[file,jpeg,jpg,png,pdf],'
+      ]);
+
+      if ($validation->withRequest($this->request)->run() == FALSE){
+
+          $data['success'] = 0;
+          $data['error'] = $validation->getError('file');// Error response
+
+      }else{
+
+          if($file = $this->request->getFile('file')) {
+             if ($file->isValid() && ! $file->hasMoved()) {
+                // Get file name and extension
+                $name = $file->getName();
+                $ext = $file->getClientExtension();
+
+                // Get random file name
+                $newName = $file->getRandomName();
+
+                // Store file in public/uploads/ folder
+                $file->move(ROOTPATH.'/public/uploads/medecin_doc/', $newName);
+				$user_docs[]=$newName;
+                // Response
+                $data['success'] = 1;
+                $data['message'] = 'Uploaded Successfully!';
+
+             }else{
+                // Response
+                $data['success'] = 2;
+                $data['message'] = 'File not uploaded.'; 
+             }
+          }else{
+             // Response
+             $data['success'] = 2;
+             $data['message'] = 'File not uploaded.';
+          }
+      }
+	  $this->session->set(array('user_docs'=>$user_docs));
+	  
+	}
+	
+	function valid_user_email(){
+		$data=$this->common_data();
+		$email=$this->request->getVar('email');
+		$exist=$this->UserModel->where('email',$email)->find();
+		if(empty($exist))  $output = array(
+		   'status' => true
+		  );
+		else  $output = array(
+		   'status' => false
+		  );
+		  
+		 echo json_encode($output);
 	}
 }
 ?>

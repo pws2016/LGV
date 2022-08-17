@@ -86,6 +86,7 @@ abstract class BaseController extends Controller
 		$this->SpecificationsModel=new SpecificationsModel();
 		$this->StructureSanitaireModel=new StructureSanitaireModel();
 		$this->ClinicTeamModel=new ClinicTeamModel();
+		$this->SaffTipologie=array("MMG"=>"MMG", "PLS"=>"PLS","MS"=>"MS","OSS"=>"Infirmiere/OSS");
     }
 	public function common_data(){
 		$common_data=array();
@@ -98,7 +99,7 @@ abstract class BaseController extends Controller
 		$common_data['settings']=$settings;
 		$user_loginas=$this->session->get('user_loginas');	
 		if(!empty($user_loginas)) $common_data['user_loginas']=$user_loginas;
-		
+		$common_data['SaffTipologie']=$this->SaffTipologie;
 		
 		switch($user_data['role']){
 			case 'A': $common_data['prefix_route']='admin/';break;
