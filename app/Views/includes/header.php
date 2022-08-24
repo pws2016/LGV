@@ -166,6 +166,18 @@
 						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_staff_list')?></span>
 					</a>
 				</li>
+				<hr/>
+				<li class="menu-title"><?php echo lang('app.title_menu_patient')?></li>
+				<li>
+					<a href="<?php echo base_url($prefix_route.'patients/new')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patient_new')?></span>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url($prefix_route.'patients')?>">
+						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patient_list')?></span>
+					</a>
+				</li>
 				<?php } ?>
 			
 				

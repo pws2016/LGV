@@ -250,6 +250,11 @@ $lang['menu_structure_sanitaire']="Struttura sanitarie";
 $lang['menu_staff_new']="Nuovo staff";
 $lang['menu_staff_list']="List staff";
 $lang['menu_staff_edit']="Modifica staff";
+
+$lang['title_menu_patient']="pazienti";
+$lang['menu_patient_list']="List pazienti";
+$lang['menu_patient_edit']="Modifica paziente";
+$lang['menu_patient_new']="Nuovo paziente";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -357,6 +362,7 @@ $lang['title_page_staff_list']="Staff Medical";
 $lang['title_page_staff_edit']="Modifica staff Medical";
 $lang['title_section_current_files']="file correnti";
 $lang['title_section_new_team_memeber']="Nuovo Membro";
+$lang['title_page_patient_new']="Nuovo paziente";
 ################### statistics ###############"
 
 ############### errors ####################
