@@ -65,8 +65,12 @@ $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
 	$routes->add('ordreCity', 'OrdreCity::index');
 	$routes->add('structureSanitaire/update', 'StructureSanitaire::update');
 	$routes->add('structureSanitaire', 'StructureSanitaire::index');
+	$routes->add('staffMedical/edit/(:any)', 'StaffMedical::editStaff/$1');
 	$routes->add('staffMedical/new', 'StaffMedical::newStaff');
 	$routes->add('staffMedical', 'StaffMedical::index');
+	
+	$routes->add('patients/new', 'Patients::newP');
+	$routes->add('patients', 'Patients::index');
 });
 /*$routes->add('/admin/agents/update_agent', 'Agents::update_agent');
 $routes->add('/admin/agents', 'Agents::index');

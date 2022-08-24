@@ -17,6 +17,7 @@ application/logs/*
 /vendor/
 vendor/
 public/Minible_v2.0.0
+public/uploads/*
 .env
 .vagrant
 Vagrantfile

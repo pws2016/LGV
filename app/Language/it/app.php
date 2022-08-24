@@ -211,6 +211,11 @@ $lang['field_ordre_num']="Numero di iscrizione all'ordine";
 $lang['field_cv']="CV";
 $lang['field_maps_lat']="Lat";
 $lang['field_maps_long']="Long";
+$lang['field_prestation']="Prestazioni";
+$lang['field_delete']="Elemina";
+$lang['field_file']="File";
+$lang['field_team']="Clinic Staff Medical";
+$lang['field_name']="Nome";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
@@ -244,6 +249,7 @@ $lang['menu_structure_sanitaire']="Struttura sanitarie";
 
 $lang['menu_staff_new']="Nuovo staff";
 $lang['menu_staff_list']="List staff";
+$lang['menu_staff_edit']="Modifica staff";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -346,6 +352,11 @@ $lang['title_section_user_address']="Indirizzo";
 $lang['title_section_user_doc']="Documenti";
 $lang['title_section_user_media']="Media";
 $lang['modal_new_address']="Aggiungi Nuova indirrizzo";
+
+$lang['title_page_staff_list']="Staff Medical";
+$lang['title_page_staff_edit']="Modifica staff Medical";
+$lang['title_section_current_files']="file correnti";
+$lang['title_section_new_team_memeber']="Nuovo Membro";
 ################### statistics ###############"
 
 ############### errors ####################

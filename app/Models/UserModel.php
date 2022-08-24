@@ -74,4 +74,29 @@ class UserModel extends Model
 		return $results;
 	}
 	
+	
+	public function staff_filter($role=null,$email=null,$speciality=null,$patologie=null,$prestation=null,$cf=null,$piva=null,$nome=null,$cognome=null,$ragione=null){
+		/** find data related to variables **/
+		$db = \Config\Database::connect();
+		$req="SELECT u.email as account_email, u.role ,p.*  FROM ".$this->table." as u,user_profile as p where u.deleted_at is NULL and u.id=p.user_id";
+		if(!is_null($role)) $req.=" and u.role='".$role."'";
+		elseif(is_null($role)) $req.=" and (u.role!='A' and u.role!='U')";
+		if(!is_null($email)) $req.=" and u.email LIKE '%".$db->escapeLikeString($email)."%' ESCAPE '!'";	
+		
+		if(!is_null($speciality)) $req.=" and FIND_IN_SET('".$speciality."',p.ids_specification)>0";
+		if(!is_null($patologie)) $req.=" and FIND_IN_SET('".$patologie."',p.ids_patologie)>0";
+		if(!is_null($prestation)) $req.=" and FIND_IN_SET('".$prestation."',p.ids_prestation)>0";
+		
+		if(!is_null($cf)) $req.=" and p.fattura_cf=LIKE '%".$db->escapeLikeString($cf)."%' ESCAPE '!'";
+		if(!is_null($piva)) $req.=" and p.fattura_piva=LIKE '%".$db->escapeLikeString($piva)."%' ESCAPE '!'";
+		if(!is_null($nome)) $req.=" and p.nome=LIKE '%".$db->escapeLikeString($nome)."%' ESCAPE '!'";
+		if(!is_null($cognome)) $req.=" and p.cognome=LIKE '%".$db->escapeLikeString($cognome)."%' ESCAPE '!'";
+		if(!is_null($ragione)) $req.=" and p.ragione_sociale=LIKE '%".$db->escapeLikeString($ragione)."%' ESCAPE '!'";
+		//echo $req;
+		
+		$query = $db->query($req);
+		$results = $query->getResultArray();
+		return $results;
+	}
+	
 }
