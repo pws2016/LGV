@@ -34,7 +34,7 @@ $lang['current_step']="passo attuale";
 $lang['pagination']="impaginazione";
 
 $lang['btn_send']="Invia";
-
+$lang['btn_add_address']="Aggiungi indirizzo";
 ########## Fields ################
 $lang['field_mete_title']="Sito titolo";
 $lang['field_website']="webSito";
@@ -89,6 +89,8 @@ $lang['field_content']="Contenue de page";
 $lang['field_message']="Messagio";
 $lang['field_send_date']="Invia data";
 $lang['field_or']="o";
+$lang['field_role']="Ruolo";
+$lang['field_sexe']="Sesso";
 $lang['field_sex_m']="M";
 $lang['field_sex_f']="F";
 $lang['field_capitale']="Capitale Sociale";
@@ -198,6 +200,22 @@ $lang['action_delete']="Elimina";
 $lang['field_patologie']="Patologie";
 $lang['field_speciality']="Specializzazioni";
 $lang['field_default']="Predefinitto";
+$lang['field_medecin']="medico";
+$lang['field_clinic']="clinica";
+$lang['field_typologie']="Typlogia";
+$lang['field_structure_sanitaire']="Struttura sanitarie";
+$lang['field_ordre_prof']="Ordine Professionale";
+
+$lang['field_ordre_city']="Ordine della città";
+$lang['field_ordre_num']="Numero di iscrizione all'ordine";
+$lang['field_cv']="CV";
+$lang['field_maps_lat']="Lat";
+$lang['field_maps_long']="Long";
+$lang['field_prestation']="Prestazioni";
+$lang['field_delete']="Elemina";
+$lang['field_file']="File";
+$lang['field_team']="Clinic Staff Medical";
+$lang['field_name']="Nome";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
@@ -228,6 +246,15 @@ $lang['menu_prestations']="Tipologie di prestazione";
 $lang['menu_ordre_prof']="Ordine Professionale";
 $lang['menu_ordre_city']="Ordine della città";
 $lang['menu_structure_sanitaire']="Struttura sanitarie";
+
+$lang['menu_staff_new']="Nuovo staff";
+$lang['menu_staff_list']="List staff";
+$lang['menu_staff_edit']="Modifica staff";
+
+$lang['title_menu_patient']="pazienti";
+$lang['menu_patient_list']="List pazienti";
+$lang['menu_patient_edit']="Modifica paziente";
+$lang['menu_patient_new']="Nuovo paziente";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -272,7 +299,7 @@ $lang['title_page_profile']="Mio Profilo";
 $lang['title_page_settings_info']="Informazioni";
 $lang['section_title_draft_requests']="le mie richieste di bozza";
 $lang['help_update_password_profile']="compila il campo se vuoi modificare la password";
-$lang['title_page_dashboard']="I Nostri Servizi";
+$lang['title_page_dashboard']="Dashboard";
 $lang['title_page_overview']="Dashboard";
 $lang['title_section_invoice_data']="Dati di fatturazione";
 $lang['title_section_contact_data']="Dati Contatto";
@@ -318,6 +345,26 @@ $lang['title_page_structure_sanitaire']="Struttura";
 $lang['modal_new_structure_sanitaire']="Aggiungi Struttura";
 $lang['modal_update_structure_sanitaire']="Modifica Struttura";
 $lang['modal_delete_structure_sanitaire']="Elimina Struttura";
+
+$lang['title_page_staff_new']="Nuova staff Medical";
+$lang['title_section_user_info']="Informazione";
+$lang['title_section_user_fattura']="Fatturazione";
+$lang['title_section_account']="Dati Account";
+$lang['title_section_profile']="Profilo";
+$lang['title_section_address']="Sede legale/Residenza in";
+$lang['title_section_user_medical_profile']="Profilo medico";
+$lang['title_section_user_address']="Indirizzo";
+$lang['title_section_user_doc']="Documenti";
+$lang['title_section_user_media']="Media";
+$lang['modal_new_address']="Aggiungi Nuova indirrizzo";
+
+$lang['title_page_staff_list']="Staff Medical";
+$lang['title_page_staff_edit']="Modifica staff Medical";
+$lang['title_section_current_files']="file correnti";
+$lang['title_section_new_team_memeber']="Nuovo Membro";
+$lang['title_page_patient_new']="Nuovo paziente";
+$lang['title_page_patient_list']="Lista pazient";
+$lang['title_page_patient_edit']="Modifica paziente";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -328,35 +375,12 @@ $lang['error_login']="Email o password non corrette";
 $lang['error_login_activation']="il tuo account non è attivo!";
 $lang['error_mail_exist']="L'email è già esistente!";
 $lang['error_required_soci']="deve almeno un socio!";
-$lang['error_required_soci_conferimenti']="i campi Capitale sottoscritto, Capitale versato & Sovrapprezzo associati sono obbligatori!";
-$lang['error_min_percenta']="numero in % (1 - 100%)";
-$lang['error_9430']="9.4.3 sono sbagliati!";
-$lang['error_9450']="9.4.5 sono sbagliati!";
-$lang['error_not_soci']="deve avere almeno uno socio!";
-$lang['error_soci_percent_not_100']="il totale delle quote dei soci non è pari al 100% !";
-$lang['error_soci_sub_capitale_sotto']="Attenzione!  Il capitale sociale sotto scritto o versato non corrisponde al capitale sociale totale.";
-$lang['error_calcul_capitale_versato']="Attenzione! Il capitale versato deve essere almeno uguale o superiore al {P}% del capitale sottoscritto";
-$lang['error_calcul_capitale_versato_socio_unico']="Attenzione! Nel caso di società unipersonale il capitale sottoscritto deve essere integralmente versato.";
-$lang['error_soci_sub_sovrapprezzo']="Attenzione!  Il sovaprezzo  non corrisponde al sovaprezzo totale.";
-$lang['error_capitale_versato_greater_capitale_sotto']="Il capitale verso non può essere maggiore del capitale sottoscritto";
 $lang['error_srl']="la {field} deve contenere S.R.L";
-$lang['error_capitale_sociale']="Il campo {field} è obbligatorio, deve contenere solo numeri, deve contenere un numero maggiore o uguale a 1€";
-$lang['error_nb_soci']="deve avere almeno un soci";
-$lang['error_nb_admin_AU']="ci deve essere un solo amministratore";
-$lang['error_nb_admin_Cda']="ci devono essere {x} amministratori";
-$lang['error_cpaitale_sociale_versato']="Se il capitale sociale sottoscritto è inferiore a € 10.000 deve essere integralmente versato";
-$lang['error_nb_admin_president']="Non puoi scegliere più di un presidente";
-$lang['error_nb_admin_vicepresident']="Non puoi scegliere più di un vicepresidente";
 $lang['error_not_active_account']="La tua email non è stata ancora verificata, controlla la tua casella di posta e clichi su CONFERMA!";
 $lang['error_not_exist_account']="email / password sono sbagliati!";
-
 $lang['error_activation_account']="Errore! Indirizzo email non presente nel nostro database.";
 $lang['error_reset_password']="impossibile resettare la password!";
-
-
 $lang['warning_not_active_account']="il tuo account non è attivo!";
-
-
 $lang["error_coupon"]="coupon non valido!";
 $lang["error_coupon_code"]="Il campo Codice deve contenere un valore univoco.";
 $lang['error_invoice_already_exist']="la fattura è già esistente";
@@ -383,7 +407,7 @@ $lang['error_token_expired']="il token è scaduto!";
 $lang['error_token_used']="il token è già utilizzato!";
 $lang['error_sms']="sms non invio!";
 $lang['error_expiration_code']="il codice sms non è valido o è scaduto!";
-
+$lang['error_atleast_adr']="deve inserire almeno un indirizzo!";
 #################success ################################
 $lang['success_new_register']="la registrazione è avvenuta con successo, controlla la tua casella di posta per confermare il tuo account";
 $lang['success_reviews_sended']="Grazie per avere testato il nostro tool e per il feedback. Se vuoi metterti in contatto con noi scrivici a info@creazioneimpresa.it";
@@ -436,5 +460,12 @@ $lang['alert_msg_delete_patologie']="sei sicuro di eliminare questo patologie?";
 $lang['alert_msg_delete_prestations']="sei sicuro di eliminare questo tipologia di prestazione?";
 $lang['alert_msg_delete_ordre']="sei sicuro di eliminare questo ordine?";
 $lang['alert_msg_delete_structure']="sei sicuro di eliminare questo struttura?";
+
+$lang['help_text_mobile_account']="need for double factor authentification";
+$lang['help_text_select_patologie']="Select speciallizazione before manage patalogie!";
+$lang['help_text_select_prestation']="Select speciallizazione before manage prestations!";
+
+$lang['title_stats_tot_patients']="Totale Pazienti";
+$lang['title_stats_tot_staff']="Totale Staff Medicale";
 return $lang;
 ?>

@@ -7,11 +7,13 @@ class UserDocsModel extends Model
 	
     protected $table = 'user_docs';
 	protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id','title','type'];
+    protected $allowedFields = ['user_id','doc','type'];
 	protected $returnType = 'array';
 	
 	protected $useTimestamps = true;
 	//protected $dateFormat='datetime';
     protected $createdField  = 'created_at';
+	protected $deletedField  = 'deleted_at';
+	protected $updatedField  = 'updated_at';
 
 }
