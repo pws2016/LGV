@@ -2,7 +2,7 @@
 <html lang="it">
     <head>
         <meta charset="utf-8" />
-        <title><?php echo lang('app.title_page_staff_list')?> | <?php echo $settings['meta_title']?></title>
+        <title><?php echo lang('app.title_page_patient_list')?> | <?php echo $settings['meta_title']?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="" name="description" />
         <meta content="Creazioneimpresa" name="author" />
@@ -25,13 +25,13 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="mb-0"><?php echo lang('app.title_page_staff_list')?></h4>
+                                    <h4 class="mb-0"><?php echo lang('app.title_page_patient_list')?></h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
                                            
 											
-											  <li class="breadcrumb-item active"><?php echo lang('app.title_menu_staff')?></li>
+											  <li class="breadcrumb-item active"><?php echo lang('app.title_menu_patient')?></li>
                                         </ol>
                                     </div>
 
@@ -42,74 +42,32 @@
 							<div class="col-12">
 								<div class="card border border-primary">
                                     <div class="card-header bg-transparent border-primary">
-                                        <h5 class="my-0 text-primary"><i class="uil uil-search me-3"></i><?php echo lang('app.advanced_search')?><a href="<?php echo base_url($prefix_route.'/staffMedical/new')?>"  name="add" class="btn btn-success" style="float:right"><?php echo  lang('app.btn_add')?></a></h5>
+                                        <h5 class="my-0 text-primary"><i class="uil uil-search me-3"></i><?php echo lang('app.advanced_search')?><a href="<?php echo base_url($prefix_route.'/patients/new')?>"  name="add" class="btn btn-success" style="float:right"><?php echo  lang('app.btn_add')?></a></h5>
                                     </div>
                                     <div class="card-body">
                                        
                                         <p class="card-text">
 									
 										  <?php $attributes = ['class' => 'row  gx-3 gy-2 align-items-center', 'id' => 'search_form','method'=>'post'];
-											echo form_open( base_url($prefix_route.'/staffMedical'), $attributes);?>
-										<div class="col-3">
-                                                  <label class="visually-hidden" for="specificSizeInputName"><?php echo lang('app.field_role')?></label>
-                                                  <select onchange="sel_filtre(this.value)" name="search_role" class="form-control" id="specificSizeInputName" placeholder="<?php echo lang('app.field_role')?>">
-												  <option value="" <?php if($search_role=='' || !isset($search_role)) echo 'selected'?>><?php echo lang('app.field_role')?></option>
-												   <option value="M" <?php if($search_role=='M') echo 'selected'?>> <?php echo lang('app.field_medecin')?></option>
-												    <option value="C"  <?php if($search_role=='C') echo 'selected'?>> <?php echo lang('app.field_clinic')?></option>
-												  </select>
-                                            </div>
-										<div class="col-3">
-										  <label class="visually-hidden" for="specificSizeInputName"><?php echo lang('app.field_speciality')?></label>
-										 <select name="search_speciality" class="form-control" >
-											<option value="" <?php if($search_speciality=='' || !isset($search_speciality)) echo 'selected'?>><?php echo lang('app.field_speciality')?></option>
-											<?php if(!empty($list_speciality)){
-												foreach($list_speciality as $k=>$v){?>
-												<option value="<?php echo $v['id']?>" <?php if($search_speciality==$v['id']) echo 'selected'?>><?php echo $v['title']?></option>
-											<?php } }?>  
-											</select>
-										</div>
-										<div class="col-3">
-										  <label class="visually-hidden" for="specificSizeInputName"><?php echo lang('app.field_patologie')?></label>
-										 <select name="search_patologie" class="form-control" >
-											<option value="" <?php if($search_patologie=='' || !isset($search_patologie)) echo 'selected'?>><?php echo lang('app.field_patologie')?></option>
-											<?php if(!empty($list_patologie)){
-												foreach($list_patologie as $k=>$v){?>
-												<option value="<?php echo $v['id']?>" <?php if($search_patologie==$v['id']) echo 'selected'?>><?php echo $v['title']?></option>
-											<?php } }?>  
-											</select>
-										</div>
-										<div class="col-3">
-										  <label class="visually-hidden" for="specificSizeInputName"><?php echo lang('app.field_prestation')?></label>
-										 <select name="search_prestation" class="form-control" >
-											<option value="" <?php if($search_prestation=='' || !isset($search_prestation)) echo 'selected'?>><?php echo lang('app.field_prestation')?></option>
-											<?php if(!empty($list_prestation)){
-												foreach($list_prestation as $k=>$v){?>
-												<option value="<?php echo $v['id']?>" <?php if($search_prestation==$v['id']) echo 'selected'?>><?php echo $v['title']?></option>
-											<?php } }?>  
-											</select>
-										</div>
+											echo form_open( base_url($prefix_route.'/patients'), $attributes);?>
+										
+										
 											<div class="col-3">
                                                   <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_email')?></label>
                                                   <input type="text" name="search_email" value="<?php echo $search_email ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_email')?>">
                                             </div>
-											<div class="col-3 div_clinic" style="display:none" >
-                                                  <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_company_name')?></label>
-                                                  <input type="text" name="search_company" value="<?php echo $search_company ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_company_name')?>">
-                                            </div>
 											
-											<div class="col-3 div_medecin"  style="display:none">
+											
+											<div class="col-3 div_medecin"  >
                                                   <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_cf')?></label>
                                                   <input type="text" name="search_cf" value="<?php echo $search_cf ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_cf')?>">
                                             </div>
-											<div class="col-3 div_clinic"  style="display:none">
-                                                  <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_piva')?></label>
-                                                  <input type="text" name="search_piva" value="<?php echo $search_piva ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_piva')?>">
-                                            </div>
-										<div class="col-3 div_medecin"  style="display:none">
+											
+										<div class="col-3 div_medecin" >
                                                   <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_first_name')?></label>
                                                   <input type="text" name="search_nome" value="<?php echo $search_nome ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_first_name')?>">
                                             </div>
-											<div class="col-3 div_medecin"  style="display:none">
+											<div class="col-3 div_medecin" >
                                                   <label class="visually-hidden" for="specificSizeInputName"><?php echo  lang('app.field_last_name')?></label>
                                                   <input type="text" name="search_cognome" value="<?php echo $search_cognome ?? ''?>" class="form-control" id="specificSizeInputName" placeholder="<?php echo  lang('app.field_last_name')?>">
                                             </div>
@@ -163,11 +121,11 @@
                                             <thead>
                                             	<tr>
 													<th data-sorting="disabled"></th>
-													<th><?php echo lang('app.field_role')?></th>
+													
 													<th><?php echo lang('app.field_email')?></th>
 													<th><?php echo lang('app.field_company_name')?></th>
 													<th><?php echo lang('app.field_address')?></th>
-													<th>C.F/<?php echo lang('app.field_piva')?></th>
+													<th>C.F</th>
 													<th></th>
                                             	</tr>
                                             </thead>
@@ -184,7 +142,7 @@
 															<div class="dropdown-menu">
 																<!--a class="dropdown-item" data-bs-target="#profile-modal-dialog" data-bs-toggle="modal" onclick="get_data('<?php echo $one_customer['user_id']?>')" href=""><?php echo lang('app.action_profile')?></a-->
 																
-																<a  class="dropdown-item" href="<?php echo base_url($prefix_route.'/staffMedical/edit/'.$one_customer['user_id'])?>"><?php echo lang('app.action_update')?></a>
+																<a  class="dropdown-item" href="<?php echo base_url($prefix_route.'/patients/edit/'.$one_customer['user_id'])?>"><?php echo lang('app.action_update')?></a>
 																<hr>
 																<a class="dropdown-item" data-bs-target="#delete-modal-dialog" data-bs-toggle="modal" onclick="del_user('<?php echo $one_customer['user_id']?>')" href=""><?php echo lang('app.action_delete')?></a>
 															</div>
@@ -193,17 +151,16 @@
 													</td>
 													
 												
-														<td><?php echo $one_customer['role']?></td>
+														
 													<td><?php echo $one_customer['account_email']?></td>
 												
-													<td><?php if($one_customer['role']=="M") echo $one_customer['cognome'].', '.$one_customer['nome']; else echo $one_customer['rafgione_sociale']; ?></td>
+													<td><?php echo $one_customer['cognome'].', '.$one_customer['nome'];  ?></td>
 													<td>
-													<?php if(!empty($one_customer['list_offices'])){
-														foreach($one_customer['list_offices'] as $kk=>$vv){?>
-														<li><?php echo $vv['indirizzo'].' '.$vv['comune'].'('.$vv['provincia'].') '.$vv['cap']?></li>
-													<?php }}?>
+												
+														<?php echo $one_customer['residenza_indirizzo'].' '.$one_customer['residenza_comune'].' ('.$one_customer['residenza_provincia'].') '.$one_customer['residenza_cap']?>
+													
 													</td>
-													<td><?php if($one_customer['role']=="M") echo $one_customer['fattura_cf']; else echo $one_customer['fattura_piva'];?></td>
+													<td><?php  echo $one_customer['fattura_cf']; ?></td>
 													<td></td>
 												</tr>
 										   <?php } }?>
@@ -220,7 +177,7 @@
                 </div>
    
        <?php $attributes = ['class' => 'form-input-flat', 'id' => 'myform','method'=>'post'];
-		echo form_open( base_url($prefix_route.'/staffMedical'), $attributes);?>
+		echo form_open( base_url($prefix_route.'/patients'), $attributes);?>
 		<input type="hidden" name="action" value="delete">
 		<input type="hidden" name="user_to_delete" id="user_to_delete">
 		<div class="modal fade" id="delete-modal-dialog"  tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">

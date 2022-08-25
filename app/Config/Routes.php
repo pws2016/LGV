@@ -69,6 +69,7 @@ $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
 	$routes->add('staffMedical/new', 'StaffMedical::newStaff');
 	$routes->add('staffMedical', 'StaffMedical::index');
 	
+	$routes->add('patients/edit/(:any)', 'Patients::editP/$1');
 	$routes->add('patients/new', 'Patients::newP');
 	$routes->add('patients', 'Patients::index');
 });

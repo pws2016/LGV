@@ -279,7 +279,10 @@ else $user_docs=array();
 	function valid_user_email(){
 		$data=$this->common_data();
 		$email=$this->request->getVar('email');
-		$exist=$this->UserModel->where('email',$email)->find();
+		$id=$this->request->getVar('id');
+		$exist=$this->UserModel->where('email',$email);
+		if($id!==null) $exist=$this->UserModel->where('id !=',$id);
+		$exist=$this->UserModel->find();
 		if(empty($exist))  $output = array(
 		   'status' => true
 		  );

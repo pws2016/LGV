@@ -364,7 +364,7 @@ class StaffMedical extends BaseController
 			}	
 			if($this->session->get('array_address')!==null) $this->session->remove('array_address');
 			if($this->session->get('user_docs')!==null) $this->session->remove('user_docs');
-			return redirect()->to(base_url($prefix_route.'/staffMedical'))->with("success",lang('app.success_add'));
+			return redirect()->to(base_url($data['prefix_route'].'/staffMedical'))->with("success",lang('app.success_update'));
 		}
 		if($this->session->get('array_address')!==null) $this->session->remove('array_address');
 		if($this->session->get('user_docs')!==null) $this->session->remove('user_docs');

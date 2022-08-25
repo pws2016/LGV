@@ -363,6 +363,8 @@ $lang['title_page_staff_edit']="Modifica staff Medical";
 $lang['title_section_current_files']="file correnti";
 $lang['title_section_new_team_memeber']="Nuovo Membro";
 $lang['title_page_patient_new']="Nuovo paziente";
+$lang['title_page_patient_list']="Lista pazient";
+$lang['title_page_patient_edit']="Modifica paziente";
 ################### statistics ###############"
 
 ############### errors ####################

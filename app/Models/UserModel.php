@@ -98,5 +98,23 @@ class UserModel extends Model
 		$results = $query->getResultArray();
 		return $results;
 	}
+	public function patient_filter($email=null,$cf=null,$piva=null,$nome=null,$cognome=null){
+		/** find data related to variables **/
+		$db = \Config\Database::connect();
+		$req="SELECT u.email as account_email, u.role ,p.*  FROM ".$this->table." as u,user_profile as p where u.deleted_at is NULL and u.id=p.user_id and u.role='P'";
 	
+		if(!is_null($email)) $req.=" and u.email LIKE '%".$db->escapeLikeString($email)."%' ESCAPE '!'";	
+		
+	
+		
+		if(!is_null($cf)) $req.=" and p.fattura_cf=LIKE '%".$db->escapeLikeString($cf)."%' ESCAPE '!'";
+		if(!is_null($piva)) $req.=" and p.fattura_piva=LIKE '%".$db->escapeLikeString($piva)."%' ESCAPE '!'";
+		if(!is_null($nome)) $req.=" and p.nome=LIKE '%".$db->escapeLikeString($nome)."%' ESCAPE '!'";
+		if(!is_null($cognome)) $req.=" and p.cognome=LIKE '%".$db->escapeLikeString($cognome)."%' ESCAPE '!'";
+		
+		
+		$query = $db->query($req);
+		$results = $query->getResultArray();
+		return $results;
+	}
 }
