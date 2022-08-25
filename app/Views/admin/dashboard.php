@@ -39,143 +39,60 @@
                             </div>
                         </div>
                         <!-- end page title -->
-
-                     <div class="row">
-					 <?php if(!empty($list_projects)){
-						 foreach( $list_projects as $one_project){?>
-						 
-						 <div class="col-md-6">
-						 		<div class="card bg-primary" style="background-color: #FAFAFA !important;">
-                            		<div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-sm-8">
-                                                <h3 class="post__title expand"></h3>
-												                                               
-												<?php echo $one_project['description']?>
-                                                <div class="mt-4">
-                                                    <a href="<?php echo base_url('chooseProject/'.$one_project['id'])?>" class="btn btn-outline-warning waves-effect waves-light"><?php echo lang('app.btn_manage')?></a>
-                                                </div>
-												
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="mt-4 mt-sm-0">
-                                                    <img src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/setup-analytics-amico.svg" class="img-fluid" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-						 	</div>
-						 
-						 
-					 <?php } }?> 
-                        </div>
-                           <div class="row">
-                            <div class="col-12">
+ <div class="row">
+                            <div class="col-md-6 col-xl-3">
                                 <div class="card">
-								
                                     <div class="card-body">
-        <h4><?php echo lang('app.title_section_last_invoices')?></h4>
-                                        <!--h4 class="card-title"><a data-bs-target="#add-modal-dialog"  data-bs-toggle="modal"  name="add" class="btn btn-success float-right"><?php echo  lang('app.btn_add')?></a></h4-->
-                                       <?php 
-										 if(isset($validation)){?>
-										 <div class="alert alert-danger" role="alert">
-											 <?php echo $validation->listErrors()?>
-											</div>
-										 <?php }?>
-							 <?php 
-										 if(isset($error)){?>
-										 <div class="alert alert-danger" role="alert">
-											 <?php echo $error?>
-											</div>
-										 <?php }?>
-										  <?php 
-										 if(isset($success)){?>
-										 <div class="alert alert-success" role="alert">
-											 <?php echo $success?>
-											</div>
-										 <?php }?>
-        
-                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                            <thead>
-												<tr class="bg-transparent">
-													<th style="width: 120px;">&nbsp;</th>
-													<th><?php echo lang('app.field_invoice')?></th>
-													<th><?php echo lang('app.field_date')?></th>
-													<th><?php echo lang('app.field_billed_to')?></th>
-													<th><?php echo lang('app.field_total')?></th>
-													<th><?php echo lang('app.field_status')?></th>
-													<th><?php echo lang('app.field_payment_method')?></th>
-												</tr>
-                                            </thead>
-        
-        
-                                            <tbody>
-											
-                                           <?php 
-										   if(!empty($list_invoices)){
-										   foreach($list_invoices as $k=>$one_customer){?>
-												<tr class="odd gradeX">
-													<td>
-														<div class="dropdown mt-4 mt-sm-0">
-															<button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																Azione <i class="mdi mdi-chevron-down"></i>
-															</button>
-															<div class="dropdown-menu">
-																<a class="dropdown-item" href="<?php echo base_url($prefix_route.'invoices/details/'.$one_customer['id'])?>">Dettaglio pagamento </a>
-																<a class="dropdown-item" target="_blank" href="<?php echo $one_customer['pdf']?>">Dettaglio fattura (FIC)</a>
-																<hr>
-																<?php if($one_customer['pdf_type']!=""){
-											   if($one_customer['pdf_type']=="simple") $url= base_url($prefix_route.'/requests/download_bp_pdf/'.$one_customer['request_id']);
-											   if($one_customer['pdf_type']=="full") $url= base_url('/requests/certificazione/zip/'.$one_customer['request_id']);
-																?>
-																<a class="dropdown-item" target="_blank" href="<?php echo $url?>">Scarica PDF</a>
-																<?php } ?>
-																
-															</div>
-														</div>
-													</td>
-													<td><?php echo $one_customer['num']?></td>
-													<td><?php echo date('d/m/Y',strtotime($one_customer['date']))?></td>
-													<td><a class="text-primary" data-bs-target="#client-profile-modal-dialog" data-bs-toggle="modal" onclick="get_client_profile('<?php echo $one_customer['user_id']?>')"><?php echo $one_customer['billing_name']?></a></td>
-													<td><?php echo $one_customer['amount']?> €</td>
-													<td><div class="badge bg-soft-success font-size-12"><?php echo lang('app.field_status_paid')?></div></td>
-													<td><?php echo $one_customer['payment_method']?></td>
-													
-												</tr>
-										   <?php } }?>
-                                            </tbody>
-                                        </table>
-        
+                                        <div class="float-end mt-2">
+                                            <div id="total-revenue-chart"></div>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1 mt-1">$<span data-plugin="counterup">34,152</span></h4>
+                                            <p class="text-muted mb-0">Total Revenue</p>
+                                        </div>
+                                       
                                     </div>
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
+                            </div> <!-- end col-->
+
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end mt-2">
+                                            <div id="orders-chart"> </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1 mt-1"><span ><?php echo $nb_patients?></span></h4>
+                                            <p class="text-muted mb-0"><?php echo lang('app.title_stats_tot_patients')?></p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div> <!-- end col-->
+
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end mt-2">
+                                            <div id="customers-chart"> </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1 mt-1"><span data-plugin="counterup"><?php echo $nb_staff?></span></h4>
+                                            <p class="text-muted mb-0"><?php echo lang('app.title_stats_tot_staff')?></p>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div> <!-- end col-->
+
+                            
+                        </div> <!-- end row-->
+
+                   
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
- <div class="modal fade" id="client-profile-modal-dialog"  tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-scrollable modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						
-						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_client_profile')?></h5>
-						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                                        </button>
-					</div>
-					
-		
-					<div class="modal-body" id="div_client_profile">
-						
-					</div>
-					<div class="modal-footer">
-						 <button type="button" class="btn btn-light" data-bs-dismiss="modal"><?php echo lang('app.btn_close')?></button>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		  
+  
                 
                 <footer class="footer">
                     <div class="container-fluid">

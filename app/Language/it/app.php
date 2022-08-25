@@ -299,7 +299,7 @@ $lang['title_page_profile']="Mio Profilo";
 $lang['title_page_settings_info']="Informazioni";
 $lang['section_title_draft_requests']="le mie richieste di bozza";
 $lang['help_update_password_profile']="compila il campo se vuoi modificare la password";
-$lang['title_page_dashboard']="I Nostri Servizi";
+$lang['title_page_dashboard']="Dashboard";
 $lang['title_page_overview']="Dashboard";
 $lang['title_section_invoice_data']="Dati di fatturazione";
 $lang['title_section_contact_data']="Dati Contatto";
@@ -464,5 +464,8 @@ $lang['alert_msg_delete_structure']="sei sicuro di eliminare questo struttura?";
 $lang['help_text_mobile_account']="need for double factor authentification";
 $lang['help_text_select_patologie']="Select speciallizazione before manage patalogie!";
 $lang['help_text_select_prestation']="Select speciallizazione before manage prestations!";
+
+$lang['title_stats_tot_patients']="Totale Pazienti";
+$lang['title_stats_tot_staff']="Totale Staff Medicale";
 return $lang;
 ?>

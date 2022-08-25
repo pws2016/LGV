@@ -12,8 +12,8 @@ class AdminPanel extends BaseController
 		$data=$common_data;
 		if($common_data['is_logged']==false) return redirect()->to( base_url('login'));
 		if($common_data['user_data']['role']!='A') return redirect()->to( base_url('/myAccount') );
-		
-			
+		$data['nb_patients']=$this->UserModel->where('role','P')->countAllResults();
+		$data['nb_staff']=$this->UserModel->where('role','C')->orWhere('role','M')->countAllResults();	
 		
 		return view('admin/dashboard',$data);
 	}
