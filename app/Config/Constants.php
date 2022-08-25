@@ -94,4 +94,4 @@ define('EVENT_PRIORITY_NORMAL', 100);
 define('EVENT_PRIORITY_HIGH', 10);
 define("CAPTCHA_PUBLIC","");
 define("CAPTCHA_SECRET","");
-define("MAP_KEY","AIzaSyCaIfdQWaJAN5p_Y0ea-62QJUnukaazBI8");
+define("MAP_KEY","xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
