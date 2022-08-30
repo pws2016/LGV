@@ -555,7 +555,7 @@ echo form_input($input);
                                         </div>
                                         <div class="tab-pane" id="navpills2-messages" role="tabpanel">
                                             <p class="mb-0">
-											<div class="row div_clinic">
+										<?php /*	<div class="row div_clinic">
 												<h5 class="my-0 text-primary"><?php echo lang('app.field_team')?></h5>
 												
 											<div class="repeater">
@@ -606,7 +606,7 @@ echo form_input($input);
 																	</div>
 															</div>
 												</div><!-- end repeater -->
-											</div>
+											</div> */?>
 											<div class="row div_medecin">
 													
 														<div class="col-lg-6">
@@ -1298,7 +1298,7 @@ window.Parsley.addValidator('multipleOf', {
 		
   });
   $form.on('field:error', function() {
-	 //console.log('Validation failed for: ', this.$element.attr('name')); 
+	 console.log('Validation failed for: ', this.$element.attr('name')); 
 	 if(this.$element.attr('name')=="hidden_adr"){
 		
 		  $("#error_adr").show(0);
@@ -1314,7 +1314,7 @@ window.Parsley.addValidator('multipleOf', {
                     type: 'post',
                     async: false,
                     success: function(data) {
-						
+						console.log(data);
 						if(data.status==false){
 							response = false;
 							$("#error_mail").show(0);
@@ -1334,7 +1334,7 @@ window.Parsley.addValidator('multipleOf', {
   });
   
   
-   }); // end $(sdocument)
+   }); // end (sdocument)
   function add_adr(){
 	  var formData = $("#add_addresse_form").serializeArray();
 	  $.ajax({

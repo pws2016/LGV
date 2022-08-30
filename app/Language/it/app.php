@@ -408,6 +408,7 @@ $lang['error_token_used']="il token è già utilizzato!";
 $lang['error_sms']="sms non invio!";
 $lang['error_expiration_code']="il codice sms non è valido o è scaduto!";
 $lang['error_atleast_adr']="deve inserire almeno un indirizzo!";
+$lang['error_not_exist_profile']="profilo non esiste";
 #################success ################################
 $lang['success_new_register']="la registrazione è avvenuta con successo, controlla la tua casella di posta per confermare il tuo account";
 $lang['success_reviews_sended']="Grazie per avere testato il nostro tool e per il feedback. Se vuoi metterti in contatto con noi scrivici a info@creazioneimpresa.it";

@@ -238,7 +238,7 @@ class Authentification extends BaseController
 					$data['error']=$error_msg;
 				}
 				//$data =['role'=>'customer', 'email' => $signup_email,'password'=> md5($signup_password),'display_name'=>$signup_email,'active'=>'no','token'=>'azeer'];
-				else{
+				else{helper('text');
 						$token=random_string('alnum', 6);
 						$user_id =$this->UserModel->add('customer',$signup_email,$signup_password,$signup_email,'no',$terms,'yes',$newsletter,$token);
 						$ex=$this->UserModel->find($user_id);

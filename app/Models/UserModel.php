@@ -117,4 +117,28 @@ class UserModel extends Model
 		$results = $query->getResultArray();
 		return $results;
 	}
+	
+	public function searchApi($role=null,$speciality=null,$patologie=null,$prestation=null,$display_name=null){
+		$db = \Config\Database::connect();
+		//o.indirizzo ,o.provincia,o.comune,o.cap,o.lat,o.lng 
+		//LEFT JOIN user_offices as o ON u.id = o.user_id		
+		$req="SELECT 
+		u.id,u.display_name , u.role ,
+		p.nome,p.cognome,p.ragione_sociale,p.logo,p.tipologia,p.description,p.ids_specification,p.ids_patologie,p.ids_prestation
+		
+		FROM ".$this->table." as u 
+		LEFT JOIN user_profile as p ON u.id = p.user_id	
+		
+		where u.active='yes' and deleted_at IS NULL";
+		if(!is_null($role)) $req.=" and u.role='".$role."'";
+		elseif(is_null($role)) $req.=" and (u.role!='A' and u.role!='U')";
+		if(!is_null($speciality)) $req.=" and FIND_IN_SET('".$speciality."',p.ids_specification)>0";
+		if(!is_null($patologie)) $req.=" and FIND_IN_SET('".$patologie."',p.ids_patologie)>0";
+		if(!is_null($prestation)) $req.=" and FIND_IN_SET('".$prestation."',p.ids_prestation)>0";
+		if(!is_null($display_name)) $req.=" and u.display_name like '%".$db->escapeLikeString($display_name)."%' ESCAPE '!'";
+		//echo $req;
+		$query = $db->query($req);
+		$results = $query->getResultArray();
+		return $results;
+	}
 }

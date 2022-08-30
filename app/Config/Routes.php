@@ -84,6 +84,24 @@ $routes->add('/admin/customers/edit/(:num)', 'Customers::update_customers/$1');
 $routes->add('/admin/customers/profile', 'Customers::profile');
 $routes->add('/admin/customers', 'Customers::index');
 */
+/*
+* --------------------------------------------------------------------
+ * Additional Routing
+ * --------------------------------------------------------------------
+*/
+$routes->group("api",function($routes){
+	//$routes->add('getUser', 'API\User::index');
+	$routes->add('user/login', 'API\User::login');
+	$routes->add('user/register', 'API\User::register');
+	
+	$routes->add('data', 'API\Data::index');
+	$routes->add('data/specifications', 'API\Data::get_specifications');
+	$routes->add('data/patologie', 'API\Data::get_patologie');
+	$routes->add('data/prestations', 'API\Data::get_prestations');
+	$routes->add('data/searchMedical', 'API\Data::search_medecin');
+	$routes->add('data/profile/(:any)', 'API\Data::profile/$1');
+});
+
 
 
 /*
