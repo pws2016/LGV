@@ -579,7 +579,7 @@ echo form_input($input);
 																   <div class="col-5">
 																		<div class="mb-3">
 																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_name')?> 	</label>
-																			  <input type="text" required class="form-control" id="team_name" name="team_name"  >
+																			  <input type="text" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona2" class="form-control" id="team_name" name="team_name"  >
 																		</div>
 																	</div>
 																	 <div class="col-5">
@@ -606,7 +606,7 @@ echo form_input($input);
 																	</div>
 															</div>
 												</div><!-- end repeater -->
-											</div>
+											</div> 
 											<div class="row div_medecin">
 													
 														<div class="col-lg-6">
@@ -1298,7 +1298,7 @@ window.Parsley.addValidator('multipleOf', {
 		
   });
   $form.on('field:error', function() {
-	 //console.log('Validation failed for: ', this.$element.attr('name')); 
+	 console.log('Validation failed for: ', this.$element.attr('name')); 
 	 if(this.$element.attr('name')=="hidden_adr"){
 		
 		  $("#error_adr").show(0);
@@ -1314,7 +1314,7 @@ window.Parsley.addValidator('multipleOf', {
                     type: 'post',
                     async: false,
                     success: function(data) {
-						
+						console.log(data);
 						if(data.status==false){
 							response = false;
 							$("#error_mail").show(0);
@@ -1334,7 +1334,7 @@ window.Parsley.addValidator('multipleOf', {
   });
   
   
-   }); // end $(sdocument)
+   }); // end (sdocument)
   function add_adr(){
 	  var formData = $("#add_addresse_form").serializeArray();
 	  $.ajax({

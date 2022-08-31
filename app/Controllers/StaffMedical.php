@@ -92,8 +92,10 @@ class StaffMedical extends BaseController
 	public function newStaff(){
 		$common_data=$this->common_data();
 		$data=$common_data;
-	//var_dump($_FILES);
+	//
 		if($this->request->getVar('submit')!==null){
+			
+	
 			if($this->request->getVar('active')!==null) $active="yes"; else $active="no";
 			$display_name=$this->request->getVar('nome').' '.$this->request->getVar('cognome');
 			if($this->request->getVar('role')=='C') $display_name=$this->request->getVar('ragione_sociale');
@@ -199,38 +201,38 @@ class StaffMedical extends BaseController
 				}
 			}	
 		
-		/*	if($this->request->getVar('role')=='C' && !empty($this->request->getVar('list_team'))){
+			if($this->request->getVar('role')=='C' && !empty($this->request->getVar('list_team'))){
 					
-					if ($this->request->getFileMultiple('images')) {
- 
-             foreach($this->request->getFileMultiple('images') as $k=>$file)
-             {   
 			
-							 $team_image = $file->getRandomName();
-                $file->move(ROOTPATH.'public/uploads/medecin_doc/',$team_image);
- 
-              $data_files[] = [
-			  'nn'=>$team_image,
-                'name' =>  $file->getClientName(),
-                'type'  => $file->getClientMimeType()
-              ];
- 
-             
-              $msg = 'Files have been successfully uploaded';
-             }
-        }
 					
 					
 				foreach($this->request->getVar('list_team') as $k=>$v){
 					
 					if(isset($v['team_enable'])) $team_enable=1; else $team_enable=0;
-					$team_image="";
 					
+					$team_image=$_FILES["list_team"]['name'][$k]['team_image'] ?? '';
+			
+					if($team_image!=""){
+							$target_dir = ROOTPATH."public/uploads/team/";
+							$target_file = $target_dir . basename($_FILES["list_team"]['name'][$k]['team_image']);
+							$uploadOk = 1;
+							$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+						
+						
+							  $check = getimagesize($_FILES["list_team"]['tmp_name'][$k]['team_image']);
+							  if($check !== false) {
+								
+								 $team_image=random_string('alnum',16).".".$imageFileType;
+								 move_uploaded_file($_FILES["list_team"]['tmp_name'][$k]['team_image'],$target_dir.$team_image);
+							  } else {
+								$team_image="";
+							  }
+					}
 				
 					
 					$this->ClinicTeamModel->insert(array("user_id"=>$user_id,"name"=>$v['team_name'],"description"=>$v['team_description'],"enable"=>$team_enable,"image"=>$team_image));
 				}
-			}*/
+			}
 			
 			
 			if($this->session->get('array_address')!==null) $this->session->remove('array_address');
