@@ -555,7 +555,7 @@ echo form_input($input);
                                         </div>
                                         <div class="tab-pane" id="navpills2-messages" role="tabpanel">
                                             <p class="mb-0">
-										<?php /*	<div class="row div_clinic">
+											<div class="row div_clinic">
 												<h5 class="my-0 text-primary"><?php echo lang('app.field_team')?></h5>
 												
 											<div class="repeater">
@@ -579,7 +579,7 @@ echo form_input($input);
 																   <div class="col-5">
 																		<div class="mb-3">
 																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_name')?> 	</label>
-																			  <input type="text" required class="form-control" id="team_name" name="team_name"  >
+																			  <input type="text" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona2" class="form-control" id="team_name" name="team_name"  >
 																		</div>
 																	</div>
 																	 <div class="col-5">
@@ -606,7 +606,7 @@ echo form_input($input);
 																	</div>
 															</div>
 												</div><!-- end repeater -->
-											</div> */?>
+											</div> 
 											<div class="row div_medecin">
 													
 														<div class="col-lg-6">
