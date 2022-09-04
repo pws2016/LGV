@@ -85,12 +85,12 @@
                                                 <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_info')?></span>
                                             </a>
                                         </li>
-										<li class="nav-item waves-effect waves-light">
+									<?php /*	<li class="nav-item waves-effect waves-light">
                                             <a class="nav-link" data-bs-toggle="tab" href="#navpills2-profile" role="tab" aria-selected="false">
                                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                                 <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_fattura')?></span>
                                             </a>
-                                        </li>
+                                        </li> */?>
                                     </ul>
 
                                     <!-- Tab panes -->
@@ -168,12 +168,12 @@
 															</div>
 														</div>
 														<div class="row">
-															<div class="col-lg-6">
+															<?php /*<div class="col-lg-6">
 																<div class="mb-3">
 																	<label for="verticalnav-address-input"><?php echo lang('app.field_logo')?> </label>
 																	<input type="file" name="logo" class="form-control">
 																</div>
-															</div>
+															</div> */ ?>
 															<div class="col-lg-2">
 																<div class="mb-3">
 																	<div class="form-check">
