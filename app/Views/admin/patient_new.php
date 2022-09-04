@@ -25,14 +25,15 @@
  <link rel="stylesheet" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/multiselect-master/lib/google-code-prettify/prettify.css" />
  
     <link rel="stylesheet" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/multiselect-master/css/style.css" />
- <style>
-	 .h5title {border-bottom: 1px solid;padding-bottom: 10px;}
-input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[type=email]:focus,input[type=date]:focus,input[type=time]:focus,input[type=number]:focus,input[type=file]:focus,input[type=url]:focus,select:focus,textarea:focus {outline: #FF7700 auto 5px;}
-	 select.form-control:focus {outline: #FF7700 auto 5px;border: 1px solid #FF7700 ;}
-	 .error{color:#6a74f4 !important;}
-	 .parsley-errors-list>li {color:#6a74f4 !important;font-weight:bold;}
-	 
-	.div_clinic{display:none}
+		<style>
+			.h5title {border-bottom: 1px solid;padding-bottom: 10px;}
+			input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[type=email]:focus,input[type=date]:focus,input[type=time]:focus,input[type=number]:focus,input[type=file]:focus,input[type=url]:focus,select:focus,textarea:focus {outline: #FF7700 auto 5px;}
+			select.form-control:focus {outline: #FF7700 auto 5px;border: 1px solid #FF7700 ;}
+			.error{color:#6a74f4 !important;}
+			.parsley-errors-list>li {color:#6a74f4 !important;font-weight:bold;}
+
+			.div_clinic{display:none}
+			h6.titleblock{background: #f5f6f8;color: #000 !important;font-weight: 100;font-size: 15px;}
 		</style>
 	</head>
 
@@ -50,25 +51,18 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
                                     <h4 class="mb-0"><?php echo lang('app.title_page_patient_new')?></h4>
-								<div class="page-title-right">
+									<div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
-                                           
-											
-											  <li class="breadcrumb-item "><a href="<?php echo base_url($prefix_route.'patients')?>"><?php echo lang('app.title_menu_patient')?></a></li>
-											  <li class="breadcrumb-item active"><a href="javascript: void(0);"><?php echo lang('app.menu_patient_new')?></a></li>
+											<li class="breadcrumb-item "><a href="<?php echo base_url($prefix_route.'patients')?>"><?php echo lang('app.title_menu_patient')?></a></li>
+											<li class="breadcrumb-item active"><a href="javascript: void(0);"><?php echo lang('app.menu_patient_new')?></a></li>
                                         </ol>
                                     </div>
-
-                                   
-
                                 </div>
                             </div>
-                        </div>
-                        <!-- end page title -->
-						
-                          <div class="row justify-content-center">
-                            <div class="col-lg-12">
+                        </div>						
+                        <div class="row justify-content-center">
+							<div class="col-lg-12">
                                
                                 <div class="row">
                             <div class="col-lg-12">
@@ -91,11 +85,7 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[
                                                 <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_info')?></span>
                                             </a>
                                         </li>
-                                      
-                                  
-										
-										
-										 <li class="nav-item waves-effect waves-light">
+										<li class="nav-item waves-effect waves-light">
                                             <a class="nav-link" data-bs-toggle="tab" href="#navpills2-profile" role="tab" aria-selected="false">
                                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                                 <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_fattura')?></span>
@@ -107,115 +97,113 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[
                                     <div class="tab-content p-3 text-muted">
                                         <div class="tab-pane active" id="navpills2-home" role="tabpanel">
                                             <p class="mb-0">
-											<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_account')?></h5>
-													</div>
-											<div class="row">
-												 <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_email')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <input type="text" class="form-control" id="email_address" name="email" required data-parsley-type="email"  data-parsley-checkemail  >
-																        
-
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <input type="text" class="form-control" id="mobile" name="mobile" required >
-																<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
-                                                            </div>
-                                                        </div>
-												
-												  <div class="col-lg-2">
-												   <div class="mb-3">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" name="active" value="yes" checked id="active" >
-															<label class="form-check-label" for="active">
-															   <?php echo lang('app.field_enable')?>
-															</label>
+												<div class="row">
+													<div class="col-lg-6">
+														<div class="col-lg-12 mt-4">
+															<h6 class="mb-3 titleblock">Dati Accesso App<?php //echo lang('app.title_section_account')?></h6>
 														</div>
-												   </div>
-												  </div>
-														
-											</div>
-												<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_profile')?></h5>
+														<div class="row">
+															<div class="col-lg-6">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_email')?> <span class="text-primary">*</span>
+
+																	</label>
+																	<input type="text" class="form-control" id="email_address" name="email" required data-parsley-type="email"  data-parsley-checkemail  >
+
+
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
+
+																	</label>
+																	<input type="text" class="form-control" id="mobile" name="mobile" required >
+																	<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-12 mt-4">
+															<h6 class="mb-3 titleblock">Anagrafica<?php //echo lang('app.title_section_profile')?></h6>
+														</div>
+														<div class="row div_medecin">
+															<div class="col-lg-2">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_sexe')?><span class="text-primary">*</span></label>
+																	<select class="form-control" id="fattura_sesso" name="fattura_sesso" required>
+																		<option value="M" selected><?php echo lang('app.field_sex_m')?></option>
+																		<option value="F" ><?php echo lang('app.field_sex_f')?></option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-lg-5">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_first_name')?><span class="text-primary">*</span></label>
+																	<input type="text" class="form-control" id="nome" name="nome" required >
+																</div>
+															</div>
+															<div class="col-lg-5">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_last_name')?><span class="text-primary">*</span></label>
+																	<input type="text" class="form-control" id="cognome" name="cognome" required >
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_cf')?></label>
+																	<input type="text" class="form-control" id="fattura_cf" name="fattura_cf"  >
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?></label>
+																	<input type="text" class="form-control" id="nascita_data" name="nascita_data"  >
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_phone')?> fisso</label>
+																	<input type="text" class="form-control" id="telefono" name="telefono"  >
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-lg-6">
+																<div class="mb-3">
+																	<label for="verticalnav-address-input"><?php echo lang('app.field_logo')?> </label>
+																	<input type="file" name="logo" class="form-control">
+																</div>
+															</div>
+															<div class="col-lg-2">
+																<div class="mb-3">
+																	<div class="form-check">
+																		<input class="form-check-input" type="checkbox" name="active" value="yes" checked id="active" >
+																		<label class="form-check-label" for="active">
+																			<?php echo lang('app.field_enable')?>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</div>
-                                             
-													<div class="row div_medecin">
-													 <div class="col-lg-2">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_sexe')?><span class="text-primary">*</span></label>
-                                                                <select class="form-control" id="fattura_sesso" name="fattura_sesso" required>
-																	<option value="M" selected><?php echo lang('app.field_sex_m')?></option>
-																	<option value="F" ><?php echo lang('app.field_sex_f')?></option>
-																</select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_first_name')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="nome" name="nome" required >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_last_name')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="cognome" name="cognome" required >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?></label>
-                                                                <input type="text" class="form-control" id="nascita_data" name="nascita_data"  >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_cf')?></label>
-                                                                <input type="text" class="form-control" id="fattura_cf" name="fattura_cf"  >
-                                                            </div>
-                                                        </div>
-														
-													</div>
-													<div class="row">
-													 
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_phone')?></label>
-                                                                <input type="text" class="form-control" id="telefono" name="telefono"  >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-													<div class="mb-3">
-														<label for="verticalnav-address-input"><?php echo lang('app.field_logo')?> </label>
-														<input type="file" name="logo" class="form-control">
-													</div>
-												</div>
-														 
-													</div>
-													<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_address')?></h5>
-													</div>
-													<div class="row">
-													<div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_country')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <select class="form-control" id="residenza_stato" name="residenza_stato"  onchange="get_provincia('sede_provincia',this.value);">
-																	<option value=""><?php echo lang('app.field_select')?></option>
-																	<?php foreach($list_nazione  as $k=>$v){?>
-																	<option value="<?php echo $v['ID']?>" <?php if($v['ID']==139) echo 'selected'?>><?php echo $v['NAZIONE']?></option>
-																	<?php } ?>
-																</select>
-                                                            </div>
-                                                        </div>
+													<div class="col-lg-6">
+														<div class="col-lg-12 mt-4">  
+															<h6 class="mb-3 titleblock">Dati Domicilio / Residenza<?php //echo lang('app.title_section_address')?></h6>
+														</div>
+														<div class="row">
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_country')?> <span class="text-primary">*</span>
+
+																	</label>
+																	<select class="form-control" id="residenza_stato" name="residenza_stato"  onchange="get_provincia('sede_provincia',this.value);">
+																		<option value=""><?php echo lang('app.field_select')?></option>
+																		<?php foreach($list_nazione  as $k=>$v){?>
+																		<option value="<?php echo $v['ID']?>" <?php if($v['ID']==139) echo 'selected'?>><?php echo $v['NAZIONE']?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+															</div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3" id="div_sede_provincia">
                                                                 <label for="verticalnav-phoneno-input">Provincia </label>
@@ -315,8 +303,9 @@ echo form_input($input);
 																	?>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div></div>
                                             </p>
+										</div>
                                         </div>
                                         <div class="tab-pane" id="navpills2-profile" role="tabpanel">
                                             <p class="mb-0">

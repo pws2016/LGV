@@ -43,7 +43,7 @@
 							<div class="col-12">
 								<div class="card border border-primary">
                                     <div class="card-header bg-transparent border-primary">
-                                        <h5 class="my-0 text-primary"><i class="uil uil-search me-3"></i><?php echo lang('app.advanced_search')?><a data-bs-target="#add-modal-dialog"  data-bs-toggle="modal"  name="add" class="btn btn-success" style="float:right"><?php echo  lang('app.btn_add')?></a></h5>
+                                        <h6 class="my-0 text-primary"><i class="uil uil-search me-3"></i><?php echo lang('app.advanced_search')?><a data-bs-target="#add-modal-dialog"  data-bs-toggle="modal"  name="add" class="btn btn-success" style="float:right">Aggiungi ordine professionale</a></h6>
                                     </div>
                                     <div class="card-body">
                                        
@@ -72,7 +72,7 @@ echo form_open(base_url('admin/ordreProf'), $attributes);?>
                             <div class="col-12">
                                 <div class="card">
 								  <div class="card-header bg-transparent border-primary">
-								  <h4 class="my-0 text-primary"><i class="uil uil-list-ul me-3"></i><?php echo lang('app.title_section_result')?></h4>
+								  <h6 class="my-0 text-primary"><i class="uil uil-list-ul me-3"></i><?php echo lang('app.title_section_result')?></h6>
 								  </div>
                                     <div class="card-body">
                                                
@@ -95,14 +95,12 @@ echo form_open(base_url('admin/ordreProf'), $attributes);?>
 											 <?php echo $success?>
 											</div>
 										 <?php }?>
-        
+        <div class="table-responsive">
                                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                             	<tr>
 													<th data-sorting="disabled"></th>
-													<th><?php echo lang('app.field_title')?></th>
-													
-												
+													<th>Nome Ordine Professionale</th>
                                             	</tr>
                                             </thead>
                                             <tbody>
@@ -113,7 +111,7 @@ echo form_open(base_url('admin/ordreProf'), $attributes);?>
 													<td>
 														<div class="dropdown mt-4 mt-sm-0">
 															<button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																Azione <i class="mdi mdi-chevron-down"></i>
+																<i class="uil uil-ellipsis-v"></i>
 															</button>
 															<div class="dropdown-menu">
 																
@@ -131,7 +129,7 @@ echo form_open(base_url('admin/ordreProf'), $attributes);?>
 										   <?php } }?>
                                             </tbody>
                                         </table>
-        
+										</div>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +158,7 @@ echo form_open(base_url('admin/ordreProf'), $attributes);?>
 														
 					
 						<div class="row mb-4">
-							<label for="horizontal-email-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_title')?> <code>*</code></label>
+							<label for="horizontal-email-input" class="col-sm-3 col-form-label">Nome Ordine Professionale<code>*</code></label>
 							<div class="col-sm-9">
 								<?php $input = [
 	'type'  => 'text',

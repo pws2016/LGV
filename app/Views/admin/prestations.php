@@ -30,9 +30,7 @@
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
-                                           
-											
-											  <li class="breadcrumb-item active"><?php echo lang('app.menu_prestations')?></li>
+											<li class="breadcrumb-item active"><?php echo lang('app.menu_prestations')?></li>
                                         </ol>
                                     </div>
 
@@ -43,7 +41,7 @@
 							<div class="col-12">
 								<div class="card border border-primary">
                                     <div class="card-header bg-transparent border-primary">
-                                        <h5 class="my-0 text-primary"><i class="uil uil-search me-3"></i><?php echo lang('app.advanced_search')?><a data-bs-target="#add-modal-dialog"  data-bs-toggle="modal"  name="add" class="btn btn-success" style="float:right"><?php echo  lang('app.btn_add')?></a></h5>
+                                        <h6 class="my-0 text-primary"><i class="uil uil-search me-3"></i><?php echo lang('app.advanced_search')?><a data-bs-target="#add-modal-dialog"  data-bs-toggle="modal"  name="add" class="btn btn-success" style="float:right">Aggiungi tipologia di prestazione</a></h6>
                                     </div>
                                     <div class="card-body">
                                        
@@ -65,7 +63,7 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
 									<?php }}?>
 												  </select>
                                             </div>
-										<div class="col-12">
+											<div class="col-12">
                                                <button type="submit" name="search" class="btn btn-secondary"><?php echo  lang('app.btn_search')?></button>
 											   <button type="button" name="clear" class="btn btn-danger" onclick="reset_form()"><?php echo  lang('app.btn_reset')?></button>
                                            </div>
@@ -81,7 +79,7 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
                             <div class="col-12">
                                 <div class="card">
 								  <div class="card-header bg-transparent border-primary">
-								  <h4 class="my-0 text-primary"><i class="uil uil-list-ul me-3"></i><?php echo lang('app.title_section_result')?></h4>
+								  <h6 class="my-0 text-primary"><i class="uil uil-list-ul me-3"></i><?php echo lang('app.title_section_result')?></h6>
 								  </div>
                                     <div class="card-body">
                                                
@@ -104,14 +102,14 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
 											 <?php echo $success?>
 											</div>
 										 <?php }?>
-        
+        <div class="table-responsive">
                                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                             	<tr>
 													<th data-sorting="disabled"></th>
-													<th><?php echo lang('app.field_title')?></th>
+													<th>Nome Tipologia</th>
 													
-													<th><?php echo lang('app.field_speciality')?></th>
+													<th>Nome <?php echo lang('app.field_speciality')?></th>
 													<th><?php echo lang('app.field_enable')?></th>
 													<th><?php echo lang('app.field_default')?></th>
                                             	</tr>
@@ -124,7 +122,7 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
 													<td>
 														<div class="dropdown mt-4 mt-sm-0">
 															<button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																Azione <i class="mdi mdi-chevron-down"></i>
+																<i class="uil uil-ellipsis-v"></i>
 															</button>
 															<div class="dropdown-menu">
 																
@@ -155,7 +153,7 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
 										   <?php } }?>
                                             </tbody>
                                         </table>
-        
+										</div>
                                     </div>
                                 </div>
                             </div>

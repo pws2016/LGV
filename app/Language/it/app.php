@@ -83,7 +83,7 @@ $lang['field_category']="Catégories";
 $lang['field_visa_num']="Numéro de carte";
 $lang['field_visa_date']="Date de validité";
 $lang['field_visa_ccv']="Cryptogramme";
-$lang['field_enable']="Attivà";
+$lang['field_enable']="Attivo";
 $lang['field_url']="URL";
 $lang['field_content']="Contenue de page";
 $lang['field_message']="Messagio";
@@ -202,7 +202,7 @@ $lang['field_speciality']="Specializzazioni";
 $lang['field_default']="Predefinitto";
 $lang['field_medecin']="medico";
 $lang['field_clinic']="clinica";
-$lang['field_typologie']="Typlogia";
+$lang['field_typologie']="Typologia";
 $lang['field_structure_sanitaire']="Struttura sanitarie";
 $lang['field_ordre_prof']="Ordine Professionale";
 
@@ -251,8 +251,8 @@ $lang['menu_staff_new']="Nuovo staff";
 $lang['menu_staff_list']="List staff";
 $lang['menu_staff_edit']="Modifica staff";
 
-$lang['title_menu_patient']="pazienti";
-$lang['menu_patient_list']="List pazienti";
+$lang['title_menu_patient']="Pazienti";
+$lang['menu_patient_list']="Lista pazienti";
 $lang['menu_patient_edit']="Modifica paziente";
 $lang['menu_patient_new']="Nuovo paziente";
 ############" titles ###################
@@ -314,19 +314,19 @@ $lang['modal_client_profile']="Cliente Profilo";
 $lang['modal_title_loginas']="Accedi come";
 $lang['title_page_customer_edit']="Modifica Cliente";
 $lang['title_page_customer_add']="Nuovo Cliente";
-$lang['title_section_result']="Dati";
+$lang['title_section_result']="Elenco dati";
 
-$lang['title_page_speciality']="Specializzazioni";
+$lang['title_page_speciality']="Lista Specializzazioni";
 $lang['modal_new_speciality']="Aggiungi Specializzazione";
 $lang['modal_update_speciality']="Modifica Specializzazione";
 $lang['modal_delete_speciality']="Elimina Specializzazione";
 
-$lang['title_page_patologie']="Patologie";
+$lang['title_page_patologie']="Lista Patologie";
 $lang['modal_new_patologie']="Aggiungi Patologie";
 $lang['modal_update_patologie']="Modifica Patologie";
 $lang['modal_delete_patologie']="Elimina Patologie";
 
-$lang['title_page_prestations']="Tipologie di prestazione";
+$lang['title_page_prestations']="Lista Tipologie di prestazione";
 $lang['modal_new_prestations']="Aggiungi Tipologie di prestazione";
 $lang['modal_update_prestations']="Modifica Tipologie di prestazione";
 $lang['modal_delete_prestations']="Elimina Tipologie di prestazione";
@@ -349,8 +349,8 @@ $lang['modal_delete_structure_sanitaire']="Elimina Struttura";
 $lang['title_page_staff_new']="Nuova staff Medical";
 $lang['title_section_user_info']="Informazione";
 $lang['title_section_user_fattura']="Fatturazione";
-$lang['title_section_account']="Dati Account";
-$lang['title_section_profile']="Profilo";
+$lang['title_section_account']="Dati Accesso";
+$lang['title_section_profile']="Anagrafica";
 $lang['title_section_address']="Sede legale/Residenza in";
 $lang['title_section_user_medical_profile']="Profilo medico";
 $lang['title_section_user_address']="Indirizzo";
@@ -363,7 +363,7 @@ $lang['title_page_staff_edit']="Modifica staff Medical";
 $lang['title_section_current_files']="file correnti";
 $lang['title_section_new_team_memeber']="Nuovo Membro";
 $lang['title_page_patient_new']="Nuovo paziente";
-$lang['title_page_patient_list']="Lista pazient";
+$lang['title_page_patient_list']="Lista pazienti";
 $lang['title_page_patient_edit']="Modifica paziente";
 ################### statistics ###############"
 

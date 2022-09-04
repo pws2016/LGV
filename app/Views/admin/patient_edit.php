@@ -25,14 +25,15 @@
  <link rel="stylesheet" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/multiselect-master/lib/google-code-prettify/prettify.css" />
  
     <link rel="stylesheet" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/multiselect-master/css/style.css" />
- <style>
-	 .h5title {border-bottom: 1px solid;padding-bottom: 10px;}
-input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[type=email]:focus,input[type=date]:focus,input[type=time]:focus,input[type=number]:focus,input[type=file]:focus,input[type=url]:focus,select:focus,textarea:focus {outline: #FF7700 auto 5px;}
-	 select.form-control:focus {outline: #FF7700 auto 5px;border: 1px solid #FF7700 ;}
-	 .error{color:#6a74f4 !important;}
-	 .parsley-errors-list>li {color:#6a74f4 !important;font-weight:bold;}
-	 
-	.div_clinic{display:none}
+		<style>
+			.h5title {border-bottom: 1px solid;padding-bottom: 10px;}
+			input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[type=email]:focus,input[type=date]:focus,input[type=time]:focus,input[type=number]:focus,input[type=file]:focus,input[type=url]:focus,select:focus,textarea:focus {outline: #FF7700 auto 5px;}
+			select.form-control:focus {outline: #FF7700 auto 5px;border: 1px solid #FF7700 ;}
+			.error{color:#6a74f4 !important;}
+			.parsley-errors-list>li {color:#6a74f4 !important;font-weight:bold;}
+
+			.div_clinic{display:none}
+			h6.titleblock{background: #f5f6f8;color: #000 !important;font-weight: 100;font-size: 15px;}
 		</style>
 	</head>
 
@@ -108,181 +109,180 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[
                                     <div class="tab-content p-3 text-muted">
                                         <div class="tab-pane active" id="navpills2-home" role="tabpanel">
                                             <p class="mb-0">
-											<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_account')?></h5>
-													</div>
-											<div class="row">
-												 <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_email')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <input type="text" class="form-control" id="email_address" name="email" required data-parsley-type="email"  data-parsley-checkemail  value="<?php echo $inf_staff['email']?>">
-																        
-
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <input type="text" class="form-control" id="mobile" name="mobile" required value="<?php echo $inf_staff['mobile']?>">
-																<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
-                                                            </div>
-                                                        </div>
-												
-												  <div class="col-lg-2">
-												   <div class="mb-3">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" name="active" value="yes" <?php if($inf_staff['active']=='yes') echo 'checked'?> id="active" >
-															<label class="form-check-label" for="active">
-															   <?php echo lang('app.field_enable')?>
-															</label>
+												<div class="row">
+													<div class="col-lg-6">
+														<div class="col-lg-12 mt-4">
+															<h6 class="mb-3 titleblock">Dati Accesso APP<?php //echo lang('app.title_section_account')?></h6>
 														</div>
-												   </div>
-												  </div>
-														
-											</div>
-												<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_profile')?></h5>
-													</div>
+														<div class="row">
+															<div class="col-lg-6">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_email')?> <span class="text-primary">*</span>
+
+																	</label>
+																	<input type="text" class="form-control" id="email_address" name="email" required data-parsley-type="email"  data-parsley-checkemail  value="<?php echo $inf_staff['email']?>">
+
+
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
+
+																	</label>
+																	<input type="text" class="form-control" id="mobile" name="mobile" required value="<?php echo $inf_staff['mobile']?>">
+																	<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-12 mt-4">  
+															<h6 class="mb-3 titleblock">Anagrafica<?php //echo lang('app.title_section_profile')?></h6>
+														</div>
                                              
-													<div class="row div_medecin">
-													 <div class="col-lg-2">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_sexe')?><span class="text-primary">*</span></label>
-                                                                <select class="form-control" id="fattura_sesso" name="fattura_sesso" required>
-																	<option value="M" <?php if($inf_staff_profile['fattura_sesso']=='M') echo 'selected'?>><?php echo lang('app.field_sex_m')?></option>
-																	<option value="F" <?php if($inf_staff_profile['fattura_sesso']=='F') echo 'selected'?>><?php echo lang('app.field_sex_f')?></option>
-																</select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_first_name')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="nome" name="nome" required value="<?php echo $inf_staff_profile['nome']?>">
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_last_name')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="cognome" name="cognome" required value="<?php echo $inf_staff_profile['cognome']?>">
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?></label>
-                                                                <input type="text" class="form-control" id="nascita_data" name="nascita_data" value="<?php echo $inf_staff_profile['nascita_data']?>" >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_cf')?></label>
-                                                                <input type="text" class="form-control" id="fattura_cf" name="fattura_cf"  value="<?php echo $inf_staff_profile['fattura_cf']?>">
-                                                            </div>
-                                                        </div>
-														
+														<div class="row div_medecin">
+															<div class="col-lg-2">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_sexe')?><span class="text-primary">*</span></label>
+																	<select class="form-control" id="fattura_sesso" name="fattura_sesso" required>
+																		<option value="M" <?php if($inf_staff_profile['fattura_sesso']=='M') echo 'selected'?>><?php echo lang('app.field_sex_m')?></option>
+																		<option value="F" <?php if($inf_staff_profile['fattura_sesso']=='F') echo 'selected'?>><?php echo lang('app.field_sex_f')?></option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-lg-5">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_first_name')?><span class="text-primary">*</span></label>
+																	<input type="text" class="form-control" id="nome" name="nome" required value="<?php echo $inf_staff_profile['nome']?>">
+																</div>
+															</div>
+															<div class="col-lg-5">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_last_name')?><span class="text-primary">*</span></label>
+																	<input type="text" class="form-control" id="cognome" name="cognome" required value="<?php echo $inf_staff_profile['cognome']?>">
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_cf')?></label>
+																	<input type="text" class="form-control" id="fattura_cf" name="fattura_cf"  value="<?php echo $inf_staff_profile['fattura_cf']?>">
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?></label>
+																	<input type="text" class="form-control" id="nascita_data" name="nascita_data" value="<?php echo $inf_staff_profile['nascita_data']?>" >
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_phone')?> fisso</label>
+																	<input type="text" class="form-control" id="telefono" name="telefono"  value="<?php echo $inf_staff_profile['telefono']?>">
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-lg-6">
+																<div class="mb-3">
+																	<label for="verticalnav-address-input"><?php echo lang('app.field_logo')?> </label>
+																	<input type="file" name="logo" class="form-control">
+																</div>
+															</div>
+															<div class="col-lg-2">
+																<div class="mb-3">
+																	<div class="form-check">
+																		<input class="form-check-input" type="checkbox" name="active" value="yes" <?php if($inf_staff['active']=='yes') echo 'checked'?> id="active" >
+																		<label class="form-check-label" for="active">
+																			<?php echo lang('app.field_enable')?>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</div>
-													<div class="row">
-													 
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_phone')?></label>
-                                                                <input type="text" class="form-control" id="telefono" name="telefono"  value="<?php echo $inf_staff_profile['telefono']?>">
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-													<div class="mb-3">
-														<label for="verticalnav-address-input"><?php echo lang('app.field_logo')?> </label>
-														<input type="file" name="logo" class="form-control">
-													</div>
-												</div>
-														 
-													</div>
-													<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_address')?></h5>
-													</div>
-													<div class="row">
-													<div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_country')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <select class="form-control" id="residenza_stato" name="residenza_stato"  onchange="get_provincia('sede_provincia',this.value);">
-																	<option value=""><?php echo lang('app.field_select')?></option>
-																	<?php foreach($list_nazione  as $k=>$v){?>
-																	<option value="<?php echo $v['ID']?>" <?php if($v['ID']==$inf_staff_profile['residenza_stato']) echo 'selected'?>><?php echo $v['NAZIONE']?></option>
-																	<?php } ?>
-																</select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3" id="div_sede_provincia">
-                                                                <label for="verticalnav-phoneno-input">Provincia </label>
-                                                                 <?php 
+													<div class="col-lg-6">
+														<div class="col-lg-12 mt-4">  
+															<h6 class="mb-3 titleblock">Dati Domicilio / Residenza<?php //echo lang('app.title_section_address')?></h6>
+														</div>
+														<div class="row">
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_country')?> <span class="text-primary">*</span>
+
+																	</label>
+																	<select class="form-control" id="residenza_stato" name="residenza_stato"  onchange="get_provincia('sede_provincia',this.value);">
+																		<option value=""><?php echo lang('app.field_select')?></option>
+																		<?php foreach($list_nazione  as $k=>$v){?>
+																		<option value="<?php echo $v['ID']?>" <?php if($v['ID']==$inf_staff_profile['residenza_stato']) echo 'selected'?>><?php echo $v['NAZIONE']?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3" id="div_sede_provincia">
+																	<label for="verticalnav-phoneno-input">Provincia </label>
+																	<?php 
 																	$options['']=lang('app.field_select');
 																	if(!empty($list_provincia)){
 																		foreach($list_provincia as $k=>$v){
-																		$options[$v['PROV']]=$v['PROVINCIA'];
-																	}
+																			$options[$v['PROV']]=$v['PROVINCIA'];
+																		}
 																	}
 																	$input = [
-																			
-																			'name'  => 'residenza_provincia',
-																			'id'    => 'residenza_provincia',
-																			
-																			
-																			'class' => 'form-control '
+
+																		'name'  => 'residenza_provincia',
+																		'id'    => 'residenza_provincia',
+
+
+																		'class' => 'form-control '
 																	];
 																	$js = ' onChange="get_comune(\'sede_comune\',this.value);"';
 																	if(!empty($list_provincia)) echo form_dropdown($input, $options,$inf_staff_profile['residenza_provincia'],$js);
 																	else echo form_input($input,$inf_staff_profile['residenza_provincia']);
 																	?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3" id="div_sede_comune">
-                                                                <label for="verticalnav-email-input">Comune </label>
-                                                               <?php $input = [
-												
-																			'name'  => 'residenza_comune',
-																			'id'    => 'residenza_comune',
-																			
-																			'class' => 'form-control'
-																	];
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3" id="div_sede_comune">
+																	<label for="verticalnav-email-input">Comune </label>
+																	<?php $input = [
+
+	'name'  => 'residenza_comune',
+	'id'    => 'residenza_comune',
+
+	'class' => 'form-control'
+];
 																	$options=array();
 																	$options['']=lang('app.field_select');
-																	
-																		if(!empty($list_comune)){foreach($list_comune as $kk=>$vv){
-																			$options[$vv['COMUNE']]=$vv['COMUNE'];
-																		} }
-																	
-																if(!empty($list_comune)) echo form_dropdown($input, $options,$inf_staff_profile['residenza_comune']);
-																else	echo form_input($input,$inf_staff_profile['residenza_comune']);
-																	?>
-                                                            </div>
-                                                        </div>
-														
-                                                    </div>
-													<div class="row">
-                                                        <div class="col-lg-8">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_address')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'VIA_CLIENTE',
-																			'id'    => 'VIA_CLIENTE',
-																		'value'    =>  $inf_staff_profile['residenza_indirizzo'],
-																		
-																			'class' => 'form-control'
-																	];
 
-																	echo form_input($input);
+																	if(!empty($list_comune)){foreach($list_comune as $kk=>$vv){
+																		$options[$vv['COMUNE']]=$vv['COMUNE'];
+																	} }
+
+																	if(!empty($list_comune)) echo form_dropdown($input, $options,$inf_staff_profile['residenza_comune']);
+																	else	echo form_input($input,$inf_staff_profile['residenza_comune']);
 																	?>
-                                                            </div>
-                                                        </div>
+																</div>
+															</div>
+														
+														</div>
+														<div class="row">
+															<div class="col-lg-8">
+																<div class="mb-3">
+																	<label for="verticalnav-address-input"><?php echo lang('app.field_address')?> </label>
+																	<?php 
+	$input = [
+	'type'  => 'text',
+	'name'  => 'VIA_CLIENTE',
+	'id'    => 'VIA_CLIENTE',
+	'value'    =>  $inf_staff_profile['residenza_indirizzo'],
+
+	'class' => 'form-control'
+];
+
+																		echo form_input($input);
+																	?>
+																</div>
+															</div>
 														<?php /*<div class="col-lg-2">
                                                             <div class="mb-3">
                                                                 <label for="verticalnav-address-input"><?php echo lang('app.field_civico')?> </label>
@@ -299,27 +299,29 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[
 																?>
                                                             </div>
                                                         </div>*/?>
-														 <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_zip')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'CAP_CLIENTE',
-																			'id'    => 'CAP_CLIENTE',
-																			'value'    =>  $inf_staff_profile['residenza_cap'],
-																		
-																			'class' => 'form-control'
-																	];
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label for="verticalnav-address-input"><?php echo lang('app.field_zip')?> </label>
+																	<?php 
+	$input = [
+	'type'  => 'text',
+	'name'  => 'CAP_CLIENTE',
+	'id'    => 'CAP_CLIENTE',
+	'value'    =>  $inf_staff_profile['residenza_cap'],
 
-																	echo form_input($input);
+	'class' => 'form-control'
+];
+
+																		echo form_input($input);
 																	?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            </p>
-                                        </div>
-                                        <div class="tab-pane" id="navpills2-profile" role="tabpanel">
+																</div>
+															</div>
+                                                    	</div>
+													</div>
+												</div>
+											</p>
+											</div>
+											<div class="tab-pane" id="navpills2-profile" role="tabpanel">
                                             <p class="mb-0">
 											
                                                 <div class="row">
