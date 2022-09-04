@@ -110,6 +110,7 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
 													<th>Nome Tipologia</th>
 													
 													<th>Nome <?php echo lang('app.field_speciality')?></th>
+													<th><?php echo lang('app.field_description')?></th>
 													<th><?php echo lang('app.field_enable')?></th>
 													<th><?php echo lang('app.field_default')?></th>
                                             	</tr>
@@ -137,6 +138,7 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
 													
 													
 													<td><?php echo $one_customer['specification']?></td>
+													<td><?php echo $one_customer['description']?></td>
 													<td><?php if($one_customer['enable']==0){?>
 														<div class="badge bg-pill bg-soft-danger font-size-12"><?php echo lang('app.no')?></div>
 													<?php }else{?>
@@ -205,6 +207,21 @@ echo form_open(base_url('admin/prestations'), $attributes);?>
 											<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
 									<?php }}?>
 								</select>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<label for="horizontal-email-input" class="col-sm-3 col-form-label">Descrizione  </label>
+							<div class="col-sm-9">
+								<?php $input = [
+	
+	'name'  => 'description',
+	'id'    => 'description',
+	'class' => 'form-control',
+
+
+];
+
+								echo form_textarea($input);?>
 							</div>
 						</div>
 						<div class="row mb-4">

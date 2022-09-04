@@ -7,7 +7,7 @@ class PrestationsModel extends Model
 	
     protected $table = 'prestations';
 	protected $primaryKey = 'id';
-    protected $allowedFields = ['title','enable','ids_specification','is_default'];
+    protected $allowedFields = ['title','enable','ids_specification','is_default','description'];
 	protected $returnType = 'array';
 	protected $useSoftDeletes = true;
 	protected $useTimestamps = true;
