@@ -627,10 +627,10 @@
 															</div>
 												</div><!-- end repeater -->
 											</div> 
-											<div class="row div_medecin">
+											<div class="row">
 												<div class="col-lg-6">
 													<div class="row">
-														<div class="col-lg-6">
+														<div class="col-lg-6 div_medecin">
 															<div class="mb-3">
 																<label for="verticalnav-firstname-input"><?php echo lang('app.field_structure_sanitaire')?> 
 																</label>
@@ -643,7 +643,7 @@
 																</select>
 															</div>
 														</div>
-														<div class="col-lg-6">
+														<div class="col-lg-6 div_medecin">
 															<div class="mb-3">
 																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_prof')?> 
 																</label>
@@ -656,7 +656,7 @@
 																</select>
 															</div>
 														</div>
-														<div class="col-lg-6">
+														<div class="col-lg-6 div_medecin">
 															<div class="mb-3">
 																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_city')?> 
 																</label>
@@ -669,7 +669,7 @@
 																</select>
 															</div>
 														</div>
-														<div class="col-lg-6">
+														<div class="col-lg-6 div_medecin">
 															<div class="mb-3">
 																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_num')?> 
 																</label>
