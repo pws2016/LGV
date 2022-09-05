@@ -83,6 +83,7 @@ class User extends ResourceController
 			}
 			if(is_numeric($user_id) && $user_id>0){
 				if(empty($exist)){
+					$exist=UserModel->where('id',$user_id)->find();
 				$UserProfileModel->insert(array('user_id'=>$user_id,'email'=>$email,'nome'=>$name));
 				}
 				else{
