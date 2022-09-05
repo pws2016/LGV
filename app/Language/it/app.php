@@ -216,6 +216,10 @@ $lang['field_delete']="Elemina";
 $lang['field_file']="File";
 $lang['field_team']="Clinic Staff Medical";
 $lang['field_name']="Nome";
+$lang['field_photo_profile']="Foto Tessera";
+$lang['field_title_office']="Nome della Struttura";
+$lang['field_dr_title']="Titolo";
+$lang['field_fattura_nome']="Ragione sociale";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";

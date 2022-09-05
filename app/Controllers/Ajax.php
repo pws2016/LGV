@@ -172,6 +172,7 @@ class Ajax extends BaseController
 			$str_forn="";
 			?>
 		<tr id="tr_address_<?php echo $k?>">
+			<td><?php echo $v['title']?></td>
 			<td><?php echo $v['IND_FORNITURA']?></td>
 			<td><?php echo $v['LOCALITA_FORNITURA'].' '.$v['PROV_FORNITURA'].' '.$v['CAP_FORNITURA']?></td>
 			<td><?php echo $v['PHONE_FORNITURA'].'<br/>'.$v['EMAIL_FORNITURA']?></td>
@@ -199,6 +200,7 @@ class Ajax extends BaseController
 				
 			}?>
 		<tr id="tr_address_<?php echo $k?>">
+		<td><?php echo $v['title']?></td>
 			<td><?php echo $v['IND_FORNITURA']?></td>
 			<td><?php echo $v['LOCALITA_FORNITURA'].' '.$v['PROV_FORNITURA'].' '.$v['CAP_FORNITURA']?></td>
 			<td><?php echo $str_forn?></td>

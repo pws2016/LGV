@@ -7,7 +7,7 @@ class UserOfficesModel extends Model
 	
     protected $table = 'user_offices';
 	protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id','indirizzo','provincia','comune','lat','lng','phone','email'];
+    protected $allowedFields = ['user_id','title','indirizzo','provincia','comune','lat','lng','phone','email'];
 	protected $returnType = 'array';
 	protected $useSoftDeletes = true;
 	protected $useTimestamps = true;

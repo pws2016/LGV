@@ -224,11 +224,19 @@
 																
 																	<div class="row div_medecin">
 																		<div class="col-lg-2">
-																			<div class="mb-3">
+																		<?php /*	<div class="mb-3">
 																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_sexe')?><span class="text-primary">*</span></label>
 																				<select class="form-control" id="fattura_sesso" name="fattura_sesso" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
 																					<option value="M" selected><?php echo lang('app.field_sex_m')?></option>
 																					<option value="F" ><?php echo lang('app.field_sex_f')?></option>
+																				</select>
+																			</div> */ ?>
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_dr_title')?><span class="text-primary">*</span></label>
+																				<select class="form-control" id="title" name="title" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
+																					<option value="Dr." >Dr.</option>
+																					<option value="Dr.ssa" >Dr.ssa</option>
+																						<option value="Non specificato" selected>Non specificato</option>
 																				</select>
 																			</div>
 																		</div>
@@ -404,7 +412,22 @@
 													</div>
                                         <div class="tab-pane" id="navpills2-profile" role="tabpanel">
                                             <p class="mb-0">
-											
+												<div class="row">
+												<div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_fattura_nome')?> 
+																</label>
+																<input type="text" class="form-control" name="fattura_nome" id="fattura_nome" >
+															</div>
+														</div>
+												<div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-firstname-input">IBAN
+																</label>
+																<input type="text" class="form-control" name="fattura_IBAN" id="fattura_IBAN" >
+															</div>
+														</div>
+</div>														
                                                 <div class="row">
 													<div class="col-lg-4">
                                                             <div class="mb-3">
@@ -819,6 +842,7 @@
 																
 														?>
 													<tr id="tr_address_<?php echo $k?>">
+													<td><?php echo $v['title']?></td>
 														<td><?php echo $v['IND_FORNITURA']?></td>
 														<td><?php echo $v['LOCALITA_FORNITURA'].' '.$v['PROV_FORNITURA'].' '.$v['CAP_FORNITURA']?></td>
 														<td><?php echo $v['PHONE_FORNITURA'].'<br/>'.$v['EMAIL_FORNITURA']?></td>
@@ -835,16 +859,16 @@
 											<div class="row">
 												 <div class="col-lg-6">
 													<div class="mb-3">
-														<label for="verticalnav-address-input"><?php echo lang('app.field_logo')?> </label>
+														<label for="verticalnav-address-input"><?php echo lang('app.field_photo_profile')?> </label>
 														<input type="file" name="logo" class="form-control">
 													</div>
 												</div>
-												 <div class="col-lg-6">
+												<?php /* <div class="col-lg-6">
 													<div class="mb-3">
 														<label for="verticalnav-address-input"><?php echo lang('app.field_cv')?> </label>
 														<input type="file" name="cv" class="form-control">
 													</div>
-												</div>
+												</div> */ ?>
 											</div>
 											<div class="row">
 											<div class="col-lg-12">
@@ -908,7 +932,12 @@
 					<div class="modal-body" id="">
 						
 						<div class="row">
-													
+										  <div class="col-lg-12">
+												<div class="mb-3" id="div_fornitura_provincia">
+													<label for="verticalnav-phoneno-input"><?php echo lang('app.field_title_office')?> </label>
+													<input type="text" name="title" class="form-control">
+												</div>
+											</div>										  
                                                         <div class="col-lg-6">
                                                             <div class="mb-3" id="div_fornitura_provincia">
                                                                 <label for="verticalnav-phoneno-input">Provincia </label>

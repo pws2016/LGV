@@ -162,10 +162,12 @@ class StaffMedical extends BaseController
 			'fattura_comune'=>$this->request->getVar('fattura_comune'),
 			'fattura_indirizzo'=>$this->request->getVar('VIA_FATTURA'),
 			'fattura_cap'=>$this->request->getVar('CAP_FATTURA'),
+			'fattura_nome'=>$this->request->getVar('fattura_nome'),
+			'fattura_IBAN'=>$this->request->getVar('fattura_IBAN'),
 			'email'=>$this->request->getVar('EMAIL_FATTURA'),
 			'fattura_pec'=>$this->request->getVar('PEC_FATTURA'),
 			'fattura_sdi'=>$this->request->getVar('SDI'),
-			
+			'title'=>$this->request->getVar('title'),
 			);
 			$this->UserProfileModel->insert($data_profile);
 			//var_dump($this->session->get('user_docs'));exit;
@@ -325,10 +327,12 @@ class StaffMedical extends BaseController
 			'fattura_comune'=>$this->request->getVar('fattura_comune'),
 			'fattura_indirizzo'=>$this->request->getVar('VIA_FATTURA'),
 			'fattura_cap'=>$this->request->getVar('CAP_FATTURA'),
+			'fattura_nome'=>$this->request->getVar('fattura_nome'),
+			'fattura_IBAN'=>$this->request->getVar('fattura_IBAN'),
 			'email'=>$this->request->getVar('EMAIL_FATTURA'),
 			'fattura_pec'=>$this->request->getVar('PEC_FATTURA'),
 			'fattura_sdi'=>$this->request->getVar('SDI'),
-			
+			'title'=>$this->request->getVar('title'),
 			);
 			$inf_prof=$this->UserProfileModel->where('user_id',$user_id)->first();
 			$this->UserProfileModel->update($inf_prof['id'],$data_profile);
