@@ -18,9 +18,30 @@ class User extends ResourceController
 	public function login(){
 		$UserModel=new UserModel();
 		$UserProfileModel=new UserProfileModel();
-		 $method=$this->request->getVar('method');
+		$method=$this->request->getVar('method');
+		$id=$this->request->getVar('id') ?? '';
+		$name=$this->request->getVar('name') ?? ''; 
+		$email=$this->request->getVar('email') ?? '';
 		 switch($method){
-			 case 'email':
+			 case 'google':
+				$exist=$UserModel->where('google_id',$id)->find();
+				$google_id=$id; 
+				$fb_id=''; 
+				$apple_id=''; 
+			break;
+			case 'facebook':
+				$exist=$UserModel->where('fb_id',$id)->find();
+				$google_id=''; 
+				$apple_id=''; 
+					$fb_id=$id; 
+			break;
+			case 'apple':
+				$exist=$UserModel->where('apple_id',$id)->find();
+				$google_id='';
+				$apple_id=$id; 				
+				$fb_id=''; 
+			break;
+			 case 'email':$exist=array();
 				 $email=$this->request->getVar('email');
 				 $password=$this->request->getVar('password');
 				$users = $UserModel
@@ -32,18 +53,84 @@ class User extends ResourceController
 			 break;
 		 }
 		 
-		if(empty($users)){
-			 return $this->respond(array('error'=>true,'msg'=>lang('app.error_not_exist_account')));
+		 if(empty($exist) && $method!="email"){
+			$password=rand(9999,99999999);
+			$exist=$UserModel->where('email',$email)->find();
+			
+			if($method=='google'){
+					$google_id=$id; 
+					$apple_id='';
+					$fb_id=''; 
+				}
+				elseif($method=='facebook'){
+					$apple_id='';
+					$google_id=''; 
+					$fb_id=$id; 
+				}
+				else{
+					$apple_id=$id; 
+					$google_id=''; 
+					$fb_id=''; 
+				}
+			if(empty($exist)){
+				$user_id=$UserModel->add('P',$email,$password,$name,'yes','',$google_id,$fb_id,$apple_id);
+			}
+			else{
+				
+			
+			 return $this->respond(array('error'=>true,'msg'=>lang('app.error_mail_exist')));
+			
+			}
+			if(is_numeric($user_id) && $user_id>0){
+				if(empty($exist)){
+				$UserProfileModel->insert(array('user_id'=>$user_id,'email'=>$email,'nome'=>$name));
+				}
+				else{
+					$exist_prof=$UserProfileModel->where('user_id',$user_id)->first();
+					if(empty($exist_prof) || $exist_prof['id']==null) $UserProfileModel->insert(array('user_id'=>$user_id,'email'=>$email,'nome'=>$name));
+					else $UserProfileModel->update($exist_prof['id'],array('user_id'=>$user_id,'email'=>$email,'nome'=>$name));
+				}
+				
+				
+				$data=array("id"=>$exist[0]['id'],"email"=>$exist[0]['email'],"mobile"=>$exist[0]['mobile'],"token"=>$exist[0]['token']);
+				$inf_profile=$UserProfileModel->select('nome,cognome')->where('user_id',$data['id'])->first();
+				$data=array_merge($data,$inf_profile ?? array());
+				array_walk_recursive($data,function(&$item){$item=strval($item);});
+				return $this->respond(array('error'=>false,"data"=>$data));
+			}
+			else{
+				$res=array("status"=>"KO");
+			}
+			
 		}
-		elseif($users[0]['active']!='yes'){
-			return $this->respond(array('error'=>true,'msg'=>lang('app.error_not_active_account')));
+		elseif(!empty($exist) && $method!='email'){
+			if($exist[0]['active']!='yes'){
+				return $this->respond(array('error'=>true,'msg'=>lang('app.error_not_active_account')));
+			}
+			else{
+				$data=array("id"=>$exist[0]['id'],"email"=>$exist[0]['email'],"mobile"=>$exist[0]['mobile'],"token"=>$exist[0]['token']);
+				$inf_profile=$UserProfileModel->select('nome,cognome')->where('user_id',$data['id'])->first();
+				$data=array_merge($data,$inf_profile ?? array());
+				array_walk_recursive($data,function(&$item){$item=strval($item);});
+				return $this->respond(array('error'=>false,"data"=>$data));
+			}
 		}
 		else{
-			$data=array("id"=>$users[0]['id'],"email"=>$users[0]['email'],"mobile"=>$users[0]['mobile'],"token"=>$users[0]['token']);
-			$inf_profile=$UserProfileModel->select('nome,cognome')->where('user_id',$data['id'])->first();
-			$data=array_merge($data,$inf_profile);
-			array_walk_recursive($data,function(&$item){$item=strval($item);});
-			return $this->respond(array('error'=>false,"data"=>$data));
+		 
+		 
+			if(empty($users)){
+				 return $this->respond(array('error'=>true,'msg'=>lang('app.error_not_exist_account')));
+			}
+			elseif($users[0]['active']!='yes'){
+				return $this->respond(array('error'=>true,'msg'=>lang('app.error_not_active_account')));
+			}
+			else{
+				$data=array("id"=>$users[0]['id'],"email"=>$users[0]['email'],"mobile"=>$users[0]['mobile'],"token"=>$users[0]['token']);
+				$inf_profile=$UserProfileModel->select('nome,cognome')->where('user_id',$data['id'])->first();
+				$data=array_merge($data,$inf_profile ?? array());
+				array_walk_recursive($data,function(&$item){$item=strval($item);});
+				return $this->respond(array('error'=>false,"data"=>$data));
+			}
 		}
 	}
 	

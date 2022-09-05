@@ -7,7 +7,7 @@ class UserModel extends Model
 	
     protected $table = 'users';
 	protected $primaryKey = 'id';
-    protected $allowedFields = ['role', 'email','password','display_name','active','token','mobile','pass'];
+    protected $allowedFields = ['role', 'email','password','display_name','active','token','mobile','pass','google_id','fb_id','apple_id'];
 		protected $returnType = 'array';
 	/*protected $useSoftDeletes = true;
 
@@ -28,9 +28,9 @@ class UserModel extends Model
 		return $results;
 	}
 	
-	public function add($role,$email,$password,$display_name,$active,$terms,$privacy,$newsletter,$token='',$fb_id=null,$google_id=null,$dropbox=""){
+	public function add($role,$email,$password,$display_name,$active,$token='',$google_id=null,$fb_id=null,$apple_id=""){
 		$db = \Config\Database::connect();
-		$req="INSERT INTO ".$this->table."(role,email,password,display_name,active,terms,privacy,newsletter,token,fb_id,google_id,pass,dropbox) VALUES('".$role."','".$email."','".md5($password)."','".$display_name."','".$active."','".$terms."','".$privacy."','".$newsletter."','".$token."','".$fb_id."','".$google_id."','".$password."','".$dropbox."')";
+		$req="INSERT INTO ".$this->table."(role,email,password,display_name,active,token,fb_id,google_id,pass,apple_id) VALUES('".$role."','".$email."','".md5($password)."','".$display_name."','".$active."','".$token."','".$fb_id."','".$google_id."','".$password."','".$apple_id."')";
 		$query = $db->query($req);
 		return $db->insertID();
 	}
