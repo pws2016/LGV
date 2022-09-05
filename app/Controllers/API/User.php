@@ -55,8 +55,8 @@ class User extends ResourceController
 		 
 		 if(empty($exist) && $method!="email"){
 			$password=rand(9999,99999999);
-			$exist=$UserModel->where('email',$email)->find();
-			
+			if($email!="") $exist=$UserModel->where('email',$email)->find();
+			else $exist=array();
 			if($method=='google'){
 					$google_id=$id; 
 					$apple_id='';
@@ -83,7 +83,7 @@ class User extends ResourceController
 			}
 			if(is_numeric($user_id) && $user_id>0){
 				if(empty($exist)){
-					$exist=UserModel->where('id',$user_id)->find();
+					$exist=$UserModel->where('id',$user_id)->find();
 				$UserProfileModel->insert(array('user_id'=>$user_id,'email'=>$email,'nome'=>$name));
 				}
 				else{
@@ -100,7 +100,7 @@ class User extends ResourceController
 				return $this->respond(array('error'=>false,"data"=>$data));
 			}
 			else{
-				$res=array("status"=>"KO");
+				return $this->respond(array('error'=>true,'msg'=>"error!"));
 			}
 			
 		}
