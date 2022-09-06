@@ -637,6 +637,28 @@
 																			  <textarea class="form-control team_description" id="team_description" name="team_description"  ></textarea>
 																		</div>
 																	</div>
+																	<div class="col-6">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_speciality')?> 	</label>
+																	<select name="team_ids_speciality" class="form-control" size="8" multiple="multiple">
+																		<?php if(!empty($list_speciality)){
+																			foreach($list_speciality as $k=>$v){?>
+																		<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
+																		<?php } }?>  
+																	</select>
+																	</div>
+																	</div>
+																	<div class="col-6">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_patologie')?> 	</label>
+																	<select name="team_ids_patologie" class="form-control" size="8" multiple="multiple">
+																		<?php if(!empty($list_patologie)){
+																			foreach($list_patologie as $k=>$v){?>
+																		<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
+																		<?php } }?>  
+																	</select>
+																	</div>
+																	</div>
 																</div>
 															</div>
 														
@@ -653,7 +675,7 @@
 											<div class="row">
 												<div class="col-lg-6">
 													<div class="row">
-														<div class="col-lg-6 div_medecin">
+														<?php /*<div class="col-lg-6 div_medecin">
 															<div class="mb-3">
 																<label for="verticalnav-firstname-input"><?php echo lang('app.field_structure_sanitaire')?> 
 																</label>
@@ -665,7 +687,7 @@
 																	<?php } }?>
 																</select>
 															</div>
-														</div>
+														</div> */?>
 														<div class="col-lg-6 div_medecin">
 															<div class="mb-3">
 																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_prof')?> 
@@ -863,6 +885,12 @@
 														<input type="file" name="logo" class="form-control">
 													</div>
 												</div>
+												<div class="col-lg-6">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_biografie')?> </label>
+														<textarea id="description" name="description"></textarea>
+											 </div>
+												</div>
 												<?php /* <div class="col-lg-6">
 													<div class="mb-3">
 														<label for="verticalnav-address-input"><?php echo lang('app.field_cv')?> </label>
@@ -871,12 +899,31 @@
 												</div> */ ?>
 											</div>
 											<div class="row">
-											<div class="col-lg-12">
+											<div class="col-lg-6">
 													<div class="mb-3">
-														<label for="verticalnav-address-input"><?php echo lang('app.field_description')?> </label>
-														<textarea id="description" name="description"></textarea>
+														<label for="verticalnav-address-input"><?php echo lang('app.field_esperto')?> </label>
+														<textarea id="esperto" name="esperto"></textarea>
 											 </div>
 												</div>
+												<div class="col-lg-6">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_publication')?> </label>
+														<textarea id="publication" name="publication"></textarea>
+											 </div>
+												</div>
+												<div class="col-lg-6">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_experience')?> </label>
+														<textarea id="experience" name="experience"></textarea>
+											 </div>
+												</div>
+												<div class="col-lg-6">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_academic')?> </label>
+														<textarea id="academic" name="academic"></textarea>
+											 </div>
+												</div>
+												
 											</div>
 											</p>
 										</div>
@@ -1179,10 +1226,23 @@
   selector: 'textarea#description',
   language: 'it'
 });
-/*tinymce.init({
-  selector: 'textarea.team_description',
+tinymce.init({
+  selector: 'textarea#esperto',
   language: 'it'
-});*/
+});
+  tinymce.init({
+  selector: 'textarea#experience',
+  language: 'it'
+});
+tinymce.init({
+  selector: 'textarea#academic',
+  language: 'it'
+});
+  tinymce.init({
+  selector: 'textarea#publication',
+  language: 'it'
+});
+
 	 get_provincia('sede_provincia',139); 
 	// get_provincia('fattura_provincia',139); 
 	

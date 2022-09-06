@@ -94,7 +94,7 @@ class StaffMedical extends BaseController
 		$data=$common_data;
 	//
 		if($this->request->getVar('submit')!==null){
-			
+	
 	
 			if($this->request->getVar('active')!==null) $active="yes"; else $active="no";
 			$display_name=$this->request->getVar('nome').' '.$this->request->getVar('cognome');
@@ -168,6 +168,10 @@ class StaffMedical extends BaseController
 			'fattura_pec'=>$this->request->getVar('PEC_FATTURA'),
 			'fattura_sdi'=>$this->request->getVar('SDI'),
 			'title'=>$this->request->getVar('title'),
+			'esperto'=>$this->request->getVar('esperto'),
+			'publication'=>$this->request->getVar('publication'),
+			'experience'=>$this->request->getVar('experience'),
+			'academic'=>$this->request->getVar('academic'),
 			);
 			$this->UserProfileModel->insert($data_profile);
 			//var_dump($this->session->get('user_docs'));exit;
@@ -232,7 +236,7 @@ class StaffMedical extends BaseController
 					}
 				
 					
-					$this->ClinicTeamModel->insert(array("user_id"=>$user_id,"name"=>$v['team_name'],"description"=>$v['team_description'],"enable"=>$team_enable,"image"=>$team_image));
+					$this->ClinicTeamModel->insert(array("user_id"=>$user_id,"name"=>$v['team_name'],"description"=>$v['team_description'],"enable"=>$team_enable,"image"=>$team_image,'ids_specification'=>implode(",",$v['team_ids_speciality']?? array()),'ids_patologie'=>implode(",",$v['team_ids_patologie']?? array())));
 				}
 			}
 			
@@ -333,6 +337,10 @@ class StaffMedical extends BaseController
 			'fattura_pec'=>$this->request->getVar('PEC_FATTURA'),
 			'fattura_sdi'=>$this->request->getVar('SDI'),
 			'title'=>$this->request->getVar('title'),
+			'esperto'=>$this->request->getVar('esperto'),
+			'publication'=>$this->request->getVar('publication'),
+			'experience'=>$this->request->getVar('experience'),
+			'academic'=>$this->request->getVar('academic'),
 			);
 			$inf_prof=$this->UserProfileModel->where('user_id',$user_id)->first();
 			$this->UserProfileModel->update($inf_prof['id'],$data_profile);

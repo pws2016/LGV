@@ -224,6 +224,12 @@ $lang['field_family_relation']="relazione familiare";
 $lang['field_family_relation_mari']="marito/maria";
 $lang['field_family_relation_son']="figlio/figlia";
 $lang['field_family_relation_parent']="parente";
+
+$lang['field_academic']="Risultati Accademici";
+$lang['field_experience']="Esperienza Professionale";
+$lang['field_publication']="Pubblicazioni, convegni e conferenze";
+$lang['field_esperto']="Esperto in";
+$lang['field_biografie']="Breve Biografia";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
