@@ -220,6 +220,10 @@ $lang['field_photo_profile']="Foto Tessera";
 $lang['field_title_office']="Nome della Struttura";
 $lang['field_dr_title']="Titolo";
 $lang['field_fattura_nome']="Ragione sociale";
+$lang['field_family_relation']="relazione familiare";
+$lang['field_family_relation_mari']="marito/maria";
+$lang['field_family_relation_son']="figlio/figlia";
+$lang['field_family_relation_parent']="parente";
 ########## MENU ######################
 $lang['menu_crm']="CRM";
 $lang['menu_home']="Home";
@@ -369,6 +373,8 @@ $lang['title_section_new_team_memeber']="Nuovo Membro";
 $lang['title_page_patient_new']="Nuovo paziente";
 $lang['title_page_patient_list']="Lista pazienti";
 $lang['title_page_patient_edit']="Modifica paziente";
+$lang['title_section_user_family']="Famiglia";
+$lang['title_section_new_family_memeber']="Nuovo Membro";
 ################### statistics ###############"
 
 ############### errors ####################

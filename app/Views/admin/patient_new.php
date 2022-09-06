@@ -91,6 +91,12 @@
                                                 <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_fattura')?></span>
                                             </a>
                                         </li> */?>
+										<li class="nav-item waves-effect waves-light">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#navpills2-family" role="tab" aria-selected="false">
+                                                <span class="d-block d-sm-none"><i class="far fa-users"></i></span>
+                                                <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_family')?></span>
+                                            </a>
+                                        </li>
                                     </ul>
 
                                     <!-- Tab panes -->
@@ -307,6 +313,75 @@ echo form_input($input);
                                             </p>
 										</div>
                                         </div>
+										<div class="tab-pane" id="navpills2-family" role="tabpanel">
+                                            <p class="mb-0">
+												<div class="row">
+											
+											<div class="repeater">
+												<div class="" data-repeater-list="list_family">
+													<div class="card" data-repeater-item >
+														<div class="card-header">
+															<?php echo lang('app.title_section_new_family_memeber')?>
+															<button style="float:right" data-repeater-delete type="button" class="btn btn-sm btn-danger " ><i class="fas fa-trash"></i></button>
+														</div>
+														<div class="card-body">
+															<div class="row">
+																<div class="col-2">
+																	<div class="mb-3">
+																		 <label for="verticalnav-firstname-input"><?php echo lang('app.field_family_relation')?> 	</label>
+																		 <select class="form-control" name="family_type">
+																			<option value="mari"><?php echo lang('app.field_family_relation_mari')?> </option>
+																			<option value="son"><?php echo lang('app.field_family_relation_son')?></option>
+																			<option value="parent"><?php echo lang('app.field_family_relation_parent')?></option>
+																		 </select>
+																   </div>
+																    </div>
+																   <div class="col-5">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_name')?> 	</label>
+																			  <input type="text"  class="form-control" id="family_nome" name="family_nome"  >
+																		</div>
+																	</div>
+																	 <div class="col-5">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_last_name')?> 	</label>
+																			  <input type="text" class="form-control" id="family_cognome" name="family_cognome"  >
+																		</div>
+																	</div>
+																	<div class="col-6">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?> 	</label>
+																			 <div class="input-group" id="datepicker1">
+											<input type="text" name="family_data_nascita" class="form-control" placeholder="dd M, yyyy"
+												   data-date-format="dd/mm/yyyy" data-date-container='#datepicker1' data-provide="datepicker" data-date-autoclose="true" data-regional="it" value="<?php echo date('d/m/Y',strtotime('+30 days'))?>" data-date-altformat="yyyy-mm-dd">
+
+											<span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+										</div><!-- input-group -->
+
+																			   
+																		</div>
+																	</div>
+																	<div class="col-6">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_cf')?> 	</label>
+																			   <input type="text" class="form-control" id="family_cf" name="family_cf"  >
+																		</div>
+																	</div>
+																</div>
+															</div>
+														
+													</div><!-- end row repeater item -->
+													
+													</div><!-- end repeater list -->
+													<div class="row">
+																<div class="col-lg-12">
+																	<input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="<?php echo lang('app.btn_add_row')?>"/>
+																	</div>
+															</div>
+												</div><!-- end repeater -->
+											</div> 
+											</p>
+										</div>
                                         <div class="tab-pane" id="navpills2-profile" role="tabpanel">
                                             <p class="mb-0">
 											
@@ -501,195 +576,7 @@ echo form_input($input);
                 </div>
                 <!-- End Page-content -->
  
-		   
-    <form class="custom-validation2" method="post" id="add_addresse_form" onsubmit="return add_adr()" enctype="multipart/form-data">
-<input type="hidden" name="action" value="add">
-				<div class="modal fade" id="addAddress-modal-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-scrollable modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						
-						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_new_address')?></h5>
-						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					
-		
-					<div class="modal-body" id="">
-						
-						<div class="row">
-													
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3" id="div_fornitura_provincia">
-                                                                <label for="verticalnav-phoneno-input">Provincia </label>
-                                                                <?php 
-																	$options['']=lang('app.field_select');
-																	if(!empty($list_provincia)){
-																		foreach($list_provincia as $k=>$v){
-																		$options[$v['PROV']]=$v['PROVINCIA'];
-																	}
-																	}
-																	$input = [
-																			
-																			'name'  => 'PROV_FORNITURA',
-																			'id'    => 'PROV_FORNITURA',
-																			
-																			
-																			'class' => 'form-control '
-																	];
-																	$js = ' onChange="get_comune(\'fornitura_comune\',this.value);"';
-																	echo form_dropdown($input, $options,null,$js);
-																	//echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3" id="div_fornitura_comune">
-                                                                <label for="verticalnav-email-input">Comune </label>
-                                                                <?php $input = [
-												
-																			'name'  => 'LOCALITA_FORNITURA',
-																			'id'    => 'LOCALITA_FORNITURA',
-																			
-																			'class' => 'form-control'
-																	];
-																	$options=array();
-																	$options['']=lang('app.field_select');
-																	
-																		if(!empty($list_comune)){foreach($list_comune as $kk=>$vv){
-																			$options[$vv['id']]=$vv['comune'];
-																		} }
-																	
-																//	echo form_dropdown($input, $options,$request_data_inf['sede_comune']);
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-														
-                                                    </div>
-													<div class="row">
-                                                        <div class="col-lg-8">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_address')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'IND_FORNITURA',
-																			'id'    => 'IND_FORNITURA',
-																		
-																		
-																			'class' => 'form-control'
-																	];
-
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-														
-														 <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_zip')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'CAP_FORNITURA',
-																			'id'    => 'CAP_FORNITURA',
-																		
-																		
-																			'class' => 'form-control'
-																	];
-
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-													<div class="row">
-													 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_phone')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'PHONE_FORNITURA',
-																			'id'    => 'PHONE_FORNITURA',
-																		
-																		
-																			'class' => 'form-control'
-																	];
-
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_email')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'EMAIL_FORNITURA',
-																			'id'    => 'EMAIL_FORNITURA',
-																		
-																		
-																			'class' => 'form-control'
-																	];
-
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-													</div>
-													<div class="row">
-													<div class="col-lg-1 mt-4">
-														<a class="btn btn-info" href="#" onclick="get_pos();"><i class="fa fa-map"></i></a>
-													</div>
-														<div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input col-12"><?php echo lang('app.field_maps_lat')?> 
-																</label>
-																	 <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'lat',
-																			'id'    => 'lat',
-																		
-																		
-																			'class' => 'form-control'
-																	];
-
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-														<div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input col-12"><?php echo lang('app.field_maps_long')?> 
-																</label>
-																	 <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'lng',
-																			'id'    => 'lng',
-																		
-																		
-																			'class' => 'form-control'
-																	];
-
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-													</div>
-                                                         
-					</div>
-					<div class="modal-footer">
-						 <button type="button" class="btn btn-light" data-bs-dismiss="modal"><?php echo lang('app.btn_close')?></button>
-						 <button type="submit" class="btn btn-success"><?php echo lang('app.btn_save')?></button>
-					</div>
-				</div>
-			</div>
-		</div>
-</form>	   
+	
                 
                 <footer class="footer">
                     <div class="container-fluid">
@@ -727,11 +614,11 @@ echo form_input($input);
 		    <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/pages/form-advanced.init.js"></script>
 		
 		  
-<?php /*		  
+	  
    <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
      
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/@chenfengyuan/datepicker/datepicker.min.js"></script>
-		*/ ?>
+		
 		 <!-- jquery step -->
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
   
@@ -740,8 +627,8 @@ echo form_input($input);
 		<script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/parsleyjs/i18n/it.js"></script>
 		 
 		   <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
-		   <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.css">
+
+
 		 
  <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 
@@ -832,7 +719,35 @@ echo form_input($input);
    }); // end $(sdocument)
  
   
-  
+  $('.repeater').repeater({
+        defaultValues: {
+            'textarea-input': 'foo',
+            'text-input': 'bar',
+            'select-input': 'B',
+            'checkbox-input': ['A', 'B'],
+            'radio-input': 'B'
+        },
+        show: function () {
+            $(this).slideDown("fast", function() { 
+				/*tinymce.init({
+				  selector: '.team_description',
+				  language: 'it'
+				});*/
+			});
+			
+        },
+        hide: function (deleteElement) { 
+            if(confirm('Sei sicuro di voler eliminare questo elemento?')) {
+                $(this).slideUp(deleteElement);
+				
+            }
+			
+        },
+        ready: function (setIndexes) {
+			
+			
+        }
+    });
  
 		
 			

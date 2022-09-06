@@ -129,6 +129,18 @@ class Patients extends BaseController
 			
 			);
 			$this->UserProfileModel->insert($data_profile);
+			
+			if(!empty($this->request->getVar('list_family'))){
+				foreach($this->request->getVar('list_family') as $k=>$v){
+					$this->FamilyModel->insert(array("user_id"=>$user_id,
+					'nome'=>$v['family_nome'],
+					'cognome'=>$v['family_cognome'],
+					'type'=>$v['family_type'],
+					'cf'=>$v['family_cf'],
+					'data_nascita'=>$v['family_data_nascita'],
+					));
+				}
+			}
 				return redirect()->to(base_url($common_data['prefix_route'].'/patients'))->with("success",lang('app.success_add'));
 		}
 	
