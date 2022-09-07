@@ -237,8 +237,10 @@ class Patients extends BaseController
 		if($data['inf_staff_profile']['fattura_provincia']!="") $data['list_comune_fatt']=$this->ComuniModel->where('PROV',$data['inf_staff_profile']['fattura_provincia'])->find();
 		
 	
-		$this->session->set(array('array_address'=>$list_address));
-		$data['array_address']=$list_address;	
+	/*	$this->session->set(array('array_address'=>$list_address));
+		$data['array_address']=$list_address;	*/
+		
+		$data['list_family']=$this->FamilyModel->where('user_id',$user_id)->find();
 		return view('admin/patient_edit',$data);
 	}
 }

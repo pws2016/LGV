@@ -166,7 +166,7 @@
 																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?></label>
 																	<div class="input-group" id="nascita_data">
 											<input type="text" name="nascita_data" class="form-control" placeholder="dd M, yyyy" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1"
-												   data-date-format="dd/mm/yyyy" data-date-container='#nascita_data' data-provide="datepicker" data-date-autoclose="true" data-regional="it" value="<?php echo date('d/m/Y',strtotime('+30 days'))?>" data-date-altformat="yyyy-mm-dd">
+												   data-date-format="dd/mm/yyyy" data-date-container='#nascita_data' data-provide="datepicker" data-date-autoclose="true" data-regional="it"  data-date-altformat="yyyy-mm-dd">
 
 											<span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
 										</div><!-- input-group -->
