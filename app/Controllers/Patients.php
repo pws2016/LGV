@@ -162,7 +162,7 @@ class Patients extends BaseController
 			'active'=>$active,
 		
 			'email'=>$this->request->getVar('email'),
-			'mobile'=>$this->request->getVar('mobile'),
+			'mobile'=>$this->request->getVar('code_mobile'),
 			'display_name'=>$display_name,
 			
 			);

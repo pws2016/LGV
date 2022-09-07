@@ -103,7 +103,7 @@ class StaffMedical extends BaseController
 			'active'=>$active,
 			'role'=>$this->request->getVar('role'),
 			'email'=>$this->request->getVar('email'),
-			'mobile'=>$this->request->getVar('mobile'),
+				'mobile'=>$this->request->getVar('code_mobile'),
 			'display_name'=>$display_name,
 			'password'=>md5(random_string())
 			);
@@ -272,7 +272,7 @@ class StaffMedical extends BaseController
 			'active'=>$active,
 			'role'=>$this->request->getVar('role'),
 			'email'=>$this->request->getVar('email'),
-			'mobile'=>$this->request->getVar('mobile'),
+				'mobile'=>$this->request->getVar('code_mobile'),
 			'display_name'=>$display_name,
 			
 			);
