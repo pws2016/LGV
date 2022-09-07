@@ -234,9 +234,9 @@
 																			<div class="mb-3">
 																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_dr_title')?><span class="text-primary">*</span></label>
 																				<select class="form-control" id="title" name="title" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
-																					<option value="Dr." >Dr.</option>
+																					<option value="Dr." selected>Dr.</option>
 																					<option value="Dr.ssa" >Dr.ssa</option>
-																						<option value="Non specificato" selected>Non specificato</option>
+																						<option value="Non specificato" >Non specificato</option>
 																				</select>
 																			</div>
 																		</div>
