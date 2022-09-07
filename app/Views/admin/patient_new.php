@@ -9,7 +9,7 @@
         <meta name="robots" CONTENT="noindex, nofollow">
 		<meta name="googlebot" content="noindex, nofollow">
         <link rel="shortcut icon" href="https://creazioneimpresa.net/wp-content/uploads/2020/06/favicon-black.png">
-		  
+		  <link rel="stylesheet" href="<?php echo base_url()?>/intl-tel-input-master/build/css/intlTelInput.css">
 		   <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 		 <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
 		   <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
@@ -124,8 +124,9 @@
 																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
 
 																	</label>
-																	<input type="text" class="form-control" id="mobile" name="mobile" required >
+																	<input type="tel" class="form-control" id="mobile" name="mobile" required >
 																	<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
+																
 																</div>
 															</div>
 														</div>
@@ -163,7 +164,12 @@
 															<div class="col-lg-4">
 																<div class="mb-3">
 																	<label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?></label>
-																	<input type="text" class="form-control" id="nascita_data" name="nascita_data"  >
+																	<div class="input-group" id="nascita_data">
+											<input type="text" name="nascita_data" class="form-control" placeholder="dd M, yyyy" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1"
+												   data-date-format="dd/mm/yyyy" data-date-container='#nascita_data' data-provide="datepicker" data-date-autoclose="true" data-regional="it" value="<?php echo date('d/m/Y',strtotime('+30 days'))?>" data-date-altformat="yyyy-mm-dd">
+
+											<span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+										</div><!-- input-group -->
 																</div>
 															</div>
 															<div class="col-lg-4">
@@ -638,7 +644,38 @@ echo form_input($input);
        
 		  <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/langs_tinymce/it.js"></script>
 		  
-		 
+		  <script src="<?php echo base_url()?>/intl-tel-input-master/build/js/intlTelInput.js"></script>
+  <script>
+    var input = document.querySelector("#mobile");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+       hiddenInput: "code_mobile",
+      // initialCountry: "auto",
+       localizedCountries: { 'it': 'Italia' },
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+       preferredCountries: ['it'],
+       separateDialCode: true,
+      utilsScript: "<?php echo base_url()?>/intl-tel-input-master/build/js/utils.js",
+    });
+	/*input.addEventListener("countrychange", function() { alert("");
+  // do something with iti.getSelectedCountryData()
+  console.log(iti.getSelectedCountryData());
+ // addressDropdown.value = iti.getSelectedCountryData().country ;
+});*/
+  </script>
 	<script>
 
   $(document).ready(function(){

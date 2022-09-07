@@ -196,7 +196,7 @@
 														<td><?php echo $one_customer['role']?></td>
 													<td><?php echo $one_customer['account_email']?></td>
 												
-													<td><?php if($one_customer['role']=="M") echo $one_customer['cognome'].', '.$one_customer['nome']; else echo $one_customer['rafgione_sociale']; ?></td>
+													<td><?php if($one_customer['role']=="M") echo $one_customer['cognome'].', '.$one_customer['nome']; else echo $one_customer['ragione_sociale']; ?></td>
 													<td>
 													<?php if(!empty($one_customer['list_offices'])){
 														foreach($one_customer['list_offices'] as $kk=>$vv){?>

@@ -107,11 +107,11 @@ class UserModel extends Model
 		
 	
 		
-		if(!is_null($cf)) $req.=" and p.fattura_cf=LIKE '%".$db->escapeLikeString($cf)."%' ESCAPE '!'";
-		if(!is_null($piva)) $req.=" and p.fattura_piva=LIKE '%".$db->escapeLikeString($piva)."%' ESCAPE '!'";
-		if(!is_null($nome)) $req.=" and p.nome=LIKE '%".$db->escapeLikeString($nome)."%' ESCAPE '!'";
-		if(!is_null($cognome)) $req.=" and p.cognome=LIKE '%".$db->escapeLikeString($cognome)."%' ESCAPE '!'";
-		
+		if(!is_null($cf)) $req.=" and p.fattura_cf LIKE '%".$db->escapeLikeString($cf)."%' ESCAPE '!'";
+		if(!is_null($piva)) $req.=" and p.fattura_piva LIKE '%".$db->escapeLikeString($piva)."%' ESCAPE '!'";
+		if(!is_null($nome)) $req.=" and p.nome LIKE '%".$db->escapeLikeString($nome)."%' ESCAPE '!'";
+		if(!is_null($cognome)) $req.=" and p.cognome LIKE '%".$db->escapeLikeString($cognome)."%' ESCAPE '!'";
+		echo $req;
 		
 		$query = $db->query($req);
 		$results = $query->getResultArray();

@@ -64,6 +64,7 @@ class Patients extends BaseController
 		$common_data=$this->common_data();
 		$data=$common_data;
 		if($this->request->getVar('submit')!==null){
+			
 			if($this->request->getVar('active')!==null) $active="yes"; else $active="no";
 			$display_name=$this->request->getVar('nome').' '.$this->request->getVar('cognome');
 		
@@ -71,7 +72,7 @@ class Patients extends BaseController
 			'active'=>$active,
 			'role'=>'P',
 			'email'=>$this->request->getVar('email'),
-			'mobile'=>$this->request->getVar('mobile'),
+			'mobile'=>$this->request->getVar('code_mobile'),
 			'display_name'=>$display_name,
 			'password'=>md5(random_string())
 			);
