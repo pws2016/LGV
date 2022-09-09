@@ -64,6 +64,7 @@ class Patients extends BaseController
 		$common_data=$this->common_data();
 		$data=$common_data;
 		if($this->request->getVar('submit')!==null){
+			
 			if($this->request->getVar('active')!==null) $active="yes"; else $active="no";
 			$display_name=$this->request->getVar('nome').' '.$this->request->getVar('cognome');
 		
@@ -71,7 +72,7 @@ class Patients extends BaseController
 			'active'=>$active,
 			'role'=>'P',
 			'email'=>$this->request->getVar('email'),
-			'mobile'=>$this->request->getVar('mobile'),
+			'mobile'=>$this->request->getVar('code_mobile'),
 			'display_name'=>$display_name,
 			'password'=>md5(random_string())
 			);
@@ -129,6 +130,18 @@ class Patients extends BaseController
 			
 			);
 			$this->UserProfileModel->insert($data_profile);
+			
+			if(!empty($this->request->getVar('list_family'))){
+				foreach($this->request->getVar('list_family') as $k=>$v){
+					$this->FamilyModel->insert(array("user_id"=>$user_id,
+					'nome'=>$v['family_nome'],
+					'cognome'=>$v['family_cognome'],
+					'type'=>$v['family_type'],
+					'cf'=>$v['family_cf'],
+					'data_nascita'=>$v['family_data_nascita'],
+					));
+				}
+			}
 				return redirect()->to(base_url($common_data['prefix_route'].'/patients'))->with("success",lang('app.success_add'));
 		}
 	
@@ -149,7 +162,7 @@ class Patients extends BaseController
 			'active'=>$active,
 		
 			'email'=>$this->request->getVar('email'),
-			'mobile'=>$this->request->getVar('mobile'),
+			'mobile'=>$this->request->getVar('code_mobile'),
 			'display_name'=>$display_name,
 			
 			);
@@ -224,8 +237,10 @@ class Patients extends BaseController
 		if($data['inf_staff_profile']['fattura_provincia']!="") $data['list_comune_fatt']=$this->ComuniModel->where('PROV',$data['inf_staff_profile']['fattura_provincia'])->find();
 		
 	
-		$this->session->set(array('array_address'=>$list_address));
-		$data['array_address']=$list_address;	
+	/*	$this->session->set(array('array_address'=>$list_address));
+		$data['array_address']=$list_address;	*/
+		
+		$data['list_family']=$this->FamilyModel->where('user_id',$user_id)->find();
 		return view('admin/patient_edit',$data);
 	}
 }

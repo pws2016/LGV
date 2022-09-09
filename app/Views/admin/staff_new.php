@@ -9,7 +9,7 @@
         <meta name="robots" CONTENT="noindex, nofollow">
 		<meta name="googlebot" content="noindex, nofollow">
         <link rel="shortcut icon" href="https://creazioneimpresa.net/wp-content/uploads/2020/06/favicon-black.png">
-		  
+		   <link rel="stylesheet" href="<?php echo base_url()?>/intl-tel-input-master/build/css/intlTelInput.css">
 		   <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 		 <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
 		   <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
@@ -25,18 +25,19 @@
  <link rel="stylesheet" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/multiselect-master/lib/google-code-prettify/prettify.css" />
  
     <link rel="stylesheet" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/multiselect-master/css/style.css" />
- <style>
-	 .h5title {border-bottom: 1px solid;padding-bottom: 10px;}
-input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[type=email]:focus,input[type=date]:focus,input[type=time]:focus,input[type=number]:focus,input[type=file]:focus,input[type=url]:focus,select:focus,textarea:focus {outline: #FF7700 auto 5px;}
-	 select.form-control:focus {outline: #FF7700 auto 5px;border: 1px solid #FF7700 ;}
-	 .error{color:#6a74f4 !important;}
-	 .parsley-errors-list>li {color:#6a74f4 !important;font-weight:bold;}
-	 
-	.div_clinic{display:none}
+		<style>
+			.h5title {border-bottom: 1px solid;padding-bottom: 10px;}
+			input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[type=email]:focus,input[type=date]:focus,input[type=time]:focus,input[type=number]:focus,input[type=file]:focus,input[type=url]:focus,select:focus,textarea:focus {outline: #FF7700 auto 5px;}
+			select.form-control:focus {outline: #FF7700 auto 5px;border: 1px solid #FF7700 ;}
+			.error{color:#6a74f4 !important;}
+			.parsley-errors-list>li {color:#6a74f4 !important;font-weight:bold;}
+
+			.div_clinic{display:none}
+			h6.titleblock{background: #f5f6f8;color: #000 !important;font-weight: 100;font-size: 15px;}
 		</style>
 	</head>
 
-    <body data-sidebar="dark">
+    <body data-keep-enlarged="true" class="vertical-collpsed">
         <div id="layout-wrapper">
             <?php echo view('includes/header.php')?>
 
@@ -50,341 +51,389 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
                                     <h4 class="mb-0"><?php echo lang('app.title_page_staff_new')?></h4>
-								<div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
-                                           
-											
-											  <li class="breadcrumb-item "><a href="<?php echo base_url($prefix_route.'staffMedical')?>"><?php echo lang('app.title_menu_staff')?></a></li>
-											  <li class="breadcrumb-item active"><a href="javascript: void(0);"><?php echo lang('app.menu_staff_new')?></a></li>
-                                        </ol>
-                                    </div>
+									<div class="page-title-right">
+										<ol class="breadcrumb m-0">
+											<li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
 
-                                   
 
+											<li class="breadcrumb-item "><a href="<?php echo base_url($prefix_route.'staffMedical')?>"><?php echo lang('app.title_menu_staff')?></a></li>
+											<li class="breadcrumb-item active"><a href="javascript: void(0);"><?php echo lang('app.menu_staff_new')?></a></li>
+										</ol>
+									</div>
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
 						
-                          <div class="row justify-content-center">
-                            <div class="col-lg-12">
-                               
-                                <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-									<div class="row">
-												<div class="alert alert-danger" id="error_adr" style="display:none"><?php echo lang('app.error_atleast_adr')?></div>
-												<div class="alert alert-danger" id="error_mail" style="display:none"><?php echo lang('app.error_mail_exist')?></div>
-											</div>
+						<div class="row justify-content-center">
+							<div class="col-lg-12">
+
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="alert alert-danger" id="error_adr" style="display:none"><?php echo lang('app.error_atleast_adr')?></div>
+													<div class="alert alert-danger" id="error_mail" style="display:none"><?php echo lang('app.error_mail_exist')?></div>
+												</div>
                                           
                                    <?php $attributes = ['class' => 'custom-validation', 'id' => 'myform','method'=>'post'];
 		echo form_open_multipart( base_url($prefix_route.'/staffMedical/new'), $attributes);?>
 <input type="hidden" name="action" value="add">
 
                                     <!-- Nav tabs -->
-                                    <ul class="nav nav-pills nav-justified bg-light" role="tablist">
-                                        <li class="nav-item waves-effect waves-light">
-                                            <a class="nav-link active" data-bs-toggle="tab" href="#navpills2-home" role="tab" aria-selected="false">
-                                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                                <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_info')?></span>
-                                            </a>
-                                        </li>
-                                      
-                                        <li class="nav-item waves-effect waves-light">
-                                            <a class="nav-link" data-bs-toggle="tab" href="#navpills2-messages" role="tab" aria-selected="false">
-                                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                                <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_medical_profile')?></span>
-                                            </a>
-                                        </li>
-										 
-                                        <li class="nav-item waves-effect waves-light">
-                                            <a class="nav-link " data-bs-toggle="tab" href="#navpills2-settings" role="tab" aria-selected="true">
-                                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                                <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_address')?></span>
-                                            </a>
-                                        </li>
-										 <li class="nav-item waves-effect waves-light">
-                                            <a class="nav-link " data-bs-toggle="tab" href="#navpills2-media" role="tab" aria-selected="true">
-                                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                                <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_media')?></span>
-                                            </a>
-                                        </li>
-										 <li class="nav-item waves-effect waves-light">
-                                            <a class="nav-link " data-bs-toggle="tab" href="#navpills2-docs" role="tab" aria-selected="true">
-                                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                                <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_doc')?></span>
-                                            </a>
-                                        </li>
+												<ul class="nav nav-pills nav-justified bg-light" role="tablist">
+													<li class="nav-item waves-effect waves-light">
+														<a class="nav-link active" data-bs-toggle="tab" href="#navpills2-home" role="tab" aria-selected="false">
+															<span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+															<span class="d-none d-sm-block"><?php echo lang('app.title_section_user_info')?></span>
+														</a>
+													</li>
+
+													<li class="nav-item waves-effect waves-light">
+														<a class="nav-link" data-bs-toggle="tab" href="#navpills2-messages" role="tab" aria-selected="false">
+															<span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+															<span class="d-none d-sm-block"><?php echo lang('app.title_section_user_medical_profile')?></span>
+														</a>
+													</li>
+
+													<li class="nav-item waves-effect waves-light">
+														<a class="nav-link " data-bs-toggle="tab" href="#navpills2-settings" role="tab" aria-selected="true">
+															<span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+															<span class="d-none d-sm-block"><?php echo lang('app.title_section_user_address')?></span>
+														</a>
+													</li>
+													<li class="nav-item waves-effect waves-light">
+														<a class="nav-link " data-bs-toggle="tab" href="#navpills2-media" role="tab" aria-selected="true">
+															<span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+															<span class="d-none d-sm-block"><?php echo lang('app.title_section_user_media')?></span>
+														</a>
+													</li>
+													<li class="nav-item waves-effect waves-light">
+														<a class="nav-link " data-bs-toggle="tab" href="#navpills2-docs" role="tab" aria-selected="true">
+															<span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+															<span class="d-none d-sm-block"><?php echo lang('app.title_section_user_doc')?></span>
+														</a>
+													</li>
 										
-										 <li class="nav-item waves-effect waves-light">
-                                            <a class="nav-link" data-bs-toggle="tab" href="#navpills2-profile" role="tab" aria-selected="false">
-                                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                                <span class="d-none d-sm-block"><?php echo lang('app.title_section_user_fattura')?></span>
-                                            </a>
-                                        </li>
-                                    </ul>
+													<li class="nav-item waves-effect waves-light">
+														<a class="nav-link" data-bs-toggle="tab" href="#navpills2-profile" role="tab" aria-selected="false">
+															<span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+															<span class="d-none d-sm-block"><?php echo lang('app.title_section_user_fattura')?></span>
+														</a>
+													</li>
+												</ul>
 
                                     <!-- Tab panes -->
-                                    <div class="tab-content p-3 text-muted">
-                                        <div class="tab-pane active" id="navpills2-home" role="tabpanel">
-                                            <p class="mb-0">
-											<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_account')?></h5>
-													</div>
-											<div class="row">
-												 <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_email')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <input type="text" class="form-control" id="email_address" name="email" required data-parsley-type="email"  data-parsley-checkemail  >
-																        
+												<div class="tab-content p-3 text-muted">
+													<div class="tab-pane active" id="navpills2-home" role="tabpanel">
+														<p class="mb-0">
+														<div class="row">  
+															<div class="col-lg-6">
+																<div class="col-lg-12">
+																	<h6 class="mb-3 titleblock">Tipo Cliente</h6>
+																</div>
+																<div class="row">
+																	<div class="col-lg-12">
+																		<div class="mb-3">
+																			<label><?php echo lang('app.field_role')?></label><br/>
+																			<div class="form-check mb-3 form-check-inline">
+																				<input class="form-check-input" type="radio" value="M" name="role" id="persona1" checked onclick="tp_med(this.value)">
+																				<label class="form-check-label" for="persona1">
+																					<?php echo lang('app.field_medecin')?>
+																				</label>
+																			</div>
+																			<div class="form-check mb-3 form-check-inline">
+																				<input class="form-check-input" type="radio" name="role" value="C"  id="persona2" onclick="tp_med(this.value)">
+																				<label class="form-check-label" for="persona2">
+																					<?php echo lang('app.field_clinic')?>
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-6">
+																		<div class="mb-3">
+																			<div class="form-check">
+																				<input class="form-check-input" type="checkbox" name="active" value="yes" checked id="active" >
+																				<label class="form-check-label" for="active">
+																					<?php echo lang('app.field_enable')?>
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-lg-12">
+																	<h6 class="mb-3 titleblock">Dati Accesso</h6>
+																</div>
+																<div class="row">
+																	<div class="col-lg-6">
+																		<div class="mb-3">
+																			<label for="verticalnav-firstname-input"><?php echo lang('app.field_email')?> <span class="text-primary">*</span>
 
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <input type="text" class="form-control" id="mobile" name="mobile" required >
-																<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
-                                                            </div>
-                                                        </div>
-												 <div class="col-lg-3">
-												   <div class="mb-3">
-												   <label><?php echo lang('app.field_role')?></label><br/>
-													<div class="form-check mb-3 form-check-inline">
-                                                        <input class="form-check-input" type="radio" value="M" name="role" id="persona1" checked onclick="tp_med(this.value)">
-                                                        <label class="form-check-label" for="persona1">
-                                                            <?php echo lang('app.field_medecin')?>
-                                                        </label>
-                                                    </div>
-													<div class="form-check mb-3 form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="role" value="C"  id="persona2" onclick="tp_med(this.value)">
-                                                        <label class="form-check-label" for="persona2">
-                                                           <?php echo lang('app.field_clinic')?>
-                                                        </label>
-                                                    </div>
-													</div>
-												 </div>
-												  <div class="col-lg-2">
-												   <div class="mb-3">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" name="active" value="yes" checked id="active" >
-															<label class="form-check-label" for="active">
-															   <?php echo lang('app.field_enable')?>
-															</label>
-														</div>
-												   </div>
-												  </div>
-														
-											</div>
-												<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_profile')?></h5>
-													</div>
-                                               <div class="row div_clinic">
-                                                        <div class="col-lg-8">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_company_name')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <input type="text" class="form-control" id="ragione_sociale" name="ragione_sociale"   data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona2">
-                                                            </div>
-                                                        </div>
-                                                       <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_piva')?> <span class="text-primary">*</span></label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'fattura_piva',
-																			'id'    => 'fattura_piva',
-																			
-																			'class' => 'form-control',
-																			"data-parsley-validate-if-empty"=>true,
-																			" data-parsley-required-if"=>"#persona2",
-																			'data-parsley-length'=>"[11,11]",
-																			'data-parsley-length-message'=>"Il codice fiscale deve essere di 11 caratteri",
-																			'data-parsley-type'=>"alphanum"
-																	];
+																			</label>
+																			<input type="text" class="form-control" id="email_address" name="email" required data-parsley-type="email"  data-parsley-checkemail  >
 
-																	echo form_input($input);
-																?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-													<div class="row div_medecin">
-													 <div class="col-lg-2">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_sexe')?><span class="text-primary">*</span></label>
-                                                                <select class="form-control" id="fattura_sesso" name="fattura_sesso" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
-																	<option value="M" selected><?php echo lang('app.field_sex_m')?></option>
-																	<option value="F" ><?php echo lang('app.field_sex_f')?></option>
-																</select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_first_name')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="nome" name="nome" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-5">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_last_name')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="cognome" name="cognome" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="nascita_data" name="nascita_data" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
-                                                            </div>
-                                                        </div>
-														 <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_cf')?><span class="text-primary">*</span></label>
-                                                                <input type="text" class="form-control" id="fattura_cf" name="fattura_cf" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
-                                                            </div>
-                                                        </div>
-														
-													</div>
-													<div class="row">
-													 
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_phone')?></label>
-                                                                <input type="text" class="form-control" id="telefono" name="telefono"  >
-                                                            </div>
-                                                        </div>
-														 
-														 
-													</div>
-													<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.title_section_address')?></h5>
-													</div>
-													<div class="row">
-													<div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_country')?> <span class="text-primary">*</span>
-																
-																</label>
-                                                                <select class="form-control" id="residenza_stato" name="residenza_stato"  onchange="get_provincia('sede_provincia',this.value);">
-																	<option value=""><?php echo lang('app.field_select')?></option>
-																	<?php foreach($list_nazione  as $k=>$v){?>
-																	<option value="<?php echo $v['ID']?>" <?php if($v['ID']==139) echo 'selected'?>><?php echo $v['NAZIONE']?></option>
-																	<?php } ?>
-																</select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3" id="div_sede_provincia">
-                                                                <label for="verticalnav-phoneno-input">Provincia </label>
-                                                                <?php 
-																	$options['']=lang('app.field_select');
-																	if(!empty($list_provincia)){
-																		foreach($list_provincia as $k=>$v){
-																		$options[$v['PROV']]=$v['PROVINCIA'];
-																	}
-																	}
-																	$input = [
-																			
-																			'name'  => 'residenza_provincia',
-																			'id'    => 'residenza_provincia',
-																			
-																			
-																			'class' => 'form-control '
-																	];
-																	$js = ' onChange="get_comune(\'sede_comune\',this.value);"';
-																	//echo form_dropdown($input, $options,$request_data_inf['sede_provincia'],$js);
-echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3" id="div_sede_comune">
-                                                                <label for="verticalnav-email-input">Comune </label>
-                                                                <?php $input = [
-												
-																			'name'  => 'residenza_comune',
-																			'id'    => 'residenza_comune',
-																			
-																			'class' => 'form-control'
-																	];
-																	$options=array();
-																	$options['']=lang('app.field_select');
-																	
-																		if(!empty($list_comune)){foreach($list_comune as $kk=>$vv){
-																			$options[$vv['id']]=$vv['comune'];
-																		} }
-																	
-																
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-														
-                                                    </div>
-													<div class="row">
-                                                        <div class="col-lg-8">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_address')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'VIA_CLIENTE',
-																			'id'    => 'VIA_CLIENTE',
-																		
-																		
-																			'class' => 'form-control'
-																	];
 
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-														<?php /*<div class="col-lg-2">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_civico')?> </label>
-                                                                <?php 
-																$input = [
-																		'type'  => 'text',
-																		'name'  => 'CIVICO_CLIENTE',
-																		'id'    => 'CIVICO_CLIENTE',
-																	
-																		'class' => 'form-control'
-																];
+																		</div>
+																	</div>
+																	<div class="col-lg-6">
+																		<div class="mb-3">
+																			<label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
+
+																			</label>
+																			<input type="text" class="form-control" id="mobile" name="mobile" required >
+																			<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
+																		</div>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-lg-12">
+																		<h6 class="mb-3 titleblock"><?php echo lang('app.title_section_profile')?></h6>
+																	</div>
+																	<div class="row div_clinic">
+																		<div class="col-lg-8">
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_company_name')?> <span class="text-primary">*</span>
+
+																				</label>
+																				<input type="text" class="form-control" id="ragione_sociale" name="ragione_sociale"   data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona2">
+																			</div>
+																		</div>
+																		<div class="col-lg-4">
+																			<div class="mb-3">
+																				<label for="verticalnav-address-input"><?php echo lang('app.field_piva')?> <span class="text-primary">*</span></label>
+																				<?php 
+	$input = [
+	'type'  => 'text',
+	'name'  => 'fattura_piva',
+	'id'    => 'fattura_piva',
+
+	'class' => 'form-control',
+	"data-parsley-validate-if-empty"=>true,
+	" data-parsley-required-if"=>"#persona2",
+	'data-parsley-length'=>"[11,11]",
+	'data-parsley-length-message'=>"Il codice fiscale deve essere di 11 caratteri",
+	'data-parsley-type'=>"alphanum"
+];
 
 																echo form_input($input);
-																?>
-                                                            </div>
-                                                        </div>*/?>
-														 <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-address-input"><?php echo lang('app.field_zip')?> </label>
-                                                                <?php 
-																	$input = [
-																			'type'  => 'text',
-																			'name'  => 'CAP_CLIENTE',
-																			'id'    => 'CAP_CLIENTE',
-																		
-																		
-																			'class' => 'form-control'
-																	];
+																				?>
+																			</div>
+																		</div>
+																	</div>
+																
+																	<div class="row div_medecin">
+																		<div class="col-lg-2">
+																		<?php /*	<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_sexe')?><span class="text-primary">*</span></label>
+																				<select class="form-control" id="fattura_sesso" name="fattura_sesso" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
+																					<option value="M" selected><?php echo lang('app.field_sex_m')?></option>
+																					<option value="F" ><?php echo lang('app.field_sex_f')?></option>
+																				</select>
+																			</div> */ ?>
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_dr_title')?><span class="text-primary">*</span></label>
+																				<select class="form-control" id="title" name="title" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
+																					<option value="Dr." selected>Dr.</option>
+																					<option value="Dr.ssa" >Dr.ssa</option>
+																						<option value="Non specificato" >Non specificato</option>
+																				</select>
+																			</div>
+																		</div>
+																		<div class="col-lg-5">
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_first_name')?><span class="text-primary">*</span></label>
+																				<input type="text" class="form-control" id="nome" name="nome" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
+																			</div>
+																		</div>
+																		<div class="col-lg-5">
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_last_name')?><span class="text-primary">*</span></label>
+																				<input type="text" class="form-control" id="cognome" name="cognome" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
+																			</div>
+																		</div>
+																		<div class="col-lg-6">
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_birthdate')?><span class="text-primary">*</span></label>
+																				<div class="input-group" id="datepicker1">
+											<input type="text" name="nascita_data" class="form-control" placeholder="dd M, yyyy" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1"
+												   data-date-format="dd/mm/yyyy" data-date-container='#datepicker1' data-provide="datepicker" data-date-autoclose="true" data-regional="it" value="<?php echo date('d/m/Y',strtotime('+30 days'))?>" data-date-altformat="yyyy-mm-dd">
 
-																	echo form_input($input);
-																	?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            </p>
-                                        </div>
+											<span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+										</div><!-- input-group -->
+																				
+																			</div>
+																		</div>
+																		<div class="col-lg-6">
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_cf')?><span class="text-primary">*</span></label>
+																				<input type="text" class="form-control" id="fattura_cf" name="fattura_cf" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona1" >
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row">
+
+																		<div class="col-lg-6">
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_phone')?></label>
+																				<input type="text" class="form-control" id="telefono" name="telefono"  >
+																			</div>
+																		</div>
+																		<div class="col-lg-6">
+																			<div class="mb-3">
+																				<label for="verticalnav-firstname-input"><?php echo lang('app.field_typologie')?> 	</label>
+																				<select class="form-control" id="tipologia" name="tipologia"  >
+																					<option value=""><?php echo lang('app.field_select')?></option>
+																					<?php if(!empty($SaffTipologie)){ foreach($SaffTipologie  as $k=>$v){?>
+																					<option value="<?php echo $k?>"><?php echo $v?></option>
+																					<?php } }?>
+																				</select>
+																			</div>
+																		</div>
+
+
+																	</div>
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div class="col-lg-12">  
+																	<h6 class="mb-3 titleblock"><?php echo lang('app.title_section_address')?></h6>
+																</div>
+																<div class="row">
+																	<div class="col-lg-4">
+																		<div class="mb-3">
+																			<label for="verticalnav-firstname-input"><?php echo lang('app.field_country')?> <span class="text-primary">*</span>
+
+																			</label>
+																			<select class="form-control" id="residenza_stato" name="residenza_stato"  onchange="get_provincia('sede_provincia',this.value);">
+																				<option value=""><?php echo lang('app.field_select')?></option>
+																				<?php foreach($list_nazione  as $k=>$v){?>
+																				<option value="<?php echo $v['ID']?>" <?php if($v['ID']==139) echo 'selected'?>><?php echo $v['NAZIONE']?></option>
+																				<?php } ?>
+																			</select>
+																		</div>
+																	</div>
+																	<div class="col-lg-4">
+																		<div class="mb-3" id="div_sede_provincia">
+																			<label for="verticalnav-phoneno-input">Provincia </label>
+																			<?php 
+																			$options['']=lang('app.field_select');
+																			if(!empty($list_provincia)){
+																				foreach($list_provincia as $k=>$v){
+																					$options[$v['PROV']]=$v['PROVINCIA'];
+																				}
+																			}
+																			$input = [
+
+																				'name'  => 'residenza_provincia',
+																				'id'    => 'residenza_provincia',
+
+
+																				'class' => 'form-control '
+																			];
+																			$js = ' onChange="get_comune(\'sede_comune\',this.value);"';
+																			//echo form_dropdown($input, $options,$request_data_inf['sede_provincia'],$js);
+																			echo form_input($input);
+																			?>
+																		</div>
+																	</div>
+																	<div class="col-lg-4">
+																		<div class="mb-3" id="div_sede_comune">
+																			<label for="verticalnav-email-input">Comune </label>
+																			<?php $input = [
+
+	'name'  => 'residenza_comune',
+	'id'    => 'residenza_comune',
+
+	'class' => 'form-control'
+];
+																			$options=array();
+																			$options['']=lang('app.field_select');
+
+																			if(!empty($list_comune)){foreach($list_comune as $kk=>$vv){
+																				$options[$vv['id']]=$vv['comune'];
+																			} }
+
+
+																			echo form_input($input);
+																			?>
+																		</div>
+																	</div>
+                                                    			</div>
+																<div class="row">
+																	<div class="col-lg-8">
+																		<div class="mb-3">
+																			<label for="verticalnav-address-input"><?php echo lang('app.field_address')?> </label>
+																			<?php 
+	$input = [
+	'type'  => 'text',
+	'name'  => 'VIA_CLIENTE',
+	'id'    => 'VIA_CLIENTE',
+
+
+	'class' => 'form-control'
+];
+
+																				echo form_input($input);
+																			?>
+																		</div>
+																	</div>
+																	<?php /*<div class="col-lg-2">
+																		<div class="mb-3">
+																			<label for="verticalnav-address-input"><?php echo lang('app.field_civico')?> </label>
+																			<?php 
+																			$input = [
+																					'type'  => 'text',
+																					'name'  => 'CIVICO_CLIENTE',
+																					'id'    => 'CIVICO_CLIENTE',
+
+																					'class' => 'form-control'
+																			];
+
+																			echo form_input($input);
+																			?>
+																		</div>
+																	</div>*/?>
+																	<div class="col-lg-4">
+																		<div class="mb-3">
+																			<label for="verticalnav-address-input"><?php echo lang('app.field_zip')?> </label>
+																			<?php 
+	$input = [
+	'type'  => 'text',
+	'name'  => 'CAP_CLIENTE',
+	'id'    => 'CAP_CLIENTE',
+
+
+	'class' => 'form-control'
+];
+
+																				echo form_input($input);
+																			?>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														</p>
+													</div>
                                         <div class="tab-pane" id="navpills2-profile" role="tabpanel">
                                             <p class="mb-0">
-											
+												<div class="row">
+												<div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_fattura_nome')?> 
+																</label>
+																<input type="text" class="form-control" name="fattura_nome" id="fattura_nome" >
+															</div>
+														</div>
+												<div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-firstname-input">IBAN
+																</label>
+																<input type="text" class="form-control" name="fattura_IBAN" id="fattura_IBAN" >
+															</div>
+														</div>
+</div>														
                                                 <div class="row">
 													<div class="col-lg-4">
                                                             <div class="mb-3">
@@ -556,7 +605,7 @@ echo form_input($input);
                                         <div class="tab-pane" id="navpills2-messages" role="tabpanel">
                                             <p class="mb-0">
 											<div class="row div_clinic">
-												<h5 class="my-0 text-primary"><?php echo lang('app.field_team')?></h5>
+												<h6 class="mb-3 titleblock">Staff medico<?php //echo lang('app.field_team')?></h6>
 												
 											<div class="repeater">
 												<div class="" data-repeater-list="list_team">
@@ -579,7 +628,7 @@ echo form_input($input);
 																   <div class="col-5">
 																		<div class="mb-3">
 																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_name')?> 	</label>
-																			  <input type="text" data-parsley-validate-if-empty="true"  data-parsley-required-if="#persona2" class="form-control" id="team_name" name="team_name"  >
+																			  <input type="text"  class="form-control" id="team_name" name="team_name"  >
 																		</div>
 																	</div>
 																	 <div class="col-5">
@@ -594,6 +643,28 @@ echo form_input($input);
 																			  <textarea class="form-control team_description" id="team_description" name="team_description"  ></textarea>
 																		</div>
 																	</div>
+																	<div class="col-6">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_speciality')?> 	</label>
+																	<select name="team_ids_speciality" class="form-control" size="8" multiple="multiple">
+																		<?php if(!empty($list_speciality)){
+																			foreach($list_speciality as $k=>$v){?>
+																		<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
+																		<?php } }?>  
+																	</select>
+																	</div>
+																	</div>
+																	<div class="col-6">
+																		<div class="mb-3">
+																			 <label for="verticalnav-firstname-input"><?php echo lang('app.field_patologie')?> 	</label>
+																	<select name="team_ids_patologie" class="form-control" size="8" multiple="multiple">
+																		<?php if(!empty($list_patologie)){
+																			foreach($list_patologie as $k=>$v){?>
+																		<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
+																		<?php } }?>  
+																	</select>
+																	</div>
+																	</div>
 																</div>
 															</div>
 														
@@ -607,180 +678,177 @@ echo form_input($input);
 															</div>
 												</div><!-- end repeater -->
 											</div> 
-											<div class="row div_medecin">
-													
-														<div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_typologie')?> 	</label>
-                                                                <select class="form-control" id="tipologia" name="tipologia"  >
-																	<option value=""><?php echo lang('app.field_select')?></option>
-																	<?php if(!empty($SaffTipologie)){ foreach($SaffTipologie  as $k=>$v){?>
-																	<option value="<?php echo $k?>"><?php echo $v?></option>
-																	<?php } }?>
-																</select>
-                                                            </div>
-                                                        </div>
-														<div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_structure_sanitaire')?> 
+											<div class="row">
+												<div class="col-lg-6">
+													<div class="row">
+														<?php /*<div class="col-lg-6 div_medecin">
+															<div class="mb-3">
+																<label for="verticalnav-firstname-input"><?php echo lang('app.field_structure_sanitaire')?> 
 																</label>
-                                                                <select class="form-control" id="structure_sanitaire" name="structure_sanitaire"  >
+																<select class="form-control" id="structure_sanitaire" name="structure_sanitaire"  >
 																	<option value=""><?php echo lang('app.field_select')?></option>
 																	<?php if(!empty($list_structure_sanitaire)){
-																		foreach($list_structure_sanitaire  as $k=>$v){?>
+		foreach($list_structure_sanitaire  as $k=>$v){?>
 																	<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
 																	<?php } }?>
 																</select>
-                                                            </div>
-                                                        </div>
-														<div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_prof')?> 
+															</div>
+														</div> */?>
+														<div class="col-lg-6 div_medecin">
+															<div class="mb-3">
+																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_prof')?> 
 																</label>
-                                                                <select class="form-control" id="ordre_prof" name="ordre_prof"  >
+																<select class="form-control" id="ordre_prof" name="ordre_prof"  >
 																	<option value=""><?php echo lang('app.field_select')?></option>
 																	<?php if(!empty($list_ordre_prof)){
-																		foreach($list_ordre_prof  as $k=>$v){?>
+		foreach($list_ordre_prof  as $k=>$v){?>
 																	<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
 																	<?php } }?>
 																</select>
-                                                            </div>
-                                                        </div>
-														<div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_city')?> 
+															</div>
+														</div>
+														<div class="col-lg-6 div_medecin">
+															<div class="mb-3">
+																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_city')?> 
 																</label>
-                                                                <select class="form-control" id="ordre_city" name="ordre_city"  >
+															<?php	/*<select class="form-control" id="ordre_city" name="ordre_city"  >
 																	<option value=""><?php echo lang('app.field_select')?></option>
 																	<?php if(!empty($list_ordre_city)){
-																		foreach($list_ordre_city  as $k=>$v){?>
+		foreach($list_ordre_city  as $k=>$v){?>
 																	<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
 																	<?php } }?>
-																</select>
-                                                            </div>
-                                                        </div>
-														<div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_num')?> 
+																</select> */ ?>
+																	<input type="text" class="form-control" id="ordre_city" name="ordre_city"  >
+															</div>
+														</div>
+														<div class="col-lg-6 div_medecin">
+															<div class="mb-3">
+																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_num')?> 
 																</label>
-                                                                <input type="text" class="form-control" id="ordre_num" name="ordre_num"  >
-																	
-                                                            </div>
-                                                        </div>
-													</div>
-												<div class="row">  
-														<h5 class="my-0 text-primary"><?php echo lang('app.field_speciality')?></h5>
-														
-													</div>
-                                               <div class="row">
-                <div class="col-5">
-                    <select name="from_speciality[]" class="js-multiselect form-control" size="8" multiple="multiple">
-					<?php if(!empty($list_speciality)){
-						foreach($list_speciality as $k=>$v){?>
-                        <option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
-                    <?php } }?>  
-                    </select>
-                </div>
+																<input type="text" class="form-control" id="ordre_num" name="ordre_num"  >
+
+															</div>
+														</div>
+														<div class="col-lg-12">
+															<div class="row">  
+																<h5 class="my-0 text-primary"><?php echo lang('app.field_speciality')?></h5>
+
+															</div>
+															<div class="row">
+																<div class="col-6">
+																	<select name="from_speciality[]" class="js-multiselect form-control" size="8" multiple="multiple">
+																		<?php if(!empty($list_speciality)){
+	foreach($list_speciality as $k=>$v){?>
+																		<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
+																		<?php } }?>  
+																	</select>
+																</div>
                 
-                <div class="col-1">
-                    <button type="button" id="js_right_All_1" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-forward"></i></button>
-                    <button type="button" id="js_right_Selected_1" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-right"></i></button>
-                    <button type="button" id="js_left_Selected_1" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" id="js_left_All_1" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-backward"></i></button>
-                </div>
+																<div class="col-1">
+																	<button type="button" id="js_right_All_1" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-forward"></i></button>
+																	<button type="button" id="js_right_Selected_1" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-right"></i></button>
+																	<button type="button" id="js_left_Selected_1" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-left"></i></button>
+																	<button type="button" id="js_left_All_1" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-backward"></i></button>
+																</div>
                 
-                <div class="col-5">
-                    <select name="to_speciality[]" id="js_multiselect_to_1" class="form-control" size="8" multiple="multiple" data-parsley-multiple-of="3" data-parsley-validate-if-empty="true"></select>
-					<div class="row">
-						<div class="col-6">
-							<button type="button" id="multiselect_move_up_1" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-up"></i></button>
-						</div>
-						<div class="col-6">
-							<button type="button" id="multiselect_move_down_1" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-down"></i></button>
-						</div>
-					</div>
-                </div>
-            </div>
-			<div class="row">  
+																<div class="col-5">
+																	<select name="to_speciality[]" id="js_multiselect_to_1" class="form-control" size="8" multiple="multiple" data-parsley-multiple-of="3" data-parsley-validate-if-empty="true"></select>
+																	<div class="row">
+																		<div class="col-6">
+																			<button type="button" id="multiselect_move_up_1" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-up"></i></button>
+																		</div>
+																		<div class="col-6">
+																			<button type="button" id="multiselect_move_down_1" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-down"></i></button>
+																		</div>
+																	</div>
+																</div>
+            												</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="row">  
 														<h5 class="my-0 text-primary"><?php echo lang('app.field_patologie')?></h5>
 														<p class="text-muted"><?php echo lang('app.help_text_select_patologie')?></p>
 													</div>
-                                               <div class="row">
-                <div class="col-5">
-                    <select name="from_patologie[]" class="js-multiselect2 form-control" size="8" multiple="multiple">
-					<?php if(!empty($list_patologie)){
-						foreach($list_patologie as $k=>$v){
-							if($v['is_default']==0){?>
-                        <option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
-						<?php } } }?>  
-                    </select>
-                </div>
+													<div class="row">
+														<div class="col-5">
+															<select name="from_patologie[]" class="js-multiselect2 form-control" size="8" multiple="multiple">
+																<?php if(!empty($list_patologie)){
+	foreach($list_patologie as $k=>$v){
+		if($v['is_default']==0){?>
+																<option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
+																<?php } } }?>  
+															</select>
+														</div>
                 
-                <div class="col-1">
-                    <button type="button" id="js_right_All_2" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-forward"></i></button>
-                    <button type="button" id="js_right_Selected_2" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-right"></i></button>
-                    <button type="button" id="js_left_Selected_2" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" id="js_left_All_2" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-backward"></i></button>
-                </div>
+														<div class="col-1">
+															<button type="button" id="js_right_All_2" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-forward"></i></button>
+															<button type="button" id="js_right_Selected_2" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-right"></i></button>
+															<button type="button" id="js_left_Selected_2" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-left"></i></button>
+															<button type="button" id="js_left_All_2" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-backward"></i></button>
+														</div>
                 
-                <div class="col-5">
-                    <select name="to_patologie[]" id="js_multiselect_to_2" class="form-control" size="8" multiple="multiple">
-					<?php if(!empty($list_patologie)){
-						foreach($list_patologie as $k=>$v){
-							if($v['is_default']==1){?>
-                        <option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
-						<?php } } }?>  
-					</select>
-					<div class="row">
-						<div class="col-6">
-							<button type="button" id="multiselect_move_up_2" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-up"></i></button>
-						</div>
-						<div class="col-6">
-							<button type="button" id="multiselect_move_down_2" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-down"></i></button>
-						</div>
-					</div>
-                </div>
-            </div>
-				<div class="row">  
+														<div class="col-5">
+															<select name="to_patologie[]" id="js_multiselect_to_2" class="form-control" size="8" multiple="multiple">
+																<?php if(!empty($list_patologie)){
+	foreach($list_patologie as $k=>$v){
+		if($v['is_default']==1){?>
+																<option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
+																<?php } } }?>  
+															</select>
+															<div class="row">
+																<div class="col-6">
+																	<button type="button" id="multiselect_move_up_2" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-up"></i></button>
+																</div>
+																<div class="col-6">
+																	<button type="button" id="multiselect_move_down_2" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-down"></i></button>
+																</div>
+															</div>
+														</div>
+            										</div>
+													<div class="row">  
 														<h5 class="my-0 text-primary"><?php echo lang('app.field_prestation')?></h5>
 														<p class="text-muted"><?php echo lang('app.help_text_select_prestation')?></p>
 													</div>
-                                               <div class="row">
-                <div class="col-5">
-                    <select name="from_prestation[]" class="js-multiselect3 form-control" size="8" multiple="multiple">
-					<?php if(!empty($list_prestation)){
-						foreach($list_prestation as $k=>$v){
-							if($v['is_default']==0){?>
-                        <option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
-						<?php } } }?>  
-                    </select>
-                </div>
+													<div class="row">
+														<div class="col-5">
+															<select name="from_prestation[]" class="js-multiselect3 form-control" size="8" multiple="multiple">
+																<?php if(!empty($list_prestation)){
+	foreach($list_prestation as $k=>$v){
+		if($v['is_default']==0){?>
+																<option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
+																<?php } } }?>  
+															</select>
+														</div>
                 
-                <div class="col-1">
-                    <button type="button" id="js_right_All_3" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-forward"></i></button>
-                    <button type="button" id="js_right_Selected_3" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-right"></i></button>
-                    <button type="button" id="js_left_Selected_3" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" id="js_left_All_3" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-backward"></i></button>
-                </div>
+														<div class="col-1">
+															<button type="button" id="js_right_All_3" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-forward"></i></button>
+															<button type="button" id="js_right_Selected_3" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-right"></i></button>
+															<button type="button" id="js_left_Selected_3" class="btn btn-block btn-light waves-effect waves-light mb-1"><i class="fas fa-chevron-left"></i></button>
+															<button type="button" id="js_left_All_3" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-backward"></i></button>
+														</div>
                 
-                <div class="col-5">
-                    <select name="to_prestation[]" id="js_multiselect_to_3" class="form-control" size="8" multiple="multiple">
-					<?php if(!empty($list_prestation)){
-						foreach($list_prestation as $k=>$v){
-							if($v['is_default']==1){?>
-                        <option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
-						<?php } } }?>  
-					</select>
-					<div class="row">
-						<div class="col-6">
-							<button type="button" id="multiselect_move_up_3" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-up"></i></button>
-						</div>
-						<div class="col-6">
-							<button type="button" id="multiselect_move_down_3" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-down"></i></button>
-						</div>
-					</div>
-                </div>
-            </div>
+														<div class="col-5">
+															<select name="to_prestation[]" id="js_multiselect_to_3" class="form-control" size="8" multiple="multiple">
+																<?php if(!empty($list_prestation)){
+	foreach($list_prestation as $k=>$v){
+		if($v['is_default']==1){?>
+																<option value="<?php echo $v['id']?>" data-speciality="<?php echo $v['ids_specification'].","?>"  disabled><?php echo $v['title']?></option>
+																<?php } } }?>  
+															</select>
+															<div class="row">
+																<div class="col-6">
+																	<button type="button" id="multiselect_move_up_3" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-up"></i></button>
+																</div>
+																<div class="col-6">
+																	<button type="button" id="multiselect_move_down_3" class="btn btn-block btn-light waves-effect waves-light"><i class="fas fa-chevron-down"></i></button>
+																</div>
+															</div>
+														</div>
+            										</div>
+												</div>
+											</div>
                                             </p>
                                         </div>
                                         <div class="tab-pane " id="navpills2-settings" role="tabpanel">
@@ -803,6 +871,7 @@ echo form_input($input);
 																
 														?>
 													<tr id="tr_address_<?php echo $k?>">
+													<td><?php echo $v['title']?></td>
 														<td><?php echo $v['IND_FORNITURA']?></td>
 														<td><?php echo $v['LOCALITA_FORNITURA'].' '.$v['PROV_FORNITURA'].' '.$v['CAP_FORNITURA']?></td>
 														<td><?php echo $v['PHONE_FORNITURA'].'<br/>'.$v['EMAIL_FORNITURA']?></td>
@@ -819,24 +888,49 @@ echo form_input($input);
 											<div class="row">
 												 <div class="col-lg-6">
 													<div class="mb-3">
-														<label for="verticalnav-address-input"><?php echo lang('app.field_logo')?> </label>
+														<label for="verticalnav-address-input"><?php echo lang('app.field_photo_profile')?> </label>
 														<input type="file" name="logo" class="form-control">
 													</div>
 												</div>
-												 <div class="col-lg-6">
+												<div class="col-lg-6">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_biografie')?> </label>
+														<textarea id="description" name="description"></textarea>
+											 </div>
+												</div>
+												<?php /* <div class="col-lg-6">
 													<div class="mb-3">
 														<label for="verticalnav-address-input"><?php echo lang('app.field_cv')?> </label>
 														<input type="file" name="cv" class="form-control">
 													</div>
-												</div>
+												</div> */ ?>
 											</div>
 											<div class="row">
-											<div class="col-lg-12">
+											<div class="col-lg-6 div_medecin">
 													<div class="mb-3">
-														<label for="verticalnav-address-input"><?php echo lang('app.field_description')?> </label>
-														<textarea id="description" name="description"></textarea>
+														<label for="verticalnav-address-input"><?php echo lang('app.field_esperto')?> </label>
+														<textarea id="esperto" name="esperto"></textarea>
 											 </div>
 												</div>
+												<div class="col-lg-6 div_medecin">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_publication')?> </label>
+														<textarea id="publication" name="publication"></textarea>
+											 </div>
+												</div>
+												<div class="col-lg-6 div_medecin">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_experience')?> </label>
+														<textarea id="experience" name="experience"></textarea>
+											 </div>
+												</div>
+												<div class="col-lg-6 div_medecin">
+													<div class="mb-3">
+														<label for="verticalnav-address-input"><?php echo lang('app.field_academic')?> </label>
+														<textarea id="academic" name="academic"></textarea>
+											 </div>
+												</div>
+												
 											</div>
 											</p>
 										</div>
@@ -892,7 +986,12 @@ echo form_input($input);
 					<div class="modal-body" id="">
 						
 						<div class="row">
-													
+										  <div class="col-lg-12">
+												<div class="mb-3" id="div_fornitura_provincia">
+													<label for="verticalnav-phoneno-input"><?php echo lang('app.field_title_office')?> </label>
+													<input type="text" name="title" class="form-control">
+												</div>
+											</div>										  
                                                         <div class="col-lg-6">
                                                             <div class="mb-3" id="div_fornitura_provincia">
                                                                 <label for="verticalnav-phoneno-input">Provincia </label>
@@ -1102,11 +1201,11 @@ echo form_input($input);
 		    <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/pages/form-advanced.init.js"></script>
 		
 		  
-<?php /*		  
+		  
    <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
      
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/@chenfengyuan/datepicker/datepicker.min.js"></script>
-		*/ ?>
+		
 		 <!-- jquery step -->
         <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
   
@@ -1125,7 +1224,38 @@ echo form_input($input);
   <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/dropzone/dropzone.js"></script>
        
 		  <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/langs_tinymce/it.js"></script>
-		  
+	 <script src="<?php echo base_url()?>/intl-tel-input-master/build/js/intlTelInput.js"></script>
+  <script>
+    var input = document.querySelector("#mobile");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+       hiddenInput: "code_mobile",
+      // initialCountry: "auto",
+       localizedCountries: { 'it': 'Italia' },
+      // nationalMode: false,
+       onlyCountries: ['it'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['it'],
+       separateDialCode: true,
+      utilsScript: "<?php echo base_url()?>/intl-tel-input-master/build/js/utils.js",
+    });
+	/*input.addEventListener("countrychange", function() { alert("");
+  // do something with iti.getSelectedCountryData()
+  console.log(iti.getSelectedCountryData());
+ // addressDropdown.value = iti.getSelectedCountryData().country ;
+});*/
+  </script>	  
 		 
 	<script>
 
@@ -1134,10 +1264,23 @@ echo form_input($input);
   selector: 'textarea#description',
   language: 'it'
 });
-/*tinymce.init({
-  selector: 'textarea.team_description',
+tinymce.init({
+  selector: 'textarea#esperto',
   language: 'it'
-});*/
+});
+  tinymce.init({
+  selector: 'textarea#experience',
+  language: 'it'
+});
+tinymce.init({
+  selector: 'textarea#academic',
+  language: 'it'
+});
+  tinymce.init({
+  selector: 'textarea#publication',
+  language: 'it'
+});
+
 	 get_provincia('sede_provincia',139); 
 	// get_provincia('fattura_provincia',139); 
 	

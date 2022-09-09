@@ -69,7 +69,11 @@
 				</button>
 				<div class="dropdown-menu dropdown-menu-end">
 					<!-- item-->
+					
+					<a class="dropdown-item" href="<?php echo base_url($prefix_route.'profile');//$profile_url?>"><i class="uil uil-user-circle"></i> <span class="align-middle">Mio profilo</span></a>
+				
 					<?php  if($user_data['role']=='A'){?>
+					
 					<a class="dropdown-item d-block" href="<?php echo base_url($prefix_route.'settings')?>"><i class="uil uil-cog font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle"><?php echo lang('app.menu_setting')?></span></a>
 					<?php } ?>
 					<?php if($user_loginas!==null && $user_loginas['role']=='A'){?>
@@ -78,7 +82,8 @@
 						<span><?php echo  lang('app.menu_return_admin')?></span>
 					</a>
 					<?php } ?>
-					<a class="dropdown-item" href="<?php echo base_url('logout')?>"><i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle"><?php echo lang('app.menu_logout')?></span></a>
+					<a class="dropdown-item" href="<?php echo base_url('logout')?>"><i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle"><?php echo lang('app.menu_logout')?></span></a>					
+					
 				</div>
 			</div>
 
@@ -120,85 +125,77 @@
 						<i class="uil-home-alt"></i><span>Dashboard</span>
 					</a>
 				</li>
-				<hr>
 			
 				<?php if($user_data['role']=='A'){?>
-					<li class="menu-title"><?php echo lang('app.title_menu_cms')?></li>
+				<li class="menu-title"><?php echo lang('app.title_menu_cms')?></li>
 				<li>
-					<a href="<?php echo base_url($prefix_route.'speciality')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_speciality')?></span>
+					<a href="javascript: void(0);" class="has-arrow waves-effect">
+						<i class="uil-window-section"></i>
+						<span>Configurazione</span>
 					</a>
+					<ul class="sub-menu" aria-expanded="true">
+						<li>
+							<a href="<?php echo base_url($prefix_route.'speciality')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_speciality')?></span>
+							</a>
+							<a href="<?php echo base_url($prefix_route.'patologie')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patology')?></span>
+							</a>
+							<a href="<?php echo base_url($prefix_route.'prestations')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_prestations')?></span>
+							</a>
+							<a href="<?php echo base_url($prefix_route.'ordreProf')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_prof')?></span>
+							</a>
+						<?php /*	<a href="<?php echo base_url($prefix_route.'ordreCity')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_city')?></span>
+							</a> */?>
+						</li>
+					</ul>
 				</li>
-				<li>
-					<a href="<?php echo base_url($prefix_route.'patologie')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patology')?></span>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url($prefix_route.'prestations')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_prestations')?></span>
-					</a>
-				</li>
-					<li>
-					<a href="<?php echo base_url($prefix_route.'ordreProf')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_prof')?></span>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url($prefix_route.'ordreCity')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_city')?></span>
-					</a>
-				</li>
-				<li>
+			<?php /*	<li>
 					<a href="<?php echo base_url($prefix_route.'structureSanitaire')?>">
 						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_structure_sanitaire')?></span>
 					</a>
-				</li>
-				<hr/>
+				</li>*/ ?>
 				<li class="menu-title"><?php echo lang('app.title_menu_staff')?></li>
 				<li>
-					<a href="<?php echo base_url($prefix_route.'staffMedical/new')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_staff_new')?></span>
+					<a href="javascript: void(0);" class="has-arrow waves-effect">
+						<i class="uil-flask"></i>
+						<span>Medico / Clinica</span>
 					</a>
+					<ul class="sub-menu" aria-expanded="true">
+						<li>
+							<a href="<?php echo base_url($prefix_route.'staffMedical/new')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_staff_new')?></span>
+							</a>
+							<a href="<?php echo base_url($prefix_route.'staffMedical')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_staff_list')?></span>
+							</a>
+						</li>
+					</ul>
 				</li>
-				<li>
-					<a href="<?php echo base_url($prefix_route.'staffMedical')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_staff_list')?></span>
-					</a>
-				</li>
-				<hr/>
 				<li class="menu-title"><?php echo lang('app.title_menu_patient')?></li>
 				<li>
-					<a href="<?php echo base_url($prefix_route.'patients/new')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patient_new')?></span>
+					<a href="javascript: void(0);" class="has-arrow waves-effect">
+						<i class="uil-user-circle"></i>
+						<span>Paziente</span>
 					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url($prefix_route.'patients')?>">
-						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patient_list')?></span>
-					</a>
+					<ul class="sub-menu" aria-expanded="true">
+						<li>
+							<a href="<?php echo base_url($prefix_route.'patients/new')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patient_new')?></span>
+							</a>
+							<a href="<?php echo base_url($prefix_route.'patients')?>">
+								<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_patient_list')?></span>
+							</a>
+						</li>
+					</ul>
 				</li>
 				<?php } ?>
 			
-				
-				
-				
-				
-					
-				
-					
 				<hr>
-				<li class="menu-title">Profilo</li>
-				
-				<li>
-					<a href="<?php echo base_url($prefix_route.'profile');//$profile_url?>"><i class="uil uil-user-circle"></i> <span class="align-middle">Mio profilo</span></a>
-				</li>
-			
-				<hr>
-				<li>
-					<a href="<?php echo base_url('logout')?>">
-					<i class="uil uil-sign-out-alt"></i><span><?php echo lang('app.menu_logout')?></span></a>
-				</li>
+
 				<?php if($user_loginas!==null && $user_loginas['role']=='A'){?>
 				<li>
 					<a class="text-primary" href="<?php echo base_url('loginas_back/admin')?>">

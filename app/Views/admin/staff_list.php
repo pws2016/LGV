@@ -16,7 +16,7 @@
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     </head>
 
-    <body data-sidebar="dark">
+    <body data-keep-enlarged="true" class="vertical-collpsed">
         <div id="layout-wrapper">
             <?php echo view('includes/header.php')?>
             <div class="main-content">
@@ -196,7 +196,7 @@
 														<td><?php echo $one_customer['role']?></td>
 													<td><?php echo $one_customer['account_email']?></td>
 												
-													<td><?php if($one_customer['role']=="M") echo $one_customer['cognome'].', '.$one_customer['nome']; else echo $one_customer['rafgione_sociale']; ?></td>
+													<td><?php if($one_customer['role']=="M") echo $one_customer['cognome'].', '.$one_customer['nome']; else echo $one_customer['ragione_sociale']; ?></td>
 													<td>
 													<?php if(!empty($one_customer['list_offices'])){
 														foreach($one_customer['list_offices'] as $kk=>$vv){?>

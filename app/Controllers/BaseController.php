@@ -27,7 +27,7 @@ use App\Models\PrestationsModel;
 use App\Models\SpecificationsModel;
 use App\Models\StructureSanitaireModel;
 use App\Models\ClinicTeamModel;
-
+use App\Models\FamilyModel;
 use DeviceDetector\DeviceDetector;
 use DeviceDetector\Parser\Device\AbstractDeviceParser;
 /**
@@ -86,6 +86,7 @@ abstract class BaseController extends Controller
 		$this->SpecificationsModel=new SpecificationsModel();
 		$this->StructureSanitaireModel=new StructureSanitaireModel();
 		$this->ClinicTeamModel=new ClinicTeamModel();
+		$this->FamilyModel=new FamilyModel();
 		$this->SaffTipologie=array("MMG"=>"MMG", "PLS"=>"PLS","MS"=>"MS","OSS"=>"Infirmiere/OSS");
     }
 	public function common_data(){

@@ -39,7 +39,7 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,input[
 		</style>
 	</head>
 
-    <body data-sidebar="dark">
+    <body data-keep-enlarged="true" class="vertical-collpsed">
         <div id="layout-wrapper">
             <?php echo view('includes/header.php')?>
 

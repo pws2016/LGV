@@ -7,7 +7,7 @@ class ClinicTeamModel extends Model
 	
     protected $table = 'clinic_team';
 	protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id','name','description','image','enable'];
+    protected $allowedFields = ['user_id','name','description','image','enable','ids_specification','ids_patologie'];
 	protected $returnType = 'array';
 	protected $useSoftDeletes = true;
 	protected $useTimestamps = true;

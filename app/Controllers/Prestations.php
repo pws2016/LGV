@@ -20,6 +20,7 @@ class Prestations extends BaseController
 						if(null !== $this->request->getVar('is_default')) $is_default=1; else $is_default=0;
 					
 					$tab=array('title'=>$this->request->getVar('title'),
+					'description'=>$this->request->getVar('description'),
 					'ids_specification'=>implode(",",$this->request->getVar('ids_specification') ?? array()),
 					'enable'=>$enable,
 					'is_default'=>$is_default);
@@ -36,6 +37,7 @@ class Prestations extends BaseController
 						if(null !== $this->request->getVar('enable')) $enable=1; else $enable=0;
 						if(null !== $this->request->getVar('is_default')) $is_default=1; else $is_default=0;
 					$tab=array('title'=>$this->request->getVar('title'),
+					'description'=>$this->request->getVar('description'),
 					'ids_specification'=>implode(",",$this->request->getVar('ids_specification') ?? array()),
 					'enable'=>$enable,'is_default'=>$is_default);
 						$this->PrestationsModel->update($this->request->getVar('id'),$tab);
@@ -115,6 +117,21 @@ class Prestations extends BaseController
 											<option value="<?php echo $v['id']?>" <?php if(in_array($v['id'],explode(",",$inf['ids_specification']))) echo 'selected' ?>><?php echo $v['title']?></option>
 									<?php }}?>
 								</select>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<label for="horizontal-email-input" class="col-sm-3 col-form-label">Descrizione  </label>
+							<div class="col-sm-9">
+								<?php $input = [
+	
+	'name'  => 'description',
+	'id'    => 'description',
+	'class' => 'form-control',
+
+
+];
+
+								echo form_textarea($input,$inf['description']);?>
 							</div>
 						</div>
 						<div class="row mb-4">
