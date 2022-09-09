@@ -17,7 +17,7 @@
     </head>
 
     <!--body data-layout="horizontal" data-topbar="colored"-->
-	<body data-sidebar="dark">
+	<body data-keep-enlarged="true" class="vertical-collpsed">
         <div id="layout-wrapper">
             <?php echo view('includes/header.php')?>
             <div class="main-content">

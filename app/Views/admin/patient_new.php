@@ -37,7 +37,7 @@
 		</style>
 	</head>
 
-    <body data-sidebar="dark">
+    <body data-keep-enlarged="true" class="vertical-collpsed">
         <div id="layout-wrapper">
             <?php echo view('includes/header.php')?>
 

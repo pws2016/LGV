@@ -16,7 +16,7 @@
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     </head>
 
-    <body data-sidebar="dark">
+    <body data-keep-enlarged="true" class="vertical-collpsed">
         <div id="layout-wrapper">
             <?php echo view('includes/header.php')?>
             <div class="main-content">
