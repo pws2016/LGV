@@ -144,12 +144,12 @@
 						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_prof')?></span>
 					</a>
 				</li>
-				<li>
+			<?php /*	<li>
 					<a href="<?php echo base_url($prefix_route.'ordreCity')?>">
 						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_ordre_city')?></span>
 					</a>
 				</li>
-			<?php /*	<li>
+				<li>
 					<a href="<?php echo base_url($prefix_route.'structureSanitaire')?>">
 						<i class="uil-users-alt me-2"></i><span><?php echo lang('app.menu_structure_sanitaire')?></span>
 					</a>

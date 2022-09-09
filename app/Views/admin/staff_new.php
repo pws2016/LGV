@@ -711,13 +711,14 @@
 															<div class="mb-3">
 																<label for="verticalnav-firstname-input"><?php echo lang('app.field_ordre_city')?> 
 																</label>
-																<select class="form-control" id="ordre_city" name="ordre_city"  >
+															<?php /*	<select class="form-control" id="ordre_city" name="ordre_city"  >
 																	<option value=""><?php echo lang('app.field_select')?></option>
 																	<?php if(!empty($list_ordre_city)){
 		foreach($list_ordre_city  as $k=>$v){?>
 																	<option value="<?php echo $v['id']?>"><?php echo $v['title']?></option>
 																	<?php } }?>
-																</select>
+																</select> */?>
+																<input type="text" class="form-control" id="ordre_city" name="ordre_city"  >
 															</div>
 														</div>
 														<div class="col-lg-6 div_medecin">
@@ -905,25 +906,25 @@
 												</div> */ ?>
 											</div>
 											<div class="row">
-											<div class="col-lg-6">
+											<div class="col-lg-6 div_medecin" >
 													<div class="mb-3">
 														<label for="verticalnav-address-input"><?php echo lang('app.field_esperto')?> </label>
 														<textarea id="esperto" name="esperto"></textarea>
 											 </div>
 												</div>
-												<div class="col-lg-6">
+												<div class="col-lg-6 div_medecin">
 													<div class="mb-3">
 														<label for="verticalnav-address-input"><?php echo lang('app.field_publication')?> </label>
 														<textarea id="publication" name="publication"></textarea>
 											 </div>
 												</div>
-												<div class="col-lg-6">
+												<div class="col-lg-6 div_medecin">
 													<div class="mb-3">
 														<label for="verticalnav-address-input"><?php echo lang('app.field_experience')?> </label>
 														<textarea id="experience" name="experience"></textarea>
 											 </div>
 												</div>
-												<div class="col-lg-6">
+												<div class="col-lg-6 div_medecin">
 													<div class="mb-3">
 														<label for="verticalnav-address-input"><?php echo lang('app.field_academic')?> </label>
 														<textarea id="academic" name="academic"></textarea>

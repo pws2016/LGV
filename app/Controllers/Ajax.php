@@ -291,10 +291,10 @@ else $user_docs=array();
 		else  $output = array(
 		   'status' => false
 		  );
-		   echo json_encode(array(
+		/*   echo json_encode(array(
 		   'status' => true
-		  ));
-		// echo json_encode($output);
+		  ));*/
+		 echo json_encode($output);
 	}
 }
 ?>
