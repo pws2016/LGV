@@ -29,7 +29,7 @@ class AdminPanel extends BaseController
 		
 		if(!is_null($this->request->getVar('submit'))){
 			$signup_email=$this->request->getVar('signup_email');
-			$mobile=$this->request->getVar('mobile');
+			$mobile=$this->request->getVar('code_mobile');
 			$signup_password=$this->request->getVar('signup_password');
 			$signup_password_confirmation=$this->request->getVar('signup_password_confirmation');
 			$val = $this->validate([

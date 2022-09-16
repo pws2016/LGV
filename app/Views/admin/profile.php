@@ -8,7 +8,8 @@
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-    </head>
+     <link rel="stylesheet" href="<?php echo base_url()?>/intl-tel-input-master/build/css/intlTelInput.css">
+   </head>
 
     <body data-keep-enlarged="true" class="vertical-collpsed">
         <div id="layout-wrapper">
@@ -205,5 +206,37 @@
   <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/parsleyjs/parsley.min.js"></script>
 		    <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/parsleyjs/i18n/it.js"></script>
 		 <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/pages/form-validation.init.js"></script>
+		 <script src="<?php echo base_url()?>/intl-tel-input-master/build/js/intlTelInput.js"></script>
+  <script>
+    var input = document.querySelector("#mobile");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+       hiddenInput: "code_mobile",
+      // initialCountry: "auto",
+       localizedCountries: { 'it': 'Italia' },
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+       preferredCountries: ['it'],
+       separateDialCode: true,
+      utilsScript: "<?php echo base_url()?>/intl-tel-input-master/build/js/utils.js",
+    });
+	/*input.addEventListener("countrychange", function() { alert("");
+  // do something with iti.getSelectedCountryData()
+  console.log(iti.getSelectedCountryData());
+ // addressDropdown.value = iti.getSelectedCountryData().country ;
+});*/
+  </script>
     </body>
 </html>
