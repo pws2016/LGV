@@ -80,7 +80,7 @@ class UserModel extends Model
 		$db = \Config\Database::connect();
 		$req="SELECT u.email as account_email, u.role ,p.*  FROM ".$this->table." as u,user_profile as p where u.deleted_at is NULL and u.id=p.user_id";
 		if(!is_null($role)) $req.=" and u.role='".$role."'";
-		elseif(is_null($role)) $req.=" and (u.role!='A' and u.role!='U')";
+		elseif(is_null($role)) $req.=" and (u.role!='A' and u.role!='P')";
 		if(!is_null($email)) $req.=" and u.email LIKE '%".$db->escapeLikeString($email)."%' ESCAPE '!'";	
 		
 		if(!is_null($speciality)) $req.=" and FIND_IN_SET('".$speciality."',p.ids_specification)>0";

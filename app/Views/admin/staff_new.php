@@ -945,7 +945,7 @@
                                                         <i class="display-4 text-muted uil uil-cloud-upload"></i>
                                                     </div>
                                                     
-                                                    <h4>Drop files here or click to upload.</h4>
+                                                     <h4><?php echo lang('app.help_text_uplaod_files')?></h4>
                                                 </div>
 											</div>
 											</p>
@@ -995,7 +995,7 @@
                                                         <div class="col-lg-6">
                                                             <div class="mb-3" id="div_fornitura_provincia">
                                                                 <label for="verticalnav-phoneno-input">Provincia </label>
-                                                                <?php 
+                                                                <?php 	$options=array();
 																	$options['']=lang('app.field_select');
 																	if(!empty($list_provincia)){
 																		foreach($list_provincia as $k=>$v){
@@ -1004,7 +1004,7 @@
 																	}
 																	$input = [
 																			
-																			'name'  => 'PROV_FORNITURA',
+																			'name'  => 'provincia',
 																			'id'    => 'PROV_FORNITURA',
 																			
 																			
@@ -1021,7 +1021,7 @@
                                                                 <label for="verticalnav-email-input">Comune </label>
                                                                 <?php $input = [
 												
-																			'name'  => 'LOCALITA_FORNITURA',
+																			'name'  => 'comune',
 																			'id'    => 'LOCALITA_FORNITURA',
 																			
 																			'class' => 'form-control'
@@ -1047,7 +1047,7 @@
                                                                 <?php 
 																	$input = [
 																			'type'  => 'text',
-																			'name'  => 'IND_FORNITURA',
+																			'name'  => 'indirizzo',
 																			'id'    => 'IND_FORNITURA',
 																		
 																		
@@ -1065,7 +1065,7 @@
                                                                 <?php 
 																	$input = [
 																			'type'  => 'text',
-																			'name'  => 'CAP_FORNITURA',
+																			'name'  => 'cap',
 																			'id'    => 'CAP_FORNITURA',
 																		
 																		
@@ -1084,7 +1084,7 @@
                                                                 <?php 
 																	$input = [
 																			'type'  => 'text',
-																			'name'  => 'PHONE_FORNITURA',
+																			'name'  => 'phone',
 																			'id'    => 'PHONE_FORNITURA',
 																		
 																		
@@ -1101,7 +1101,7 @@
                                                                 <?php 
 																	$input = [
 																			'type'  => 'text',
-																			'name'  => 'EMAIL_FORNITURA',
+																			'name'  => 'email',
 																			'id'    => 'EMAIL_FORNITURA',
 																		
 																		
@@ -1611,7 +1611,7 @@ window.Parsley.addValidator('multipleOf', {
 				}
 				if(t=='fornitura_provincia'){
 					$("#div_fornitura_provincia").html(data);
-					var xxx="<label for='verticalnav-email-input' >Comune</label><input type='text' name='LOCALITA_FORNITURA' id='LOCALITA_FORNITURA' class='form-control'>";
+					var xxx="<label for='verticalnav-email-input' >Comune</label><input type='text' name='comune' id='LOCALITA_FORNITURA' class='form-control'>";
 					$("#div_fornitura_comune").html(xxx);
 				}
 			});

@@ -203,7 +203,7 @@ class StaffMedical extends BaseController
 			
 			if($this->session->get('array_address')!==null){
 				foreach($this->session->get('array_address') as $k=>$d){
-					$this->UserOfficesModel->insert(array("user_id"=>$user_id,"indirizzo"=>$d['IND_FORNITURA'],"provincia"=>$d['PROV_FORNITURA'],"comune"=>$d['LOCALITA_FORNITURA'],"cap"=>$d['CAP_FORNITURA'],"lat"=>$d['lat'],"lng"=>$d['lng'],"phone"=>$d['PHONE_FORNITURA'],"email"=>$d['EMAIL_FORNITURA']));
+					$this->UserOfficesModel->insert(array("user_id"=>$user_id,"title"=>$d['title'],"indirizzo"=>$d['indirizzo'],"provincia"=>$d['provincia'],"comune"=>$d['comune'],"cap"=>$d['cap'],"lat"=>$d['lat'],"lng"=>$d['lng'],"phone"=>$d['phone'],"email"=>$d['email']));
 				}
 			}	
 		
@@ -278,26 +278,6 @@ class StaffMedical extends BaseController
 			);
 			$this->UserModel->edit($user_id,$data_user);
 			
-			 $validated = $this->validate([
-							'logo' => [
-								'uploaded[logo]',
-								'mime_in[logo,image/jpg,image/jpeg,image/gif,image/png]',
-								'max_size[logo,4096]',
-							],
-						]);
-				
-						if ($validated) { 
-							$avatar_logo = $this->request->getFile('logo');
-							 $logo_name = $avatar_logo->getRandomName();
-							
-							$avatar_logo->move(ROOTPATH.'public/uploads/logo/',$logo_name);
-						
-						
-						}
-						else {
-							$logo_name=null;
-					
-						}
 			
 			
 			$data_profile=array("user_id"=>$user_id,
@@ -324,7 +304,7 @@ class StaffMedical extends BaseController
 			'ids_patologie'=>implode(",",$this->request->getVar('to_patologie') ?? array()),
 			'ids_prestation'=>implode(",",$this->request->getVar('to_prestation') ?? array()),
 			'description'=>$this->request->getVar('description'),
-			'logo'=>$logo_name ?? '',
+			//'logo'=>$logo_name,
 			
 			'fattura_stato'=>$this->request->getVar('fattura_stato'),
 			'fattura_provincia'=>$this->request->getVar('fattura_provincia'),
@@ -342,9 +322,33 @@ class StaffMedical extends BaseController
 			'experience'=>$this->request->getVar('experience'),
 			'academic'=>$this->request->getVar('academic'),
 			);
+			 $validated = $this->validate([
+							'logo' => [
+								'uploaded[logo]',
+								'mime_in[logo,image/jpg,image/jpeg,image/gif,image/png]',
+								'max_size[logo,4096]',
+							],
+						]);
+				
+						if ($validated) { 
+							$avatar_logo = $this->request->getFile('logo');
+							 $logo_name = $avatar_logo->getRandomName();
+							
+							$avatar_logo->move(ROOTPATH.'public/uploads/logo/',$logo_name);
+						$data_profile['logo']=$logo_name;
+						
+						}
+						
+			
 			$inf_prof=$this->UserProfileModel->where('user_id',$user_id)->first();
 			$this->UserProfileModel->update($inf_prof['id'],$data_profile);
 			//var_dump($this->session->get('user_docs'));exit;
+			if($this->request->getVar('delete_docs')!==null){
+				foreach($this->request->getVar('delete_docs') as $k=>$d){
+				
+					$this->UserDocsModel->delete($d);
+				}
+			}
 			if($this->session->get('user_docs')!==null){
 				foreach($this->session->get('user_docs') as $k=>$d){
 				
@@ -370,12 +374,78 @@ class StaffMedical extends BaseController
 						}
 						
 			
-			
+			$this->UserOfficesModel->where('user_id',$user_id)->delete();
+		
 			if($this->session->get('array_address')!==null){
 				foreach($this->session->get('array_address') as $k=>$d){
-					$this->UserOfficesModel->insert(array("user_id"=>$user_id,"indirizzo"=>$d['IND_FORNITURA'],"provincia"=>$d['PROV_FORNITURA'],"comune"=>$d['LOCALITA_FORNITURA'],"cap"=>$d['CAP_FORNITURA'],"lat"=>$d['lat'],"lng"=>$d['lng'],"phone"=>$d['PHONE_FORNITURA'],"email"=>$d['EMAIL_FORNITURA']));
+					$this->UserOfficesModel->insert(array("user_id"=>$user_id,"title"=>$d['title'],"indirizzo"=>$d['indirizzo'],"provincia"=>$d['provincia'],"comune"=>$d['comune'],"cap"=>$d['cap'],"lat"=>$d['lat'],"lng"=>$d['lng'],"phone"=>$d['phone'],"email"=>$d['email']));
 				}
 			}	
+			
+			
+			
+			if(!empty($this->request->getVar('ids_family_to_delete'))){
+				$this->ClinicTeamModel->whereIn('id', $this->request->getVar('ids_family_to_delete'))->delete();
+			}
+			
+			if($this->request->getVar('role')=='C' && !empty($this->request->getVar('list_team'))){
+					
+			
+					
+					
+				foreach($this->request->getVar('list_team') as $k=>$v){
+					
+					if(isset($v['team_enable'])) $team_enable=1; else $team_enable=0;
+					if($v['team_id']!=""){
+						$tab_team=array("user_id"=>$user_id,"name"=>$v['team_name'],"description"=>$v['team_description'],"enable"=>$team_enable,'ids_specification'=>implode(",",$v['team_ids_speciality']?? array()),'ids_patologie'=>implode(",",$v['team_ids_patologie']?? array()));
+						$team_image=$_FILES["list_team"]['name'][$k]['team_image'] ?? '';
+			
+					if($team_image!=""){
+							$target_dir = ROOTPATH."public/uploads/team/";
+							$target_file = $target_dir . basename($_FILES["list_team"]['name'][$k]['team_image']);
+							$uploadOk = 1;
+							$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+						
+						
+							  $check = getimagesize($_FILES["list_team"]['tmp_name'][$k]['team_image']);
+							  if($check !== false) {
+								
+								 $team_image=random_string('alnum',16).".".$imageFileType;
+								 
+								 move_uploaded_file($_FILES["list_team"]['tmp_name'][$k]['team_image'],$target_dir.$team_image);
+								 $tab_team['image']=$team_image;
+							  } 
+					}
+						$this->ClinicTeamModel->update($v['team_id'],$tab_team);
+					}
+					else{
+					$team_image=$_FILES["list_team"]['name'][$k]['team_image'] ?? '';
+			
+					if($team_image!=""){
+							$target_dir = ROOTPATH."public/uploads/team/";
+							$target_file = $target_dir . basename($_FILES["list_team"]['name'][$k]['team_image']);
+							$uploadOk = 1;
+							$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+						
+						
+							  $check = getimagesize($_FILES["list_team"]['tmp_name'][$k]['team_image']);
+							  if($check !== false) {
+								
+								 $team_image=random_string('alnum',16).".".$imageFileType;
+								 move_uploaded_file($_FILES["list_team"]['tmp_name'][$k]['team_image'],$target_dir.$team_image);
+							  } else {
+								$team_image="";
+							  }
+					}
+				
+					
+					$this->ClinicTeamModel->insert(array("user_id"=>$user_id,"name"=>$v['team_name'],"description"=>$v['team_description'],"enable"=>$team_enable,"image"=>$team_image,'ids_specification'=>implode(",",$v['team_ids_speciality']?? array()),'ids_patologie'=>implode(",",$v['team_ids_patologie']?? array())));
+					}
+				}
+			}
+			
+			
+			
 			if($this->session->get('array_address')!==null) $this->session->remove('array_address');
 			if($this->session->get('user_docs')!==null) $this->session->remove('user_docs');
 			return redirect()->to(base_url($data['prefix_route'].'/staffMedical'))->with("success",lang('app.success_update'));
@@ -390,7 +460,7 @@ class StaffMedical extends BaseController
 		$data['list_ordre_prof']=$this->OrdreProfessionelModel->orderBy('title','ASC')->find();
 		$data['list_ordre_city']=$this->OrdreCityModel->orderBy('title','ASC')->find();
 		$data['list_provincia']=$this->ProvinceModel->orderBy('PROVINCIA','ASC')->find();
-		
+	
 		$array_address=$this->session->get('array_address') ?? array();		
 		$data['array_address']=$array_address ?? array();
 		
@@ -401,9 +471,11 @@ class StaffMedical extends BaseController
 		$data['docs']=$this->UserDocsModel->where('user_id',$user_id)->where('type','doc')->find();
 		$res_adr=array();
 		 $list_address=$this->UserOfficesModel->where('user_id',$user_id)->find();
-						
+			//	var_dump($list_address);		
 		$this->session->set(array('array_address'=>$list_address));
 		$data['array_address']=$list_address;	
+		
+		$data['list_team']=$this->ClinicTeamModel->where('user_id',$user_id)->find();
 		return view('admin/staff_edit',$data);
 		
 	}

@@ -484,5 +484,6 @@ $lang['help_text_select_prestation']="Select speciallizazione before manage pres
 
 $lang['title_stats_tot_patients']="Totale Pazienti";
 $lang['title_stats_tot_staff']="Totale Staff Medicale";
+$lang['help_text_uplaod_files']="Trascina i file qui o fai clic per caricare.";
 return $lang;
 ?>
