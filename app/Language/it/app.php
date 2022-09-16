@@ -269,6 +269,9 @@ $lang['title_menu_patient']="Pazienti";
 $lang['menu_patient_list']="Lista pazienti";
 $lang['menu_patient_edit']="Modifica paziente";
 $lang['menu_patient_new']="Nuovo paziente";
+
+$lang['menu_account']="Account";
+$lang['menu_multiaccess']="Multi-Access";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -381,6 +384,12 @@ $lang['title_page_patient_list']="Lista pazienti";
 $lang['title_page_patient_edit']="Modifica paziente";
 $lang['title_section_user_family']="Famiglia";
 $lang['title_section_new_family_memeber']="Nuovo Membro";
+
+$lang['title_page_account']="Mio Account";
+$lang['title_page_multiaccess']="Multi access";
+$lang['title_section_add_mobile']="Aggiungi Nuova cellulare";
+$lang['title_section_list_mobile']="Lista cellulare";
+$lang['modal_delete_mobile']="Elemina cellulare";
 ################### statistics ###############"
 
 ############### errors ####################

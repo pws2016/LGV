@@ -50,6 +50,14 @@ $routes->get('/loginas_back/(:any)', 'UserPanel::loginas_back/$1');
 
  $routes->add('/ajax/(:any)', 'Ajax::index/$1');
 
+
+$routes->group("MyAccount", ["filter" => "auth:M,C"], function ($routes) {
+	$routes->add('account', 'StaffPanel::account');
+	$routes->add('multiaccess', 'StaffPanel::multiaccess');
+	$routes->add('dashboard', 'StaffPanel::index');
+	$routes->add('', 'StaffPanel::index');
+});
+
 $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
 	$routes->add('dashboard', 'AdminPanel::index');
 	$routes->add('profile', 'AdminPanel::profile');
