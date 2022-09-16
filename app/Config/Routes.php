@@ -52,6 +52,7 @@ $routes->get('/loginas_back/(:any)', 'UserPanel::loginas_back/$1');
 
 
 $routes->group("MyAccount", ["filter" => "auth:M,C"], function ($routes) {
+	$routes->add('profile', 'StaffPanel::profile');
 	$routes->add('account', 'StaffPanel::account');
 	$routes->add('multiaccess', 'StaffPanel::multiaccess');
 	$routes->add('dashboard', 'StaffPanel::index');

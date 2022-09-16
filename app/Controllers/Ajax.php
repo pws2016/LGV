@@ -248,10 +248,11 @@ else $user_docs=array();
                 $ext = $file->getClientExtension();
 
                 // Get random file name
-                $newName = $file->getRandomName();
-
+                $newName =sanitize_filename($name); //$file->getRandomName();
+				if(file_exists(ROOTPATH.'/public/uploads/medecin_doc/'.$newName)) $newName =$file->getRandomName();
                 // Store file in public/uploads/ folder
-                $file->move(ROOTPATH.'/public/uploads/medecin_doc/', $newName);
+              $ff=  $file->move(ROOTPATH.'/public/uploads/medecin_doc/', $newName);
+			
 				$user_docs[]=$newName;
                 // Response
                 $data['success'] = 1;
