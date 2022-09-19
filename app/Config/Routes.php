@@ -47,9 +47,8 @@ $routes->add('/activation/(:any)/(:any)', 'Authentification::activateAccount/$1/
 
  $routes->add('/loginas_back/(:any)', 'UserPanel::loginas_back/$1');
 $routes->get('/loginas_back/(:any)', 'UserPanel::loginas_back/$1');
-
+$routes->add('/smsAuth', 'Authentification::smsAuth');
  $routes->add('/ajax/(:any)', 'Ajax::index/$1');
-
 
 $routes->group("MyAccount", ["filter" => "auth:M,C"], function ($routes) {
 	$routes->add('profile', 'StaffPanel::profile');
@@ -58,6 +57,7 @@ $routes->group("MyAccount", ["filter" => "auth:M,C"], function ($routes) {
 	$routes->add('dashboard', 'StaffPanel::index');
 	$routes->add('', 'StaffPanel::index');
 });
+
 
 $routes->group("admin", ["filter" => "auth:A"], function ($routes) {
 	$routes->add('dashboard', 'AdminPanel::index');
@@ -108,6 +108,7 @@ $routes->group("api",function($routes){
 	$routes->add('data/patologie', 'API\Data::get_patologie');
 	$routes->add('data/prestations', 'API\Data::get_prestations');
 	$routes->add('data/searchMedical', 'API\Data::search_medecin');
+	$routes->add('data/get_filter_form', 'API\Data::get_filter_form');
 	$routes->add('data/profile/(:any)', 'API\Data::profile/$1');
 });
 

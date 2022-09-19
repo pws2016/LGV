@@ -35,6 +35,7 @@ $lang['pagination']="impaginazione";
 
 $lang['btn_send']="Invia";
 $lang['btn_add_address']="Aggiungi indirizzo";
+$lang['btn_get_code']="ricevi sms";
 ########## Fields ################
 $lang['field_mete_title']="Sito titolo";
 $lang['field_website']="webSito";
@@ -449,6 +450,7 @@ $lang['help_text_drop_file']="Trascina i file qui o fai clic per caricare.";
 $lang['success_send_offer']="Data di offerta inviata";
 $lang['success_sign_contract']="il contratto è firmato";
 $lang['success_send_contact']="La tua richiesta è stata inviata";
+$lang['success_send_sms']="La tua SMS codice è stata inviata.<br/>attendere 2 minuti prima di inviare nuovamente un altro codice";
 #############alert msg ####################
 $lang['msg_delete_prod']="sei sicuro di eliminare questo prodotto/servizio?";
 $lang['msg_delete_conc']="sei sicuro di eliminare questo concorrente?";

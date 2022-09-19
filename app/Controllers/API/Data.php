@@ -21,7 +21,37 @@ class Data extends ResourceController
 		
         return $this->respond($data, 200);
     }
-	
+	public function get_filter_form(){
+		$SpecificationsModel=new SpecificationsModel();
+		$ll=$SpecificationsModel->select('id,title,description')->where('enable','1');
+		if($this->request->getVar('id_specification')!==null)
+			$ll=$SpecificationsModel->where('id',$this->request->getVar('id_specification'));
+		$ll=$SpecificationsModel->find();
+		array_walk_recursive($ll,function(&$item){$item=strval($item);});
+		$data['specifications']=$ll;
+		$ll=array();
+		$PatologieModel=new PatologieModel();
+		$ll=$PatologieModel->select('id,title')->where('enable','1');
+		if($this->request->getVar('id_patologie')!==null)
+			$ll=$PatologieModel->where('id',$this->request->getVar('id_patologie'));
+		if($this->request->getVar('id_specification')!==null)
+			$ll=$PatologieModel->where("FIND_IN_SET('".$this->request->getVar('id_specification')."',ids_specification)>0");
+		$ll=$PatologieModel->find();
+		array_walk_recursive($ll,function(&$item){$item=strval($item);});
+		$data['patologie']=$ll;
+		$ll=array();
+		$PrestationsModel=new PrestationsModel();
+		$ll=$PrestationsModel->select('id,title')->where('enable','1');
+		if($this->request->getVar('id_prestation')!==null)
+			$ll=$PrestationsModel->where('id',$this->request->getVar('id_prestation'));
+		if($this->request->getVar('id_specification')!==null)
+			$ll=$PrestationsModel->where("FIND_IN_SET('".$this->request->getVar('id_specification')."',ids_specification)>0");
+		$ll=$PrestationsModel->find();
+		array_walk_recursive($ll,function(&$item){$item=strval($item);});
+		$data['prestations']=$ll;
+		
+		return $this->respond(array('error'=>false,"data"=>$data));
+	}
 	public function get_specifications(){
 		$SpecificationsModel=new SpecificationsModel();
 		$ll=$SpecificationsModel->select('id,title,description')->where('enable','1');
