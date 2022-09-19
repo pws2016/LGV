@@ -221,7 +221,32 @@ class Patients extends BaseController
 			);
 			$inf_prof=$this->UserProfileModel->where('user_id',$user_id)->first();
 			$this->UserProfileModel->update($inf_prof['id'],$data_profile);
-			//var_dump($this->session->get('user_docs'));exit;
+			if(!empty($this->request->getVar('ids_family_to_delete'))){
+				$this->FamilyModel->whereIn('id', $this->request->getVar('ids_family_to_delete'))->delete();
+			}
+			
+			if(!empty($this->request->getVar('list_family'))){
+				foreach($this->request->getVar('list_family') as $k=>$v){
+					if($v['family_id']==""){
+					$this->FamilyModel->insert(array("user_id"=>$user_id,
+					'nome'=>$v['family_nome'],
+					'cognome'=>$v['family_cognome'],
+					'type'=>$v['family_type'],
+					'cf'=>$v['family_cf'],
+					'data_nascita'=>$v['family_data_nascita'],
+					));
+					}
+					else{
+						$this->FamilyModel->update($v['family_id'],array("user_id"=>$user_id,
+					'nome'=>$v['family_nome'],
+					'cognome'=>$v['family_cognome'],
+					'type'=>$v['family_type'],
+					'cf'=>$v['family_cf'],
+					'data_nascita'=>$v['family_data_nascita'],
+					));
+					}
+				}
+			}
 			
 			return redirect()->to(base_url($data['prefix_route'].'/patients'))->with("success",lang('app.success_update'));
 		}
@@ -233,9 +258,16 @@ class Patients extends BaseController
 		
 		$data['inf_staff']=$this->UserModel->find($user_id);
 		$data['inf_staff_profile']=$this->UserProfileModel->where('user_id',$user_id)->first();
-		if($data['inf_staff_profile']['residenza_provincia']!="") $data['list_comune']=$this->ComuniModel->where('PROV',$data['inf_staff_profile']['residenza_provincia'])->find();
-		if($data['inf_staff_profile']['fattura_provincia']!="") $data['list_comune_fatt']=$this->ComuniModel->where('PROV',$data['inf_staff_profile']['fattura_provincia'])->find();
 		
+		if($data['inf_staff_profile']['residenza_stato']==139){
+			$data['list_provincia']=$this->ProvinceModel->find();
+			if($data['inf_staff_profile']['residenza_provincia']!="") $data['list_comune']=$this->ComuniModel->where('PROV',$data['inf_staff_profile']['residenza_provincia'])->find();
+		}
+		
+		
+		/*if($data['inf_staff_profile']['residenza_provincia']!="") $data['list_comune']=$this->ComuniModel->where('PROV',$data['inf_staff_profile']['residenza_provincia'])->find();
+		if($data['inf_staff_profile']['fattura_provincia']!="") $data['list_comune_fatt']=$this->ComuniModel->where('PROV',$data['inf_staff_profile']['fattura_provincia'])->find();
+		*/
 	
 	/*	$this->session->set(array('array_address'=>$list_address));
 		$data['array_address']=$list_address;	*/

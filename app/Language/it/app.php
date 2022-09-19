@@ -35,6 +35,7 @@ $lang['pagination']="impaginazione";
 
 $lang['btn_send']="Invia";
 $lang['btn_add_address']="Aggiungi indirizzo";
+$lang['btn_get_code']="ricevi sms";
 ########## Fields ################
 $lang['field_mete_title']="Sito titolo";
 $lang['field_website']="webSito";
@@ -269,6 +270,9 @@ $lang['title_menu_patient']="Pazienti";
 $lang['menu_patient_list']="Lista pazienti";
 $lang['menu_patient_edit']="Modifica paziente";
 $lang['menu_patient_new']="Nuovo paziente";
+
+$lang['menu_account']="Account";
+$lang['menu_multiaccess']="Multi-Access";
 ############" titles ###################
 $lang['title_sign_in_with']="Accedi con";
 $lang['title_page_login']="Benvenuto !";
@@ -381,6 +385,12 @@ $lang['title_page_patient_list']="Lista pazienti";
 $lang['title_page_patient_edit']="Modifica paziente";
 $lang['title_section_user_family']="Famiglia";
 $lang['title_section_new_family_memeber']="Nuovo Membro";
+
+$lang['title_page_account']="Mio Account";
+$lang['title_page_multiaccess']="Multi access";
+$lang['title_section_add_mobile']="Aggiungi Nuova cellulare";
+$lang['title_section_list_mobile']="Lista cellulare";
+$lang['modal_delete_mobile']="Elemina cellulare";
 ################### statistics ###############"
 
 ############### errors ####################
@@ -440,6 +450,7 @@ $lang['help_text_drop_file']="Trascina i file qui o fai clic per caricare.";
 $lang['success_send_offer']="Data di offerta inviata";
 $lang['success_sign_contract']="il contratto è firmato";
 $lang['success_send_contact']="La tua richiesta è stata inviata";
+$lang['success_send_sms']="La tua SMS codice è stata inviata.<br/>attendere 2 minuti prima di inviare nuovamente un altro codice";
 #############alert msg ####################
 $lang['msg_delete_prod']="sei sicuro di eliminare questo prodotto/servizio?";
 $lang['msg_delete_conc']="sei sicuro di eliminare questo concorrente?";
@@ -484,5 +495,6 @@ $lang['help_text_select_prestation']="Select speciallizazione before manage pres
 
 $lang['title_stats_tot_patients']="Totale Pazienti";
 $lang['title_stats_tot_staff']="Totale Staff Medicale";
+$lang['help_text_uplaod_files']="Trascina i file qui o fai clic per caricare.";
 return $lang;
 ?>

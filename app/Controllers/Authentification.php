@@ -32,7 +32,7 @@ class Authentification extends BaseController
 		
 		if($common_data['is_logged']==true){
 				if($common_data['user_data']['role']=='A') return redirect()->to( base_url('/admin/dashboard') );
-				else return redirect()->to( base_url('/myAccount') );
+				else return redirect()->to( base_url('/MyAccount') );
 		}
 		 $email=$this->request->getVar('login_email');
 		 $password=$this->request->getVar('login_password');
@@ -79,13 +79,33 @@ class Authentification extends BaseController
 					}
 					else{
 						
-						$this->session->set(array('user_data'=>$users[0]));
+						/*$this->session->set(array('user_data'=>$users[0]));
 						switch($users[0]['role']){
 							case 'A':$redirect_url='admin/dashboard'; break;
 							
-							default:$redirect_url='MyAccount';
+							default:$redirect_url='MyAccount/dashboard';
 						}
 							$this->addUserLog($users[0]['id'],'login');
+							*/
+					$this->session->set(array('verifier_sms' => $users[0]));
+					// creation code + save dans table smsauth
+				/*	$sms_code = random_string("numeric", 6);
+					$this->session->set(array('sms_code'=>$sms_code));
+					$iat = time(); // current timestamp value
+					$exp = $iat + 600;
+
+
+					$insert = $this->UsersAuthSmsModel->insert(array(
+
+						'code' => $sms_code,
+						'user_id' => $users[0]['id'],
+						'expired_at' => date('Y-m-d H:i', $exp)
+
+					));*/
+
+
+
+					$redirect_url = 'smsAuth';
 						return redirect()->to( base_url($redirect_url) );
 					}
 				}
@@ -96,13 +116,92 @@ class Authentification extends BaseController
 		}
 		echo view("login.php",$data);
 	}
+	
+	public function smsAuth(){
+		$common_data = $this->common_data();
+		$settings = $common_data['settings'];
+		$data = $common_data;
+		if($this->request->getVar('action')!==null){
+			switch($this->request->getVar('action')){
+				case 'send':
+					$sms_code = random_string("numeric", 6);
+					$data['sms_code']=$sms_code; // to delete ag=fter end test
+					//$this->session->set(array('sms_code'=>$sms_code));
+					$iat = time(); // current timestamp value
+					$exp = $iat + 600;
+
+
+					$insert = $this->UsersAuthSmsModel->insert(array(
+
+						'code' => $sms_code,
+						'user_id' => $this->session->get('verifier_sms')['id'],
+						'expired_at' => date('Y-m-d H:i', $exp)
+
+					));
+					$to=$this->request->getVar('mobile');
+					if($to=='default'){
+						$phonenumber=$this->session->get('verifier_sms')['mobile'];
+					}
+					else{
+						$ll=$this->UsersMobileModel->where('user_id',$this->session->get('verifier_sms')['id'])->where('id',$to)->first();
+						if(!empty($ll)) $phonenumber=$ll['mobile'];
+						else $phonenumber=$this->session->get('verifier_sms')['mobile'];
+					}
+					
+					// call arubaSMS here
+					
+					$data['success']=lang('app.success_send_sms')."<br/>CODE:".$sms_code;
+					break;
+				case 'validate':
+				
+					$s=$this->session->get('verifier_sms');
+					$res = $this->UsersAuthSmsModel
+					->where('user_id', $s['id'])
+					->where('code',str_replace("-","",$this->request->getVar('code')))
+					->find();
+					
+					if (empty($res)) {
+
+						return view('smsAuth',array('error'=>"invalid code"));
+					}
+						
+					else {
+
+						
+						$iat = time();
+						
+						if ($iat > strtotime($res[0]['expired_at'])) {
+
+							return view('smsAuth',array('error'=>"expired code")); // code expiré
+						}
+						else{
+						$this->session->set(array('user_data' => $s));
+						switch($s['role']){
+							case 'A':$redirect_url='admin/dashboard'; break;
+							
+							default:$redirect_url='MyAccount/dashboard';
+						}
+							$this->addUserLog($users[0]['id'],'login');
+					
+					return redirect()->to(base_url($redirect_url));
+				}
+
+				}
+				break;
+			}
+		}
+		$data['defaultphone']=$this->session->get('verifier_sms')['mobile'];
+		$data['list_mobile']=$this->UsersMobileModel->where('user_id',$this->session->get('verifier_sms')['id'])->find();
+		
+		echo view('smsAuth.php',$data);
+	}
 /*	public function login(){
 		$common_data=$this->common_data();
 		$data=$common_data;
 		
 		if($common_data['is_logged']==true){
 				if($common_data['user_data']['role']=='A') return redirect()->to( base_url('/admin/dashboard') );
-				else return redirect()->to( base_url('/myAccount') );
+				else return redirect()->to( base_url('/MyAccount') );
 		}
 		 $email=$this->request->getVar('login_email');
 		 $password=$this->request->getVar('login_password');
@@ -189,7 +288,7 @@ class Authentification extends BaseController
 		
 		if($common_data['is_logged']==true && $common_data['user_data']['role']!='guest'){
 				if($common_data['user_data']['role']=='A') return redirect()->to( base_url('/admin/dashboard') );
-				else return redirect()->to( base_url('/myAccount') );
+				else return redirect()->to( base_url('/MyAccount') );
 		}
 		$throttler = \Config\Services::throttler();
 
@@ -275,7 +374,7 @@ class Authentification extends BaseController
 		$data=$common_data;
 		if($common_data['is_logged']==true){
 				if($common_data['user_data']['role']=='A') return redirect()->to( base_url('/admin/dashboard') );
-				else return redirect()->to( base_url('/myAccount') );
+				else return redirect()->to( base_url('/MyAccount') );
 		}
 		$redirect=$this->request->getVar('redirect');
 		
@@ -304,7 +403,7 @@ class Authentification extends BaseController
 		$data=$common_data;
 		if($common_data['is_logged']==true){
 				if($common_data['user_data']['role']=='A') return redirect()->to( base_url('/admin/dashboard') );
-				else return redirect()->to( base_url('/myAccount') );
+				else return redirect()->to( base_url('/MyAccount') );
 		}
 		 $uri = previous_url(false);
 		
@@ -390,7 +489,7 @@ class Authentification extends BaseController
 		$data=$common_data;
 	if($common_data['is_logged']==true){
 				if($common_data['user_data']['role']=='A') return redirect()->to( base_url('/admin/dashboard') );
-				else return redirect()->to( base_url('/myAccount') );
+				else return redirect()->to( base_url('/MyAccount') );
 		}
 			$settings=$this->SettingModel->getByMetaKey();
 		$data['redirect_url']=$this->session->get('forgot_redirect');

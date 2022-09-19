@@ -2,7 +2,7 @@
 <html lang="it">
     <head>
         <meta charset="utf-8" />
-        <title><?php echo lang('app.title_page_profile')?> | <?php echo $settings['meta_title']?></title>
+        <title><?php echo lang('app.title_page_account')?> | <?php echo $settings['meta_title']?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/favicon.ico">
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -23,12 +23,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="mb-0"><?php echo lang('app.title_page_profile')?></h4>
+                                    <h4 class="mb-0"><?php echo lang('app.title_page_account')?></h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
-                                            <li class="breadcrumb-item active"><?php echo lang('app.menu_profile')?></li>
+                                            <li class="breadcrumb-item active"><?php echo lang('app.menu_account')?></li>
                                         </ol>
                                     </div>
 

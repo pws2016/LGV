@@ -69,8 +69,8 @@ class Ajax extends BaseController
 				}
 				$input = [
 						
-						'name'  => 'fattura_provincia',
-						'id'    => 'fattura_provincia',
+						'name'  => 'provincia',
+						'id'    => 'PROV_FORNITURA',
 						
 						
 						'class' => 'form-control '
@@ -90,7 +90,7 @@ class Ajax extends BaseController
 		$id_prov=$this->request->getVar('id_provincia');
 		$t=$this->request->getVar('t');
 		$list_comune=$this->ComuniModel->where('PROV',$id_prov)->orderBy('COMUNE','ASC')->find();
-		
+		//var_dump($list_comune);
 		switch($t){
 			case 'sede_comune':?>
 		 <label for="verticalnav-email-input">Comune </label>
@@ -136,7 +136,7 @@ class Ajax extends BaseController
 		 <label for="verticalnav-email-input">Comune </label>
 				<?php $input = [
 
-							'name'  => 'LOCALITA_FORNITURA',
+							'name'  => 'comune',
 							'id'    => 'LOCALITA_FORNITURA',
 							
 							'class' => 'form-control'
@@ -173,9 +173,9 @@ class Ajax extends BaseController
 			?>
 		<tr id="tr_address_<?php echo $k?>">
 			<td><?php echo $v['title']?></td>
-			<td><?php echo $v['IND_FORNITURA']?></td>
-			<td><?php echo $v['LOCALITA_FORNITURA'].' '.$v['PROV_FORNITURA'].' '.$v['CAP_FORNITURA']?></td>
-			<td><?php echo $v['PHONE_FORNITURA'].'<br/>'.$v['EMAIL_FORNITURA']?></td>
+			<td><?php echo $v['indirizzo']?></td>
+			<td><?php echo $v['comune'].' '.$v['provincia'].' '.$v['cap']?></td>
+			<td><?php echo $v['phone'].'<br/>'.$v['email']?></td>
 			<td><a href="#" onclick="delete_adr('<?php echo $k?>')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 		</tr>
 		<?php }?>
@@ -185,25 +185,19 @@ class Ajax extends BaseController
 	public function del_address(){
 		$i=$this->request->getVar('i');
 		$array_address=$this->session->get('array_address');
-		
+		var_dump($array_address[$i]);
 		if(isset($array_address[$i])) unset($array_address[$i]);
 		array_values($array_address);
 		$this->session->set(array('array_address'=>$array_address));
 		if(!empty($array_address)){
 			foreach($array_address as $k=>$v){
 			$str_forn="";
-			if(!empty($v['ID_FORN'])){
-				foreach($v['ID_FORN'] as $kk=>$vv){
-					$x=$this->FornitoreModel->find($vv);
-					$str_forn.=$x['NOME_FORN'].",";
-				}
-				
-			}?>
+			?>
 		<tr id="tr_address_<?php echo $k?>">
 		<td><?php echo $v['title']?></td>
-			<td><?php echo $v['IND_FORNITURA']?></td>
-			<td><?php echo $v['LOCALITA_FORNITURA'].' '.$v['PROV_FORNITURA'].' '.$v['CAP_FORNITURA']?></td>
-			<td><?php echo $str_forn?></td>
+			<td><?php echo $v['indirizzo']?></td>
+			<td><?php echo $v['comune'].' '.$v['provincia'].' '.$v['cap']?></td>
+			<td><?php echo $v['phone'].'<br/>'.$v['email']?></td>
 			<td><a href="#" onclick="delete_adr('<?php echo $k?>')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 		</tr>
 		<?php } }?>
@@ -254,10 +248,11 @@ else $user_docs=array();
                 $ext = $file->getClientExtension();
 
                 // Get random file name
-                $newName = $file->getRandomName();
-
+                $newName =sanitize_filename($name); //$file->getRandomName();
+				if(file_exists(ROOTPATH.'/public/uploads/medecin_doc/'.$newName)) $newName =$file->getRandomName();
                 // Store file in public/uploads/ folder
-                $file->move(ROOTPATH.'/public/uploads/medecin_doc/', $newName);
+              $ff=  $file->move(ROOTPATH.'/public/uploads/medecin_doc/', $newName);
+			
 				$user_docs[]=$newName;
                 // Response
                 $data['success'] = 1;

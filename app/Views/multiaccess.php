@@ -2,7 +2,7 @@
 <html lang="it">
     <head>
         <meta charset="utf-8" />
-        <title><?php echo lang('app.title_page_profile')?> | <?php echo $settings['meta_title']?></title>
+        <title><?php echo lang('app.title_page_multiaccess')?> | <?php echo $settings['meta_title']?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/images/favicon.ico">
         <link href="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -23,12 +23,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="mb-0"><?php echo lang('app.title_page_profile')?></h4>
+                                    <h4 class="mb-0"><?php echo lang('app.title_page_multiaccess')?></h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
-                                            <li class="breadcrumb-item active"><?php echo lang('app.menu_profile')?></li>
+                                            <li class="breadcrumb-item active"><?php echo lang('app.menu_multiaccess')?></li>
                                         </ol>
                                     </div>
 
@@ -36,12 +36,7 @@
                             </div>
                         </div>
                         <!-- end page title -->
-
-                     <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                       <?php //echo $validation->listErrors()
+ <?php //echo $validation->listErrors()
 			 if(isset($validation)){?>
 			 <div class="alert alert-danger" role="alert">
 				 <?php echo $validation->listErrors()?>
@@ -59,6 +54,11 @@
 				 <?php echo $success?>
 				</div>
 			 <?php }?>
+                     <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                      <h4><?php echo lang('app.title_section_add_mobile')?></h4>
 
                                         <div class="row">
                                             
@@ -68,83 +68,28 @@
                                                     
                                                     <?php $attributes = ['class' => 'custom-validation','novalidate'=>true, 'id' => '','method'=>'post' ,  'accept-charset'=>"UTF-8"];
 									echo form_open('', $attributes);?>
+                                                       <input type="hidden" name="action" value="add">
                                                        
-                                                        <div class="row mb-4">
-                                                            <label for="horizontal-email-input" class="col-sm-3 col-form-label">Email <code>*</code></label>
-                                                            <div class="col-sm-9">
-                                                               <?php $input = [
-																			'type'  => 'email',
-																			'name'  => 'signup_email',
-																			'id'    => 'signup_email',
-																			'class' => 'form-control',
-																			'value'=>$inf_user['email'],
-																			'required'=>true,
-																			'parsley-type'=>'email',
-																			'placeholder' =>"Email"
-																	];
-
-																	echo form_input($input);?>
-                                                            </div>
-                                                        </div>
-														 <div class="row mb-4">
-                                                            <label for="horizontal-email-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_mobile')?> <code>*</code></label>
-                                                            <div class="col-sm-9">
-                                                               <?php $input = [
-																			'type'  => 'text',
-																			'name'  => 'mobile',
-																			'id'    => 'mobile',
-																			'class' => 'form-control',
-																			'value'=>$inf_user['mobile'],
-																			'required'=>true,
-																			
-																			
-																	];
-
-																	echo form_input($input);?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-4">
-                                                            <label for="horizontal-password-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_password')?></label>
-                                                            <div class="col-sm-9">
-                                                             <?php $input = [
-												'type'  => 'password',
-												'name'  => 'signup_password',
-												'id'    => 'signup_password',
-												'class' => 'form-control',
-												
-												'placeholder' =>lang('app.field_password')
-										];
-
-										echo form_input($input);?>
-										<small id="passwordHelpInline" class="text-muted"> <?php echo lang('app.help_update_password_profile')?></small>
-                                                            </div>
-                                                        </div>
-														<div class="row mb-4">
-                                                            <label for="horizontal-password-input" class="col-sm-3 col-form-label"><?php echo lang('app.field_confirm_password')?></label>
-                                                            <div class="col-sm-9">
-                                                              <?php $input = [
-												'type'  => 'password',
-												'name'  => 'signup_password_confirmation',
-												'id'    => 'signup_password_confirmation',
-												'class' => 'form-control',
-												 'data-parsley-equalto'=>'#signup_password',
-												
-												 
-												'placeholder' =>lang('app.field_confirm_password')
-										];
-
-										echo form_input($input);?>
-                                                            </div>
-                                                        </div>
                                                         <div class="row justify-content-end">
-                                                            <div class="col-sm-9">
-                                                               
+                                                            <div class="col-sm-12">
+                                                             
+															
+																
+																
+																		<div class="mb-3">
+																			
+																			  <input type="text" required class="form-control" id="mobile" name="mobile"  value="" placeholder="1235689">
+																		</div>
+																
+															</div>
+													
+											
             
-                                                                <div>
+                                                                <div class="mt-5">
                                                                     <button type="submit" name="submit" class="btn btn-primary w-md"><?php echo  lang('app.btn_save')?></button>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                      
                                                     </form>
                                                 </div>
                                             </div>
@@ -155,12 +100,60 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+							
+							
+							   <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                      <h4><?php echo lang('app.title_section_add_mobile')?></h4>
+
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-12 ms-lg-auto">
+                                                <div class="mt-5 mt-lg-4">
+                                                   
+                                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                            <thead>
+                                            	<tr>
+													<th data-sorting="disabled"></th>
+													<th><?php echo lang('app.field_mobile')?></th>
+													
+                                            	</tr>
+                                            </thead>
+                                            <tbody>
+                                           <?php 
+										   if(!empty($list)){
+										   foreach($list as $k=>$one_customer){?>
+												<tr class="odd gradeX">
+													<td>
+														
+																<a  class="btn btn-danger" data-bs-target="#delete-modal-dialog" data-bs-toggle="modal" onclick="del_user('<?php echo $one_customer['id']?>')" href=""><?php echo lang('app.action_delete')?></a>
+														
+													</td>
+													
+												
+														<td><?php echo $one_customer['mobile']?></td>
+													
+												</tr>
+										   <?php } }?>
+                                            </tbody>
+                                        </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                       
+                                       
+                                    </div>
+                                </div>
+                            </div>
+							
+                        </div> <!-- end row -->
                        
                        
 
                        
-                        <!-- end row -->
+                       
                         
                     </div> <!-- container-fluid -->
                 </div>
@@ -183,7 +176,32 @@
         </div>
         <!-- END layout-wrapper -->
 
-      
+       <?php $attributes = ['class' => 'form-input-flat', 'id' => 'myform','method'=>'post'];
+		echo form_open( '', $attributes);?>
+		<input type="hidden" name="action" value="delete">
+		<input type="hidden" name="user_to_delete" id="user_to_delete">
+		<div class="modal fade" id="delete-modal-dialog"  tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						
+						 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle"><?php echo lang('app.modal_delete_mobile')?></h5>
+						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                        </button>
+					</div>
+					
+		
+					<div class="modal-body" id="">
+						<?php  echo lang('app.alert_msg_delete_user')?>
+					</div>
+					<div class="modal-footer">
+						 <button type="button" class="btn btn-light" data-bs-dismiss="modal"><?php echo lang('app.btn_close')?></button>
+						<input type="submit" name="delete" class="btn btn-danger" value="<?php echo lang('app.btn_delete')?>">
+					</div>
+				</div>
+			</div>
+		</div>
+         </form>
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
@@ -202,9 +220,10 @@
 
           <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/pages/dashboard.init.js"></script>
 
-      <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/app.js"></script>
+     
   <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/parsleyjs/parsley.min.js"></script>
 		    <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/parsleyjs/i18n/it.js"></script>
+			  <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
 		 <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/pages/form-validation.init.js"></script>
 		 <script src="<?php echo base_url()?>/intl-tel-input-master/build/js/intlTelInput.js"></script>
   <script>
@@ -226,9 +245,9 @@
       // initialCountry: "auto",
        localizedCountries: { 'it': 'Italia' },
       // nationalMode: false,
-      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+       onlyCountries: ['it'],
       // placeholderNumberType: "MOBILE",
-       preferredCountries: ['it'],
+     //  preferredCountries: ['it'],
        separateDialCode: true,
       utilsScript: "<?php echo base_url()?>/intl-tel-input-master/build/js/utils.js",
     });
@@ -237,6 +256,13 @@
   console.log(iti.getSelectedCountryData());
  // addressDropdown.value = iti.getSelectedCountryData().country ;
 });*/
+
+function del_user(id){
+			$("#user_to_delete").val(id);
+		}
+ 
+
   </script>
+   <script src="<?php echo base_url()?>/Minible_v2.0.0/Admin/dist/assets/js/app.js"></script>
     </body>
 </html>

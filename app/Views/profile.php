@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="utf-8" />
-        <title><?php echo lang('app.title_page_staff_edit')?> | <?php echo $settings['meta_title']?></title>
+        <title><?php echo lang('app.title_page_profile')?> | <?php echo $settings['meta_title']?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" CONTENT="noindex, nofollow">
 		<meta name="googlebot" content="noindex, nofollow">
@@ -55,14 +55,14 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="mb-0"><?php echo lang('app.title_page_staff_edit')?></h4>
+                                    <h4 class="mb-0"><?php echo lang('app.title_page_profile')?></h4>
 									<div class="page-title-right">
 										<ol class="breadcrumb m-0">
 											<li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo lang('app.menu_crm')?></a></li>
 
 
-											<li class="breadcrumb-item "><a href="<?php echo base_url($prefix_route.'staffMedical')?>"><?php echo lang('app.title_menu_staff')?></a></li>
-											<li class="breadcrumb-item active"><a href="javascript: void(0);"><?php echo lang('app.menu_staff_edit')?></a></li>
+										
+											<li class="breadcrumb-item active"><a href="javascript: void(0);"><?php echo lang('app.menu_profile')?></a></li>
 										</ol>
 									</div>
                                 </div>
@@ -83,9 +83,8 @@
 												</div>
                                           
                                   <?php $attributes = ['class' => 'custom-validation', 'id' => 'myform','method'=>'post'];
-		echo form_open_multipart( base_url($prefix_route.'/staffMedical/edit/'.$inf_staff['id']), $attributes);?>
-<input type="hidden" name="action" value="edit">
-<input type="hidden" name="user_id" id="user_id" value="<?php echo $inf_staff['id']?>">
+		echo form_open_multipart( '', $attributes);?>
+
 <input type="hidden" id="id_family_to_del" value="">
                                     <!-- Nav tabs -->
 												<ul class="nav nav-pills nav-justified bg-light" role="tablist">
@@ -136,62 +135,10 @@
 														<p class="mb-0">
 														<div class="row">  
 															<div class="col-lg-6">
-																<div class="col-lg-12">
-																	<h6 class="mb-3 titleblock">Tipo Cliente</h6>
-																</div>
-																<div class="row">
-																	<div class="col-lg-12">
-																		<div class="mb-3">
-																			<label><?php echo lang('app.field_role')?></label><br/>
-																			<div class="form-check mb-3 form-check-inline">
-																				<input class="form-check-input" type="radio" value="M" name="role" id="persona1" <?php if($inf_staff['role']=='M') echo 'checked'?> onclick="tp_med(this.value)">
-																				<label class="form-check-label" for="persona1">
-																					<?php echo lang('app.field_medecin')?>
-																				</label>
-																			</div>
-																			<div class="form-check mb-3 form-check-inline">
-																				<input class="form-check-input" type="radio" name="role" value="C"  id="persona2" <?php if($inf_staff['role']=='C') echo 'checked'?> onclick="tp_med(this.value)">
-																				<label class="form-check-label" for="persona2">
-																					<?php echo lang('app.field_clinic')?>
-																				</label>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="col-lg-6">
-																		<div class="mb-3">
-																			<div class="form-check">
-																				<input class="form-check-input" type="checkbox" name="active" value="yes" <?php if($inf_staff['active']=='yes') echo 'checked'?> id="active" >
-																				<label class="form-check-label" for="active">
-																					<?php echo lang('app.field_enable')?>
-																				</label>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-lg-12">
-																	<h6 class="mb-3 titleblock">Dati Accesso</h6>
-																</div>
-																<div class="row">
-																	<div class="col-lg-6">
-																		<div class="mb-3">
-																			<label for="verticalnav-firstname-input"><?php echo lang('app.field_email')?> <span class="text-primary">*</span>
-
-																			</label>
-																			<input type="text" class="form-control" id="email_address" name="email" required data-parsley-type="email"  data-parsley-checkemail  value="<?php echo $inf_staff['email']?>">
-
-
-																		</div>
-																	</div>
-																	<div class="col-lg-6">
-																		<div class="mb-3">
-																			<label for="verticalnav-firstname-input"><?php echo lang('app.field_mobile')?> <span class="text-primary">*</span>
-
-																			</label>
-																			<input type="text" class="form-control" id="mobile" name="mobile" required value="<?php echo $inf_staff['mobile']?>">
-																			<small class="text-muted"><?php echo lang('app.help_text_mobile_account')?></small>
-																		</div>
-																	</div>
-																</div>
+																
+																
+																
+																
 																<div class="row">
 																	<div class="col-lg-12">
 																		<h6 class="mb-3 titleblock"><?php echo lang('app.title_section_profile')?></h6>

@@ -79,6 +79,7 @@
 		echo form_open_multipart( base_url($prefix_route.'/patients/edit/'.$inf_staff['id']), $attributes);?>
 <input type="hidden" name="action" value="add">
 <input type="hidden" name="user_id" id="user_id" value="<?php echo $inf_staff['id']?>">
+<input type="hidden" id="id_family_to_del" value="">
 
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-pills nav-justified bg-light" role="tablist">
@@ -329,7 +330,7 @@
 											<div class="repeater">
 												<div class="" data-repeater-list="list_family">
 												<?php if(empty($list_family)){?>
-													<div class="card" data-repeater-item >
+													<div class="card" data-repeater-item data-id="">
 														<div class="card-header">
 															<?php echo lang('app.title_section_new_family_memeber')?>
 															<button style="float:right" data-repeater-delete type="button" class="btn btn-sm btn-danger " ><i class="fas fa-trash"></i></button>
@@ -384,9 +385,10 @@
 												<?php } else{ 
 												foreach($list_family as $k=>$v){?>
 												<div class="card" data-repeater-item >
+												<input type="hidden" name="family_id" value="<?php echo $v['id']?>">
 														<div class="card-header">
 															<?php echo lang('app.title_section_new_family_memeber')?>
-															<button style="float:right" data-repeater-delete type="button" class="btn btn-sm btn-danger " ><i class="fas fa-trash"></i></button>
+															<button style="float:right" data-repeater-delete type="button" class="btn btn-sm btn-danger " onclick="family_to_del('<?php echo $v['id']?>')"><i class="fas fa-trash"></i></button>
 														</div>
 														<div class="card-body">
 															<div class="row">
@@ -744,7 +746,7 @@
   language: 'it'
 });
 
-	 get_provincia('sede_provincia',139); 
+	// get_provincia('sede_provincia',139); 
 	//$("#residenza_provincia").val('<?php echo $inf_staff_profile['resedenzia_provincia']?>');
 	
   window.Parsley
@@ -788,7 +790,7 @@
 	   var response=false;
 	    $.ajax({
                     url: "<?php echo base_url('ajax/valid_user_email')?>",
-                    data: {email: $("#email_address").val()},
+                    data: {email: $("#email_address").val(),id:$("#user_id").val()},
                     dataType: 'json',
                     type: 'post',
                     async: false,
@@ -834,9 +836,11 @@
 			
         },
         hide: function (deleteElement) { 
+		
             if(confirm('Sei sicuro di voler eliminare questo elemento?')) {
                 $(this).slideUp(deleteElement);
 				
+				$("#myform").append("<input type='hidden' name='ids_family_to_delete[]' value='"+$("#id_family_to_del").val()+"'>");
             }
 			
         },
@@ -846,7 +850,9 @@
         }
     });
  
-		
+	function family_to_del(v){
+		$("#id_family_to_del").val(v);
+	}		
 			
    function get_provincia(t,v){
 			
