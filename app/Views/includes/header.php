@@ -71,8 +71,10 @@
 					<!-- item-->
 					
 					<a class="dropdown-item" href="<?php echo base_url($prefix_route.'profile');//$profile_url?>"><i class="uil uil-user-circle"></i> <span class="align-middle">Mio profilo</span></a>
+					<?php  if($user_data['role']!='A'){?>		
 					<a class="dropdown-item" href="<?php echo base_url($prefix_route.'account');?>"><i class="uil uil-lock-alt"></i> <span class="align-middle"><?php echo lang('app.menu_account')?></span></a>
 					<a class="dropdown-item" href="<?php echo base_url($prefix_route.'multiaccess');?>"><i class="uil uil-users-alt"></i> <span class="align-middle"><?php echo lang('app.menu_multiaccess')?></span></a>
+					<?php } ?>
 					<?php  if($user_data['role']=='A'){?>
 				
 					<a class="dropdown-item d-block" href="<?php echo base_url($prefix_route.'settings')?>"><i class="uil uil-cog font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle"><?php echo lang('app.menu_setting')?></span></a>
